@@ -1,0 +1,18 @@
+# Données personnelles — ne jamais versionner.
+# Le dépôt contient la base contacts d'Altav (~7 500 personnes : noms,
+# emails, téléphones). Un `git add .` publierait ces données sur GitHub,
+# et l'historique git les conserverait même après suppression du fichier.
+*.csv
+
+# Secrets
+.env
+.env.*
+
+# macOS
+.DS_Store
+
+# Journaux d'exécution
+*.log
+
+# Les scripts (*.py) sont volontairement versionnés : ils portent la logique
+# de traitement, sans aucune donnée personnelle.
