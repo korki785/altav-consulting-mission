@@ -8,44 +8,148 @@ Abonnement de référence : **HubSpot gratuit**.
 
 ---
 
-## 1. Créer la propriété
+## 1. Les 9 propriétés custom à créer
 
-Settings → Properties → Contact properties → **Create property**
+Settings → Properties → Contact properties → **Create property**, pour chacune.
 
-| Champ | Valeur |
-|---|---|
-| Label | Type de compte |
-| Internal name | `type_compte` |
-| Group | Informations de contact |
-| Field type | **Dropdown select** |
-| Options | `INDIVIDUEL` · `ENTREPRISE` |
-| Valeur par défaut | `INDIVIDUEL` |
+HubSpot n'en reconnaît aucune. **Sans création préalable, la colonne est ignorée
+silencieusement à l'import** — pas d'erreur, pas d'alerte, la donnée disparaît.
 
-**Pourquoi une liste déroulante et pas un texte libre :** un champ texte laisse entrer
-`Entreprise`, `entreprise`, `B2B`, `Ese`. La segmentation devient inexploitable au bout de
-trois mois. La liste fermée est la seule garantie que les segments restent justes.
+Elles se rangent en deux familles, et **il ne faut pas les mélanger** :
 
-**Pourquoi une valeur par défaut :** tout contact créé hors formulaire et hors import (saisie
-manuelle, synchro) tombe dans le cas majoritaire au lieu de rester vide. Une propriété vide
-n'est ni B2B ni B2C — elle disparaît des deux segments et fausse le comptage.
+- **Pilotage** — champs vivants, qui servent à segmenter et à décider. On les met à jour.
+- **Héritage Wix** (`wix_`) — archive figée au 20/07/2026. **Personne n'écrit dedans après
+  l'import.** Elles existent pour ne pas perdre l'historique, pas pour piloter.
 
-### Les trois autres propriétés à créer
+### Famille 1 — Pilotage
 
-Le CSV en porte quatre au total. HubSpot ne reconnaît aucune : sans création préalable, la
-colonne est **ignorée silencieusement à l'import**.
+| Label HubSpot | Internal name | Type | Options | Description à coller |
+|---|---|---|---|---|
+| Type de compte | `type_compte` | Dropdown | `INDIVIDUEL` · `ENTREPRISE` | Qui paie la formation. INDIVIDUEL = la personne pour elle-même (B2C). ENTREPRISE = la société pour ses salariés (B2B). Ne dépend PAS de l'employeur du contact. |
+| Température CRM | `tag_crm` | Dropdown | `CLIENT` · `CHAUD` · `INBOUND` · `FROID` | Où en est la relation commerciale. CLIENT = a déjà payé. CHAUD = intention explicite. INBOUND = venu à nous sans intention affirmée. FROID = ne nous connaît pas. |
+| Email actif | `email_actif` | Dropdown | `OUI` · `NON` | NON = adresse morte (bounce ou désabonnement) sur un contact qu'on garde pour la valeur de la relation. Ne pas écrire à ces contacts par email. |
+| Origine du nom | `origine_nom` | Dropdown | `WIX` · `DEDUIT_EMAIL` · `DEDUIT_CLAUDE` | D'où vient le nom. WIX = déclaré par le contact. DEDUIT_* = reconstruit depuis l'email, donc faillible. Vide = aucun nom connu. |
+| Domaine d'activité | `domaine_activite` | **Texte** *(1 ligne)* | — | Secteur d'activité déclaré par le lead. Texte libre : 162 valeurs distinctes pour 180 contacts, aucune nomenclature à figer. |
 
-| Colonne CSV | Propriété HubSpot | Type |
-|---|---|---|
-| `type_compte` | Type de compte | Dropdown — `INDIVIDUEL` / `ENTREPRISE` |
-| `Tag_CRM` | Température CRM | Dropdown — `CLIENT` / `CHAUD` / `INBOUND` / `FROID` |
-| `Email_actif` | Email actif | Dropdown — `OUI` / `NON` |
-| `Origine_nom` | Origine du nom | Dropdown — `WIX` / `DEDUIT_EMAIL` / `DEDUIT_CLAUDE` |
+### Famille 2 — Héritage Wix *(lecture seule)*
+
+Les deux premières sont la paire qui prête à confusion. Elles décrivent **le même événement**,
+sous deux angles : *quoi* et *quand*. Nommées avec le même préfixe et un suffixe distinct,
+elles se rangent côte à côte dans HubSpot.
+
+| Label HubSpot | Internal name | Type | Contenu | Exemple |
+|---|---|---|---|---|
+| Wix — Dernière action : **nature** | `wix_derniere_action_type` | Texte | *Quelle* action | `Une campagne e-mail a été envoyée à ce contact` |
+| Wix — Dernière action : **date** | `wix_derniere_action_date` | Date | *Quand* | `27/05/2026 07:41` |
+| Wix — Source d'acquisition | `wix_source` | Texte | Comment le contact est entré chez Wix | `Prospection`, `Envoi d'un formulaire` |
+| Wix — Libellés d'origine | `wix_libelles` | Texte | Libellé Wix brut, remplacé fonctionnellement par `tag_crm` | `Session d'infos Ubuntu en ligne.csv` |
+
+**Description à coller sur les 4 :**
+
+> Archive Wix figée au 20/07/2026. Ne reflète aucune activité HubSpot. Lecture seule — ne
+> jamais mettre à jour ni utiliser pour segmenter l'engagement actuel.
+
+### Pourquoi ces choix
+
+**Liste déroulante plutôt que texte, sur les 4 propriétés de pilotage.** Un champ texte laisse
+entrer `Entreprise`, `entreprise`, `B2B`, `Ese`. Au bout de trois mois la segmentation est
+inexploitable. La liste fermée est la seule garantie que les segments restent justes.
+
+**Valeur par défaut `INDIVIDUEL` sur `type_compte`.** Tout contact créé hors formulaire et hors
+import — saisie manuelle, synchro — tombe dans le cas majoritaire au lieu de rester vide. Une
+propriété vide n'est ni B2B ni B2C : elle disparaît des deux segments et fausse le comptage.
+
+**Préfixe `wix_` sur l'héritage.** Il regroupe ces propriétés au même endroit dans la liste
+HubSpot et signale au premier coup d'œil qu'on regarde une archive, pas une donnée vivante.
+Sans ce marqueur, quelqu'un finira par bâtir un rapport d'engagement sur des dates Wix.
 
 ---
 
-## 2. Importer le fichier
+## 2. Plan de mapping, colonne par colonne
 
-Fichier : **`contacts_hubspot.csv`** — 7 483 lignes, 50 colonnes, UTF-8 avec BOM,
+Le fichier compte 49 colonnes. Toutes n'ont pas vocation à entrer dans HubSpot, et certaines
+ne doivent surtout pas atterrir dans une propriété native.
+
+### Le principe : historique Wix ≠ activité HubSpot
+
+`Dernière activité` (la nature — « Une campagne e-mail a été envoyée ») et `Date de la
+dernière activité` (le moment) sont l'**historique Wix**. HubSpot possède ses propres
+propriétés équivalentes, qu'il **alimente lui-même en continu**.
+
+Les mapper sur les natives casse deux choses : HubSpot écrasera les valeurs à la première
+activité réelle, et entre-temps les rapports d'engagement seront faux — un contact « actif au
+27/05/2026 » qui n'a jamais rien fait dans HubSpot.
+
+> **Tout l'historique Wix va dans des propriétés custom préfixées `wix_`, jamais dans les
+> natives.** C'est de l'archive, pas de l'activité vivante.
+
+### A — Vers les propriétés natives
+
+| Colonne | Propriété HubSpot | Rempli |
+|---|---|---|
+| Prénom / Nom de famille | `firstname` / `lastname` | 47 % / 41 % |
+| E-mail 1 | `email` | 99,5 % |
+| E-mail 2, E-mail 3 | `hs_additional_emails` | 1,4 % / 0,1 % |
+| Téléphone 1 | `phone` | 19 % *(après nettoyage)* |
+| Société | `company` — texte. **L'employeur, pas l'acheteur** | 10,5 % |
+| Occupation | `jobtitle` | 8,6 % |
+| Adresse 1 - Rue / Ville / Pays / Code postal | `address` / `city` / `country` / `zip` | 2 % / 1,7 % / 7,8 % / 0,2 % |
+| Langue | `hs_language` | 6,6 % |
+| Créé le (UTC+0) | `createdate` | 62,7 % |
+
+### B — Vers des propriétés custom, en lecture seule
+
+| Colonne | Propriété à créer | Pourquoi pas la native |
+|---|---|---|
+| Dernière activité *(nature)* | `wix_derniere_action_type` | HubSpot gère la sienne |
+| Date de la dernière activité | `wix_derniere_action_date` | idem — sinon rapports faussés |
+| Source | `wix_source` | *Original source* est piloté par HubSpot |
+| Libellés | `wix_libelles` | Trace d'origine ; `Tag_CRM` la remplace fonctionnellement |
+| Domaine d'activité | `domaine_activite` | Aucun équivalent natif |
+| Tag_CRM · Email_actif · Origine_nom · type_compte | voir section 1 | — |
+
+**`Domaine d'activité` en texte libre, pas en liste déroulante :** 162 valeurs distinctes pour
+180 contacts renseignés — quasiment aucune ne se répète. Il n'y a pas de nomenclature à figer
+aujourd'hui. *(La colonne s'appelait « Sujet de coaching » dans Wix ; le libellé était
+trompeur, le contenu est le secteur d'activité du lead.)*
+
+### C — Traitement particulier
+
+**`Statut d'abonné aux e-mails` — enjeu légal, à traiter à part.** **1 051 désabonnés.** Ne se
+mappe pas comme une propriété ordinaire : il faut passer par l'opt-out marketing HubSpot,
+sinon on réexpédie à des gens qui se sont désabonnés. À croiser avec les 84 `Email_actif = NON`
+→ l'ensemble « ne plus écrire » fait environ 1 100 contacts. **Import séparé, après le
+principal.**
+
+### D — À ne pas importer
+
+| Colonne | Raison |
+|---|---|
+| Adresses 2 à 5 *(18 colonnes)* | 68 lignes au maximum, souvent 1 seule. HubSpot ne gère qu'une adresse par contact. |
+| Téléphone 2, 3, 4 | 218 / 30 / 5 lignes, qualité douteuse |
+| Adresse 1 - Type, Rue ligne 2, État/Région | 45 / 2 / 74 lignes |
+
+### Nettoyages déjà appliqués
+
+Par `preparer_import_hubspot.py`, avant import :
+
+| Opération | Effet |
+|---|---|
+| Téléphones parasites vidés | 134 valeurs (`1`, `600`, `60000`, `'+257`) → 1 444 numéros exploitables |
+| Langues normalisées | `fr-fr`, `fr-FR` → `fr` ; `en-US`, `en-GB` → `en`. Reste : fr 389 · en 101 · pt 2 · ar 1 |
+| `Statut d'abonné aux SMS` retiré | 325 lignes, **toutes** à « Jamais abonné » — aucune information |
+| `Sujet de coaching` renommé | → `Domaine d'activité` |
+
+### Points de vigilance à l'import
+
+- **37 lignes sans email** — HubSpot les créera sans clé de dédoublonnage
+- **6 emails en double** — HubSpot fusionnera automatiquement
+
+---
+
+## 3. Importer le fichier
+
+Fichier : **`contacts_hubspot.csv`** — 7 483 lignes, 49 colonnes, UTF-8 avec BOM,
 séparateur `;`.
 
 Produit par `ajouter_type_compte.py` à partir de `contacts_wix_tagges.csv`, qui n'est jamais
@@ -61,13 +165,13 @@ modifié.
 3. Vérifier que le séparateur détecté est bien `;` et l'encodage UTF-8.
 4. Puis importer le reste.
 
-**Ne pas importer `Libellés`** dans une propriété active. La colonne est conservée dans le CSV
-comme trace d'origine, mais `Tag_CRM` la remplace fonctionnellement. Deux champs qui disent la
-même chose divergent toujours.
+**`Libellés` va dans `wix_libelles`, en lecture seule** — jamais dans une propriété active.
+La colonne reste comme trace d'origine, mais `Tag_CRM` la remplace fonctionnellement. Deux
+champs actifs qui disent la même chose divergent toujours.
 
 ---
 
-## 3. Les deux formulaires — le cœur du dispositif
+## 4. Les deux formulaires — le cœur du dispositif
 
 C'est le mécanisme qui classe les futurs leads. Il fonctionne en Free, sans workflow.
 
@@ -96,7 +200,7 @@ signaux B2B fiables pour la suite.
 
 ---
 
-## 4. Les segments
+## 5. Les segments
 
 CRM → Segments → Create segment. *(HubSpot a renommé « Listes » en « Segments » en 2026.)*
 
@@ -114,7 +218,7 @@ du quota.
 
 ---
 
-## 5. Association automatique aux entreprises
+## 6. Association automatique aux entreprises
 
 Settings → Data Management → Objects → **Companies** → cocher « Create and associate contacts
 and companies ».
@@ -133,7 +237,7 @@ ecobank.com…).
 
 ---
 
-## 6. Spec du workflow — à activer au passage Professional
+## 7. Spec du workflow — à activer au passage Professional
 
 Les workflows sont indisponibles en Free et Starter. Cette spec est écrite maintenant pour
 qu'il n'y ait rien à reconcevoir le jour du passage.
@@ -166,7 +270,7 @@ classer.
 
 ---
 
-## 7. Ce qui a été écarté
+## 8. Ce qui a été écarté
 
 À ne pas reproposer sans élément nouveau.
 
@@ -179,7 +283,7 @@ classer.
 
 ---
 
-## 8. Trajectoire de palier
+## 9. Trajectoire de palier
 
 | Palier | Ce que ça débloque pour ce sujet |
 |---|---|
