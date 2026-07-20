@@ -67,7 +67,7 @@ Sans ce marqueur, quelqu'un finira par bâtir un rapport d'engagement sur des da
 
 ## 2. Plan de mapping, colonne par colonne
 
-Le fichier compte 49 colonnes. Toutes n'ont pas vocation à entrer dans HubSpot, et certaines
+Le fichier compte 22 colonnes. Toutes n'ont pas vocation à entrer dans HubSpot, et certaines
 ne doivent surtout pas atterrir dans une propriété native.
 
 ### Le principe : historique Wix ≠ activité HubSpot
@@ -89,11 +89,11 @@ activité réelle, et entre-temps les rapports d'engagement seront faux — un c
 |---|---|---|
 | Prénom / Nom de famille | `firstname` / `lastname` | 47 % / 41 % |
 | E-mail 1 | `email` | 99,5 % |
-| E-mail 2, E-mail 3 | `hs_additional_emails` | 1,4 % / 0,1 % |
+| E-mails secondaires *(fusion de E-mail 2 + E-mail 3)* | `hs_additional_emails` | 1,4 % |
 | Téléphone 1 | `phone` | 19 % *(après nettoyage)* |
 | Société | `company` — texte. **L'employeur, pas l'acheteur** | 10,5 % |
 | Occupation | `jobtitle` | 8,6 % |
-| Adresse 1 - Rue / Ville / Pays / Code postal | `address` / `city` / `country` / `zip` | 2 % / 1,7 % / 7,8 % / 0,2 % |
+| Adresse 1 - Rue / Ville / Pays | `address` / `city` / `country` | 2 % / 1,7 % / 7,8 % |
 | Langue | `hs_language` | 6,6 % |
 | Créé le (UTC+0) | `createdate` | 62,7 % |
 
@@ -121,13 +121,27 @@ sinon on réexpédie à des gens qui se sont désabonnés. À croiser avec les 8
 → l'ensemble « ne plus écrire » fait environ 1 100 contacts. **Import séparé, après le
 principal.**
 
-### D — À ne pas importer
+### D — Retirées du fichier, pas seulement « à ne pas importer »
 
-| Colonne | Raison |
+Ces 26 colonnes ne figurent plus dans `contacts_hubspot.csv` : elles ont été supprimées par
+`retirer_colonnes_vides.py`, pas seulement écartées du mapping. Bruit structurel Wix,
+0,0 % à 1,0 % de remplissage, jamais utilisé nulle part.
+
+| Colonne | Remplissage |
 |---|---|
-| Adresses 2 à 5 *(18 colonnes)* | 68 lignes au maximum, souvent 1 seule. HubSpot ne gère qu'une adresse par contact. |
-| Téléphone 2, 3, 4 | 218 / 30 / 5 lignes, qualité douteuse |
-| Adresse 1 - Type, Rue ligne 2, État/Région | 45 / 2 / 74 lignes |
+| Adresses 2 à 5 et tous leurs sous-champs *(19 colonnes)* | 0,0 % à 0,9 % |
+| Adresse 1 - Type, Rue ligne 2, État/Région, Code postal | 0,0 % à 1,0 % |
+| Téléphone 2, 3, 4 | 0,1 % à 2,9 % |
+
+**Conservées malgré un taux tout aussi bas**, parce qu'elles portent une vraie donnée pour un
+sous-ensemble réel de contacts, pas du bruit structurel :
+
+| Colonne | Remplissage | Pourquoi on la garde |
+|---|---|---|
+| `E-mails secondaires` | 1,4 % | Réel pour les 106 contacts concernés |
+| `Domaine d'activité` | 2,4 % | Réel pour les 180 contacts concernés |
+| `Langue` | 6,6 % | Réel pour les 493 contacts concernés |
+| `Adresse 1 - Pays` | 7,8 % | Seul signal géo disponible pour l'objectif 80/20 Burundi (voir README.md) |
 
 ### Nettoyages déjà appliqués
 
@@ -149,8 +163,18 @@ Par `preparer_import_hubspot.py`, avant import :
 
 ## 3. Importer le fichier
 
-Fichier : **`contacts_hubspot.csv`** — 7 483 lignes, 49 colonnes, UTF-8 avec BOM,
+Fichier : **`contacts_hubspot.csv`** — 7 483 lignes, 22 colonnes, UTF-8 avec BOM,
 séparateur `;`.
+
+**Piège d'import : ne mapper qu'UNE colonne sur la propriété Email.** HubSpot exige que
+`E-mail` reste unique — c'est la clé d'identification du contact. `E-mail 2` et `E-mail 3` ne
+peuvent pas s'y mapper aussi. Ils ont donc été fusionnés dans une colonne unique
+`E-mails secondaires`, valeurs séparées par `;` (le format exact qu'attend HubSpot pour sa
+propriété *Adresses e-mail supplémentaires*), à mapper sur `hs_additional_emails`.
+
+Le `;` étant aussi le séparateur de colonnes du fichier, ce champ apparaît entre guillemets
+dans le CSV (`"email1;email2"`) — c'est standard, ne pas s'en inquiéter à l'ouverture dans un
+éditeur de texte.
 
 Produit par `ajouter_type_compte.py` à partir de `contacts_wix_tagges.csv`, qui n'est jamais
 modifié.

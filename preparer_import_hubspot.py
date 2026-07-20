@@ -22,6 +22,14 @@ Quatre operations, toutes tracees a l'ecran :
    162 valeurs distinctes pour 180 contacts -> texte libre a l'import, pas
    une liste deroulante : il n'y a pas de nomenclature a figer.
 
+5. "E-mail 2" et "E-mail 3" fusionnes en une seule colonne "E-mails
+   secondaires", valeurs separees par ";". HubSpot n'accepte qu'UNE colonne
+   mappee sur la propriete "Adresses e-mail supplementaires"
+   (hs_additional_emails) -- deux colonnes source ne peuvent pas s'y mapper
+   toutes les deux. Le point-virgule est le separateur exige par HubSpot ;
+   comme c'est aussi le separateur de colonnes de ce fichier, le champ est
+   automatiquement mis entre guillemets par le module csv (CSV standard).
+
 Entree  : contacts_hubspot.csv
 Sortie  : contacts_hubspot.csv (+ contacts_hubspot.bak.csv)
 
@@ -45,6 +53,9 @@ COL_LANGUE = "Langue"
 COL_SMS = "Statut d'abonné aux SMS"
 COL_COACHING = "Sujet de coaching"
 COL_DOMAINE = "Domaine d'activité"
+COL_EMAIL2 = "E-mail 2"
+COL_EMAIL3 = "E-mail 3"
+COL_EMAILS_SECONDAIRES = "E-mails secondaires"
 
 MIN_CHIFFRES_TEL = 8
 
@@ -110,6 +121,28 @@ def main():
         print("   %r -> %r" % (COL_COACHING, COL_DOMAINE))
     else:
         print("   deja renommee")
+
+    # --- 5. Fusion des emails secondaires -----------------------------------
+    fusions = []
+    if COL_EMAIL2 in entetes_sortie or COL_EMAIL3 in entetes_sortie:
+        entetes_sortie = [c for c in entetes_sortie if c not in (COL_EMAIL2, COL_EMAIL3)]
+        entetes_sortie.append(COL_EMAILS_SECONDAIRES)
+        for ligne in lignes:
+            e2 = (ligne.pop(COL_EMAIL2, "") or "").strip()
+            e3 = (ligne.pop(COL_EMAIL3, "") or "").strip()
+            valeurs = [e for e in (e2, e3) if e]
+            ligne[COL_EMAILS_SECONDAIRES] = ";".join(valeurs)
+            if valeurs:
+                fusions.append((e2, e3, ligne[COL_EMAILS_SECONDAIRES]))
+
+    print()
+    print("=== 5. EMAILS SECONDAIRES FUSIONNES (%d lignes concernees) ===" % len(fusions))
+    if fusions:
+        print("   %-30s %-30s -> %s" % ("E-mail 2", "E-mail 3", COL_EMAILS_SECONDAIRES))
+        for e2, e3, fus in fusions[:6]:
+            print("   %-30s %-30s -> %s" % (e2 or "(vide)", e3 or "(vide)", fus))
+    else:
+        print("   deja fusionnees")
 
     print()
     print("=== RESULTAT ===")
