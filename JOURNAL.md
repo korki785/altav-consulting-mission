@@ -19,6 +19,13 @@ de sessions (`Session d'information — 11 septembre 2024`) et de formulaires.
 Constat structurant : **aucun contact ne porte plus d'un libellé**. Les règles
 de priorité entre libellés ne se déclenchent donc jamais — un libellé = un tag.
 
+**Colonnes retirées à la main.** `E-mail 4`, `E-mail 5`, `E-mail 6`,
+`Adresse 4 - Rue`, `Adresse 4 - Ville` ont été supprimées avant de lancer le
+pipeline, hors script — chacune n'était remplie que pour 1 contact sur 8 915.
+Aucun script ne fait ce nettoyage : relancer le pipeline depuis
+`CRM Contact.csv` les fait réapparaître. Suppression correcte sur le fond,
+juste non automatisée.
+
 ---
 
 ## Le pipeline
