@@ -16,3 +16,4 @@
 
 # Les scripts (*.py) sont volontairement versionnés : ils portent la logique
 # de traitement, sans aucune donnée personnelle.
+*.bak
