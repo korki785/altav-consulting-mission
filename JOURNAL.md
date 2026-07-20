@@ -199,7 +199,9 @@ Chaque script a un `--dry-run` pour ça.
 **Technique, optionnel :**
 - 3 878 contacts toujours sans nom. Enrichissement externe payant possible
   (Dropcontact, Societeinfo) — coût par contact, décision à part.
-- Relire `deductions_claude_a_verifier.csv` (1 162 lignes) par échantillon.
+- ~~Relire `deductions_claude_a_verifier.csv` (1 162 lignes) par échantillon.~~
+  Relu et validé par Nael le 2026-07-20. Les 1 162 noms déduits sont confirmés
+  dans `contacts_wix_tagges.csv` (`Origine_nom = DEDUIT_CLAUDE`).
 - 28 groupes de fusion à clé courte : risque d'homonymes non vérifié.
 
 **Prochain gain, sans dépendance :** séquence de nurturing sur les 489 contacts
