@@ -93,6 +93,9 @@ et désabonnés. La règle métier n'est pas « supprimer la personne » mais
 - `CLIENT` / `CHAUD` → **ligne conservée**, `Email_actif = NON` (85). La relation
   vaut plus que l'adresse ; 44 d'entre eux ont un téléphone.
 
+Le fichier final n'en compte que **84** : l'un des 85 était un collaborateur Altav, retiré à
+l'étape suivante. Les deux chiffres sont justes, à deux moments différents du pipeline.
+
 > **Incident notable.** Un premier fichier nommé `contacts à supprimer.csv`
 > (1,5 Mo, 8 924 lignes) s'est révélé être un export complet de la base, pas une
 > sélection. L'appliquer aurait supprimé 8 354 contacts sur 8 384, dont 733
@@ -162,7 +165,11 @@ faux prénom dans une séquence coûte plus cher qu'une case vide. *Ne pas
 
 ## Résultat
 
-**7 483 contacts**, 54 colonnes.
+**7 483 contacts**, 49 colonnes.
+
+Le pipeline en produit 54 (51 d'origine + `Tag_CRM` + `Email_actif` + `Origine_nom`). Les 5
+colonnes quasi vides listées plus haut ont été retirées à la main **après** son exécution :
+54 − 5 = 49.
 
 | Tag_CRM | Contacts |
 |---|---|
