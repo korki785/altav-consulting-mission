@@ -1,0 +1,148 @@
+<!doctype html>
+<html lang="fr"><head><meta charset="utf-8">
+<title>Base contacts Altav vers HubSpot</title>
+<style>
+  body { font-family: -apple-system, "Helvetica Neue", Arial, sans-serif; max-width: 780px;
+         margin: 40px auto; padding: 0 20px; line-height: 1.5; color: #1a1a1a; font-size: 15px; }
+  h1 { font-size: 25px; border-bottom: 3px solid #2b6cb0; padding-bottom: 10px; }
+  h2 { font-size: 19px; margin-top: 32px; color: #1a4971; border-bottom: 1px solid #ddd;
+       padding-bottom: 4px; }
+  h3 { font-size: 15.5px; margin-top: 20px; margin-bottom: 6px; }
+  table { border-collapse: collapse; width: 100%; margin: 12px 0; font-size: 13.5px; }
+  th, td { border: 1px solid #ccc; padding: 6px 10px; text-align: left; }
+  th { background: #eef3f8; }
+  blockquote { border-left: 3px solid #d97706; margin: 12px 0; padding: 6px 16px;
+               background: #fffbeb; color: #333; font-size: 14px; }
+  code { background: #f0f0f0; padding: 1px 5px; border-radius: 3px; font-size: 90%; }
+  hr { border: none; border-top: 1px solid #ddd; margin: 24px 0; }
+  p { margin: 8px 0; }
+  ul { margin: 6px 0 12px 0; padding-left: 22px; }
+  li { margin: 4px 0; }
+  ul.todo { list-style: none; padding-left: 4px; }
+  li.todo-item { margin: 8px 0; }
+  em { color: #555; }
+  @media print {
+    body { margin: 0; font-size: 13px; }
+    h2 { break-after: avoid; }
+    table, blockquote { break-inside: avoid; }
+  }
+</style></head>
+<body>
+<h1>Base contacts Altav → HubSpot — bilan et guide d'utilisation</h1>
+<p><em>Préparé par Nael pour Franck, 20/07/2026.</em></p>
+<hr>
+<h2>En une phrase</h2>
+<p>**8 915 contacts Wix bruts et inexploitables → 7 483 contacts propres, segmentés, importés</p>
+<p>dans HubSpot.**</p>
+<hr>
+<h2>Chiffres clés</h2>
+<table>
+<tr><th>Indicateur</th><th>Valeur</th></tr>
+<tr><td>Contacts finaux</td><td><strong>7 483</strong></td></tr>
+<tr><td>Contacts nommés</td><td><strong>3 598 (48 %)</strong>, contre 33 % au départ</td></tr>
+<tr><td>Colonnes finales</td><td><strong>22</strong>, contre 51 à l'origine</td></tr>
+<tr><td>Emails actifs</td><td><strong>7 399 (99 %)</strong></td></tr>
+<tr><td>Coût total (traitement par IA)</td><td><strong>7,10 $</strong></td></tr>
+</table>
+<p><em><em>Répartition commerciale (<code>Tag_CRM</code>) :</em></em></p>
+<ul>
+<li>🔴 <strong>CLIENT</strong> — 753 — a déjà payé</li>
+<li>🟠 <strong>CHAUD</strong> — 318 — intention d'achat explicite</li>
+<li>🟡 <strong>INBOUND</strong> — 171 — venu à nous, sans intention forte</li>
+<li>⚪ <strong>FROID</strong> — 6 241 — ne nous connaît pas / prospection</li>
+</ul>
+<hr>
+<h2>Ce qui a été fait</h2>
+<h3>1. Segmentation commerciale</h3>
+<ul>
+<li>Ajout d'une colonne unique <code>Tag_CRM</code> → répond à <em>« où en est la relation ? »</em></li>
+<li>195 leads récupérés grâce à une exception de règle *(des inscriptions volontaires</li>
+</ul>
+<p>auraient été classées à tort comme prospection froide)*</p>
+<ul>
+<li>Libellés d'origine conservés intacts, rien n'a été effacé</li>
+</ul>
+<h3>2. Dédoublonnage</h3>
+<ul>
+<li><strong>531 fusions</strong>, aucune perte de donnée</li>
+<li>Emails secondaires conservés plutôt qu'écrasés</li>
+</ul>
+<h3>3. Emails morts</h3>
+<ul>
+<li>976 adresses mortes croisées avec la base</li>
+<li><strong>889 lignes supprimées</strong> <em>(FROID/INBOUND sans email → aucune valeur)</em></li>
+<li><strong>84 lignes conservées</strong> <em>(CLIENT/CHAUD → la relation vaut plus que l'adresse)</em></li>
+<li>⚠️ Incident évité : un fichier de suppression fourni était en réalité une quasi-copie de</li>
+</ul>
+<p>toute la base — appliqué tel quel, il aurait supprimé 733 clients</p>
+<h3>4. Nettoyage interne</h3>
+<ul>
+<li><strong>12 adresses Altav</strong> retirées de la base prospects</li>
+<li>Sans ça, l'équipe aurait reçu les séquences de prospection</li>
+</ul>
+<h3>5. Enrichissement des noms</h3>
+<ul>
+<li><strong>232 noms</strong> déduits par règle (adresses <code>prenom.nom@…</code>)</li>
+<li><strong>1 162 noms</strong> déduits par IA <em>(relus et validés le 20/07/2026)</em></li>
+<li><strong>939 corrections</strong> sur des noms mal saisis dans Wix <em>(casse, doublons, valeurs bouchon)</em></li>
+<li><strong>122 inversions prénom/nom</strong> corrigées par IA</li>
+</ul>
+<h3>6. Distinction B2B / B2C</h3>
+<ul>
+<li>Nouvel axe créé : <code>type_compte</code> → répond à <em>« qui paie ? »</em></li>
+<li>Tous les contacts actuels classés <strong>INDIVIDUEL</strong> *(aucun lead entreprise fiable identifié</li>
+</ul>
+<p>à ce jour)*</p>
+<ul>
+<li>⚠️ Point de vigilance traité : 789 contacts ont une société renseignée mais restent des</li>
+</ul>
+<p>particuliers — les classer en ENTREPRISE aurait été une erreur</p>
+<h3>7. Import HubSpot</h3>
+<ul>
+<li>Base réduite à <strong>22 colonnes utiles</strong> <em>(colonnes mortes retirées)</em></li>
+<li><strong>9 propriétés personnalisées</strong> créées pour porter la segmentation</li>
+</ul>
+<hr>
+<h2>Guide d'utilisation</h2>
+<h3>Règle n°1 : deux axes, jamais à confondre</h3>
+<table>
+<tr><th>Axe</th><th>Question</th><th>Valeurs</th></tr>
+<tr><td><strong>Température</strong></td><td>Où en est la relation ?</td><td>CLIENT · CHAUD · INBOUND · FROID</td></tr>
+<tr><td><strong>Type de compte</strong></td><td>Qui paie ?</td><td>INDIVIDUEL · ENTREPRISE</td></tr>
+</table>
+<blockquote>❌ <strong>Piège à éviter :</strong> un email professionnel ne veut PAS dire ENTREPRISE.</blockquote>
+<blockquote>ENTREPRISE = la société paie. Un salarié qui paie pour lui-même reste INDIVIDUEL.</blockquote>
+<h3>Règle n°2 : archive vs donnée vivante</h3>
+<ul>
+<li>Les propriétés « <strong>Wix — ...</strong> » sont figées au 20/07/2026 → <strong>ne jamais les modifier</strong></li>
+<li>HubSpot tient ses propres indicateurs d'activité, à jour en continu, à côté</li>
+</ul>
+<h3>Règle n°3 : classer les nouveaux leads entreprise à la source</h3>
+<ul>
+<li>Formulaire dédié (« Je forme mes équipes ») → classe automatiquement en ENTREPRISE</li>
+<li>Import outbound / LinkedIn → se déclare ENTREPRISE dès le fichier d'import</li>
+<li><strong>Jamais</strong> en devinant après coup sur une fiche existante</li>
+</ul>
+<hr>
+<h2>Décisions à prendre</h2>
+<ul class="todo">
+<li class="todo-item">☐ <strong>Qui porte le CRM au quotidien ?</strong> <em>(condition de tout le reste)</em></li>
+<li class="todo-item">☐ <strong>Fichier des certifiés de Stéphane</strong> <em>(bascule CHAUD → CLIENT pour les payants)</em></li>
+<li class="todo-item">☐ <strong>Accès back-office Wix + Excel des pré-inscrits</strong></li>
+</ul>
+<hr>
+<h2>Prochaine étape recommandée</h2>
+<p><strong>Séquence de nurturing sur les 489 contacts INBOUND + CHAUD</strong> — ne dépend d'aucune des</p>
+<p>décisions ci-dessus :</p>
+<ul>
+<li>Mail de confirmation réécrit</li>
+<li>Livre blanc à J+5</li>
+<li>Relance à J+30</li>
+<li>Rappel sous 5 minutes après inscription</li>
+</ul>
+<hr>
+<h2>Limite connue</h2>
+<p><strong>Géographie non exploitable</strong> — pays renseigné sur seulement 8 % des contacts. Or l'objectif</p>
+<p>80/20 B2B/B2C se pilote par zone <em>(quasi atteint au Burundi, très loin ailleurs)</em> → non</p>
+<p>mesurable en l'état.</p>
+</body></html>
