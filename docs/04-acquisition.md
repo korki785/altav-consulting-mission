@@ -54,21 +54,34 @@ Le lead naît dans le CRM, déjà classé par le champ caché du formulaire. Pas
 pas d'abonnement tiers, pas de pièce intermédiaire. C'est aussi ce qui rend les séquences
 possibles : sans étiquette à l'arrivée, rien ne peut se déclencher.
 
-Cible — **5 formulaires au lieu de 52** :
+Cible — **6 formulaires au lieu de 52** *(validée par Franck le 4 août, voir
+[`06-decisions-franck.md`](06-decisions-franck.md))* :
 
-| Formulaire | `Tag_CRM` | `type_compte` | Champ caché |
-|---|---|---|---|
-| Pré-inscription formation UBUNTU | `CHAUD` | INDIVIDUEL | `promo` |
-| Livre blanc | `INBOUND` | INDIVIDUEL | — |
-| Session d'information / webinaire | `CHAUD` | INDIVIDUEL | `evenement` |
-| « Je forme mes équipes » | `CHAUD` | **ENTREPRISE** | — |
-| Contact général *(pied de page)* | `INBOUND` | INDIVIDUEL | `statut` |
+| Formulaire | `Tag_CRM` | `type_compte` | Champ caché | Ce qui le distingue |
+|---|---|---|---|---|
+| Pré-inscription formation UBUNTU | `CHAUD` | INDIVIDUEL | **aucun** | « je veux entrer en formation » — l'intention la plus forte |
+| Session d'information / webinaire | `CHAUD` | INDIVIDUEL | `evenement` | inscription à une date précise |
+| Demande d'information | `CHAUD` | INDIVIDUEL | — | question sur la formation, sans engagement de date |
+| « Je forme mes équipes » | `CHAUD` | **ENTREPRISE** | — | c'est la société qui paie |
+| Livre blanc | `INBOUND` | INDIVIDUEL | — | vient chercher du contenu, pas la formation |
+| Contact général *(pied de page)* | `INBOUND` | INDIVIDUEL | `statut` | tout-venant du site, sujet non qualifié |
 
 Le formulaire entreprise remplace `Inscription - DRH` et `Inscription - ADG`.
 
-**Un seul formulaire de pré-inscription, versionné par `promo`** — il en existe quatre
+**Un seul formulaire de pré-inscription, sans aucune notion de promo** — il en existe quatre
 aujourd'hui (86, 43, 3, 0 réponses). Le formulaire neuf à chaque événement est la cause racine
 des 167 libellés ; le corriger est plus important que le nettoyage lui-même.
+
+> **Correction de Franck sur ce point.** La cible portait d'abord un champ caché `promo`. Le
+> formulaire ne doit mentionner aucune promotion : le prospect exprime un souhait d'intégrer la
+> formation, l'affectation à une cohorte est une décision d'ALTAV prise **après** règlement des
+> frais. `promo` devient une propriété interne du contact dans HubSpot.
+
+**Demande d'information et contact général restent deux formulaires distincts** *(tranché le
+4 août)*. Le premier porte sur la formation — l'intention est identifiable, donc `CHAUD`. Le
+second est le tout-venant du site, sujet inconnu à l'arrivée, donc `INBOUND` : c'est le champ
+`statut` qui le qualifie ensuite. Les fusionner ferait perdre la distinction à la source, seul
+endroit où elle est gratuite.
 
 ### Bascule des anciens liens : vider, pas supprimer
 
@@ -96,17 +109,21 @@ ponctuel.
 Quatre automatisations portent par ailleurs « Modifications non publiées », dont deux actives :
 la version qui tourne n'est pas celle que l'équipe croit avoir mise en ligne.
 
-### Deux blocages du présent document peut-être déjà levés
+### Deux blocages du présent document — levés le 4 août
 
-- `Inscription - DRH` **(15 réponses)** et `Inscription - ADG` **(8)** : formulaires réservés à
-  des fonctions décisionnaires. Si ces personnes venaient faire former leurs équipes aux frais de
-  leur société, ce sont les **23 premiers `ENTREPRISE`** de la base — signal 1, déterministe.
-  À confirmer par Franck.
-- `Certification Promo 4 & 5 — Présence` **(19 réponses)** : possiblement la liste des certifiés
-  attendue de Stéphane, déjà présente dans Wix.
+- `Inscription - DRH` **(15 réponses)** et `Inscription - ADG` **(8)** : Franck confirme que ces
+  personnes venaient faire former leurs équipes aux frais de leur société. Ce sont les
+  **23 premiers `ENTREPRISE`** de la base — signal 1, déterministe.
+- `Certification Promo 4 & 5 — Présence` **(19 réponses)** : confirmé, ce sont des clients ayant
+  payé. Bascule `CHAUD` → `CLIENT`, après vérification des cas particuliers.
+
+Les deux actions demandent d'abord un **export Wix des réponses** de ces trois formulaires :
+les identités ne sont pas déductibles de la base actuelle.
 
 ### Validation client
 
 Rien ne sera créé ni modifié avant accord écrit de Franck — les changements touchent son compte,
-sa marque et des supports en circulation. Les 9 questions qui débloquent le chantier sont dans
-[`livrables/QUESTIONS_FORMULAIRES_FRANCK.html`](../livrables/QUESTIONS_FORMULAIRES_FRANCK.html).
+sa marque et des supports en circulation. Les 9 questions sont dans
+[`livrables/QUESTIONS_FORMULAIRES_FRANCK.html`](../livrables/QUESTIONS_FORMULAIRES_FRANCK.html),
+**toutes répondues le 4 août 2026** — décisions consolidées dans
+[`06-decisions-franck.md`](06-decisions-franck.md).

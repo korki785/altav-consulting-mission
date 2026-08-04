@@ -99,6 +99,13 @@ s'inscrit à la formation Ubuntu pour elle-même reste du B2C, quel que soit son
 jour aucun lead entreprise identifiable de façon fiable, et deviner coûterait plus cher que de
 ne rien dire.
 
+> **Premier mouvement, validé le 4 août 2026.** Franck confirme que les répondants de
+> `Inscription - DRH` (15) et `Inscription - ADG` (8) venaient faire former leurs équipes aux
+> frais de leur société. Ces **23 contacts** deviennent les premiers `ENTREPRISE` de la base —
+> signal 1, déterministe. Le critère qu'il retient est exactement celui posé ici : **qui paie la
+> facture**. Reste à récupérer leurs identités par un export Wix. Voir
+> [`06-decisions-franck.md`](06-decisions-franck.md).
+
 ### Règles de promotion vers `ENTREPRISE`
 
 Principe : **défaut `INDIVIDUEL`, promotion sur signal fort uniquement.** Un faux `ENTREPRISE`

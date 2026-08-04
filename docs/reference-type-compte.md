@@ -1,7 +1,7 @@
 # Référence — `type_compte` dans HubSpot
 
 Guide de paramétrage. **Les règles de classification et leur justification sont dans
-[`README.md`](README.md), section « Règles de classification CRM ».** Ce document ne les
+[`02-classification.md`](02-classification.md).** Ce document ne les
 répète pas : il dit quoi cliquer, dans quel ordre, et ce qui casse si on s'en écarte.
 
 Abonnement de référence : **HubSpot gratuit**.

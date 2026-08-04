@@ -7,6 +7,10 @@ Automatisation du tunnel de conversion (CRM + séquences). Objectif : lever le g
 en cours est l'**acquisition** : tant qu'aucun formulaire n'alimente HubSpot, aucune séquence de
 nurturing n'a de déclencheur.
 
+**Franck a répondu aux 9 questions le 4 août.** Les 9 sont tranchées, dont la seule bloquante :
+plus aucun formulaire d'acquisition dans Wix. La construction des formulaires HubSpot est
+ouverte — voir [décisions](docs/06-decisions-franck.md).
+
 ---
 
 ## Documentation
@@ -20,6 +24,7 @@ Lire dans cet ordre. Chaque document est autonome.
 | 3 | [Mise en œuvre HubSpot](docs/03-hubspot.md) | Ce que permet chaque palier d'abonnement, ce qui a été écarté |
 | 4 | [Acquisition](docs/04-acquisition.md) | État des lieux Wix, décision « les formulaires vivent dans HubSpot » |
 | 5 | [Journal de traitement](docs/05-journal.md) | Chaque décision de nettoyage et sa justification |
+| 6 | [Décisions de Franck](docs/06-decisions-franck.md) | Réponses aux 9 questions, cycle de vie en 7 étapes — **fait foi** |
 | — | [Référence `type_compte`](docs/reference-type-compte.md) | Paramétrage détaillé de la propriété custom |
 
 Livrables client (envoyés ou à envoyer à Franck) : [`livrables/`](livrables/) —
@@ -90,21 +95,30 @@ Le fichier source `donnees/source/CRM Contact.csv` n'est jamais modifié.
 
 Pas les séquences de nurturing : l'**acquisition** d'abord.
 
-1. Envoi de `livrables/QUESTIONS_FORMULAIRES_FRANCK.html` à Franck — 9 questions, dont une seule
-   bloquante : l'engagement à ne plus créer de formulaire dans Wix.
-2. Vérification du doublon d'automatisation et traitement des 63 messages non lus.
-3. Création des 5 formulaires HubSpot, puis bascule des anciens liens.
-4. **Alors seulement** : les séquences de nurturing, qui auront enfin de quoi se déclencher.
+1. ~~Envoi des 9 questions à Franck~~ — envoyé le 03/08, **répondu le 04/08**. Toutes tranchées.
+2. Diagnostic du doublon d'automatisation et tri des 63 messages non lus. *Non adressé par
+   Franck, mais l'accès Wix suffit pour tout le travail de diagnostic : seule la désactivation
+   et l'envoi des réponses demandent son accord.*
+3. Export Wix des réponses de `Inscription - DRH`, `Inscription - ADG` et
+   `Certification Promo 4 & 5` → 23 contacts en `ENTREPRISE`, 19 en `CLIENT`.
+4. Création des 6 formulaires HubSpot *(pré-inscription sans champ caché)*, puis bascule des
+   anciens liens et refonte du formulaire du pied de page.
+5. Mise en place du cycle de vie en 7 étapes défini par Franck.
+6. **Alors seulement** : les séquences de nurturing, qui auront enfin de quoi se déclencher.
 
 ## Ce qu'il me faut
 
 - ~~Accès **back-office Wix**~~ — obtenu le 03/08/2026.
 - Accès **Excel pré-inscrits** *(les ~489 ne se retrouvent pas dans les formulaires Wix — 132
   pré-inscriptions cumulées seulement)*.
-- Décision : **qui porte le CRM en interne**. Condition de tout le reste.
-- Fichier des certifiés de Stéphane → basculer les « Certification Promo 4 & 5 » payants de
-  `CHAUD` vers `CLIENT`. *Peut-être déjà disponible : 19 réponses au formulaire Wix du même nom.*
-- Réponses aux **9 questions** de `livrables/QUESTIONS_FORMULAIRES_FRANCK.html`.
+- Décision : **qui porte le CRM en interne**. Condition de tout le reste. *Toujours ouverte.*
+- ~~Fichier des certifiés de Stéphane~~ — inutile : Franck confirme le 04/08 que les 19 réponses
+  du formulaire Wix `Certification Promo 4 & 5` sont bien des clients ayant payé.
+- **Export Wix des réponses** de `Inscription - DRH`, `Inscription - ADG` et
+  `Certification Promo 4 & 5` — seule façon d'identifier les 23 `ENTREPRISE` et les 19 `CLIENT`.
+- ~~Réponses aux **9 questions**~~ — obtenues le 04/08/2026.
+- Accord de Franck pour désactiver l'automatisation Wix de 2023 en doublon, et pour envoyer les
+  réponses aux demandes en attente *(voir [décisions](docs/06-decisions-franck.md))*.
 
 ## Limite connue
 
