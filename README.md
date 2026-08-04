@@ -140,8 +140,9 @@ Burundi. Sans pays fiable, ce rapport n'est pas mesurable. Chantier à arbitrer.
 ---
 
 ## Données personnelles
-
 Aucun CSV n'est versionné (`.gitignore`). Le dépôt ne contient que les scripts et la
 documentation. La base fait ~7 500 personnes physiques : noms, emails, téléphones. Un
 `git add` forcé publierait des données que l'historique git conserverait ensuite
 définitivement.
+
+Test d'accès agent — 5 août 2026
