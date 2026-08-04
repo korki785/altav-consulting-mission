@@ -98,8 +98,9 @@ Pas les séquences de nurturing : l'**acquisition** d'abord.
 1. ~~Envoi des 9 questions à Franck~~ — envoyé le 03/08, **répondu le 04/08**. Toutes tranchées.
 2. ~~Diagnostic du doublon d'automatisation~~ — fait le 05/08 : **fausse alerte**, aucun double
    mail possible. Mais le formulaire de pré-inscription est mort depuis le 20/02/2025. Reste :
-   le traitement des messages. **Inventaire fait le 05/08 : 60 conversations, 43 leads
-   commerciaux jamais traités, dont 20 pré-inscriptions du 20/05 au 01/08.**
+   l'inventaire de la boîte de réception. **Fait le 05/08 : 60 conversations, 43 relevant de
+   l'acquisition, dont 20 pré-inscriptions du 20/05 au 01/08 — non lues dans Wix, suite donnée
+   inconnue.** Aucune relance engagée : décision du 05/08.
    Voir [décisions](docs/06-decisions-franck.md).
 3. Export Wix : la collection CMS `Pré-inscription Formation Ubuntu` (525 lignes), plus les
    réponses de `Inscription - DRH`, `Inscription - ADG` et `Certification Promo 4 & 5`
@@ -116,10 +117,9 @@ Pas les séquences de nurturing : l'**acquisition** d'abord.
 - ~~Accès **Excel pré-inscrits**~~ — inutile, trouvé le 05/08 : les pré-inscriptions sont dans le
   **CMS Wix**, collection `Pré-inscription Formation Ubuntu` — **525 lignes** avec e-mail et
   téléphone, la dernière du 01/08/2026. C'est la source à migrer vers HubSpot.
-- ~~Décision : **qui porte le CRM en interne**~~ — tranché le 04/08 : **Franck**. La réponse aux
-  demandes entrantes revient à Franck ou au commercial qu'il a recruté.
-- **Nom, email et date d'arrivée du commercial**, et un siège HubSpot pour lui *(nombre de
-  sièges inclus dans l'abonnement Starter à vérifier)*.
+- ~~Décision : **qui porte le CRM en interne**~~ — tranché : **Franck, seul**. Le commercial
+  qu'il évoquait n'est pas recruté ; aucune décision ne repose dessus. Un seul utilisateur
+  HubSpot, pas de siège supplémentaire.
 - ~~Fichier des certifiés de Stéphane~~ — inutile : Franck confirme le 04/08 que les 19 réponses
   du formulaire Wix `Certification Promo 4 & 5` sont bien des clients ayant payé.
 - **Export Wix des réponses** de `Inscription - DRH`, `Inscription - ADG` et
@@ -128,9 +128,8 @@ Pas les séquences de nurturing : l'**acquisition** d'abord.
 - ~~Par où passent réellement les pré-inscriptions ?~~ — répondu le 05/08 : par un formulaire de
   l'**ancienne appli Wix**, dont les réponses tombent dans la boîte de réception que personne ne
   relève. C'est ce formulaire-là qu'il faut repointer vers HubSpot, pas les 4 formulaires morts.
-- Accord de Franck pour envoyer les réponses aux demandes en attente.
-- Arbitrage sur le destinataire par défaut des tâches : Franck ou son commercial
-  *(recommandation : le commercial — Franck est déjà le goulot du dispositif)*.
+- Rien en attente de Franck sur ces points : pas de relance des leads pour l'instant, et il est
+  le destinataire par défaut de toutes les tâches.
 
 ## Limite connue
 

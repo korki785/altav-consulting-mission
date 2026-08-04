@@ -203,10 +203,17 @@ Le décompte du 3 août est confirmé : **69 formulaires sur 95 autorisés, 52 a
 `Inscription - DRH` (15 envois) et `Inscription - ADG` (8) sont bien là — les 23 futurs
 `ENTREPRISE`.
 
-### Incident 2 — messages non traités : **inventaire fait le 5 août**
+### Incident 2 — messages non lus : **inventaire fait le 5 août**
 
 **60 conversations** dans la boîte de réception Wix, la plus ancienne du 18 mai, la plus récente
-du 4 août. **43 sont des leads commerciaux jamais traités.**
+du 4 août. **43 relèvent de l'acquisition commerciale**, dont 50 messages non lus au total.
+
+> **Ce que « non lu » veut dire, et ce qu'il ne veut pas dire.** Le constat vérifiable est :
+> *non lu dans la boîte Wix*. Il ne prouve pas qu'aucune réponse n'a été apportée — Franck a pu
+> répondre depuis sa messagerie, par WhatsApp ou par téléphone, sans que la boîte Wix en garde
+> trace. Un fil de 12 messages montre d'ailleurs qu'Altav répond parfois **dans** cette boîte.
+> Le sort réel de ces demandes est **inconnu**. Nous n'avons aucun accès à la messagerie de
+> Franck ; seul le back-office Wix a été consulté.
 
 | Catégorie | Conv. | Quoi |
 |---|---|---|
@@ -222,16 +229,15 @@ du 4 août. **43 sont des leads commerciaux jamais traités.**
 | Démarchage entrant | 2 | à ignorer |
 | Fil en cours / à qualifier / test interne | 3 | |
 
-**Les 20 pré-inscriptions s'étalent du 20 mai au 1er août 2026** — la dernière date de samedi
-dernier. Aucune n'a reçu de réponse.
+**Les 20 pré-inscriptions s'étalent du 20 mai au 1er août 2026.** Toutes non lues dans Wix ;
+suite donnée inconnue.
 
 Détail nominatif : `donnees/revue/messages_wix_a_traiter.csv` — **non versionné**, il contient
 des données personnelles. Une ligne par conversation : date, nom, formulaire d'origine, nombre
 de messages, catégorie, action.
 
 > **Méthode :** la liste a été établie sans ouvrir aucune conversation. Ouvrir un fil le marque
-> comme lu et détruit l'information « personne n'a jamais répondu ». Les 50 non-lus sont
-> intacts.
+> comme lu et détruit la seule information dont on dispose. Les 50 non-lus sont intacts.
 
 ### Ce que cet inventaire répond — la question ouverte de l'incident 1
 
@@ -298,12 +304,15 @@ et le champ `Statut` est le futur champ caché du formulaire **Contact général
 | # | Action | Demande Franck ? |
 |---|---|---|
 | 1 | ~~Extraire et trier les messages de la boîte Wix~~ | **fait le 05/08** — 60 conversations, 43 leads |
-| 2 | Relancer les **20 pré-inscriptions** en priorité, de la plus récente à la plus ancienne | **oui** — ce sont des envois |
-| 3 | **Envoyer le livre blanc** aux 2 personnes qui l'ont demandé, la brochure aux 2 autres | non — ce sont des PDF, pas des décisions |
+| 2 | ~~Relancer les 20 pré-inscriptions~~ | **écarté le 05/08** — hors périmètre pour l'instant |
+| 3 | ~~Envoyer le livre blanc et la brochure~~ | **écarté le 05/08** — aucune réponse envoyée à ce stade |
 | 4 | Identifier ce qu'est le « Formulaire d'inscription personnalisé » (13 conversations) | non — lecture seule |
-| 5 | Préparer les réponses aux 43 leads, en lot | non |
-| 6 | Valider et envoyer ces réponses | **oui** |
-| 7 | Importer ces 43 contacts dans HubSpot avec le bon tag | non |
+| 5 | ~~Préparer et envoyer les réponses aux 43 leads~~ | **écarté le 05/08** |
+| 6 | Importer ces 43 contacts dans HubSpot avec le bon tag | non |
+
+**Décision du 5 août : on ne répond à personne pour l'instant.** La priorité va à la mise en
+place du formulaire relié à HubSpot. L'inventaire garde sa valeur — il identifie les canaux
+vivants et alimente la base — mais aucune relance n'est engagée.
 
 Franck écrit lui-même en Q8 qu'il n'existe « pas de processus clairement défini » pour ces
 demandes. Brancher le formulaire sur HubSpot fait arriver la demande au bon endroit — encore
@@ -319,38 +328,32 @@ C'était la condition bloquante posée depuis le début de la mission
 | Rôle | Titulaire |
 |---|---|
 | **Propriétaire du CRM** | **Franck** |
-| **Réponse aux demandes entrantes** | Franck, ou **le commercial qu'il a recruté** |
+| **Réponse aux demandes entrantes** | **Franck**, seul |
 
 Un CRM que personne ne tient redevient un Excel. Il a maintenant un nom.
 
-### La réserve à poser, une fois
+**Le commercial n'existe pas.** Franck a évoqué l'intention d'en recruter un ; ce n'est pas
+fait. Aucune décision ne doit reposer dessus. Concrètement : **un seul utilisateur HubSpot**,
+Franck, destinataire par défaut de toutes les tâches créées par les formulaires. Pas de siège
+supplémentaire à prévoir, pas de règle de répartition à écrire.
 
-Franck est déjà le goulot du dispositif : la formation Ubuntu qu'il porte fait 70 à 80 % du
-chiffre d'affaires. Lui confier en plus la réponse à chaque demande entrante recrée exactement
-la situation qui a produit les 63 messages non traités — non par négligence, mais par
-saturation.
+### La réserve, pour mémoire
 
-**Recommandation :** le commercial recruté devient le **destinataire par défaut** des tâches
-créées par les formulaires ; Franck reste propriétaire du CRM — il arbitre, suit les tableaux
-de bord, et reçoit les demandes que le commercial fait remonter. Propriété et exécution ne sont
-pas le même rôle.
+Franck porte déjà la formation Ubuntu, soit 70 à 80 % du chiffre d'affaires. Y ajouter la
+réponse à chaque demande entrante le met en position de goulot unique. Ce n'est pas un
+argument contre la mise en place — c'est un paramètre de conception : **les automatisations
+doivent réduire le nombre de gestes qu'il a à faire, pas lui créer des tâches supplémentaires
+à traiter à la main.**
 
-C'est une recommandation, pas un blocage : la mise en place est identique dans les deux cas,
-seul l'utilisateur assigné change. Elle se corrige en une minute dans HubSpot si l'organisation
-évolue.
+Si un commercial arrive un jour, le changement se fait en une minute : seul l'utilisateur
+assigné change.
 
 ### Ce que ça débloque immédiatement
 
 - **L'assignation des tâches.** Chaque formulaire crée une tâche avec un propriétaire réel.
   Sans destinataire, un workflow ne fait que déplacer le silence.
-- **Le rappel sous 5 minutes** après une pré-inscription devient exécutable : il y a quelqu'un
-  pour passer l'appel.
-- **Les tableaux de bord commerciaux** demandés par Franck ont un référentiel : les
-  performances se lisent par propriétaire.
+- **Les tableaux de bord commerciaux** demandés par Franck ont un référentiel.
 
 ### Ce qu'il reste à obtenir
 
-- **Nom et email du commercial**, et sa date d'arrivée.
-- **Un siège HubSpot pour lui** — à vérifier sur l'abonnement Starter en cours : le nombre de
-  sièges inclus et le coût du siège supplémentaire conditionnent l'assignation nominative.
-- **La règle d'escalade** : sous quel délai une demande sans réponse remonte à Franck.
+- Rien sur ce point. Le sujet est clos : Franck, seul utilisateur, seul destinataire.
