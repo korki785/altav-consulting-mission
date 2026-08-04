@@ -247,6 +247,50 @@ exactement le diagnostic de la mission : le goulot est la conversion, pas la dem
 Corollaire pour la bascule : c'est **ce formulaire-là** qu'il faut repointer vers HubSpot en
 priorité, pas les quatre formulaires morts.
 
+### Les deux formulaires inconnus — identifiés le 5 août
+
+#### 1. Le canal réel de pré-inscription : `Pré-inscription Formation Ubuntu` *(ancienne appli)*
+
+Créé le **28 décembre 2022**, dernière soumission le **1er août 2026**. Il n'apparaît pas dans
+les 52 formulaires de l'appli Wix Formulaires : il vit dans les **17 anciens formulaires**, et
+ses réponses sont stockées dans une **collection CMS** (`contact11`).
+
+**525 enregistrements**, avec pour chacun : date et heure d'envoi, prénom, nom, **e-mail**,
+**téléphone**, « comment connaissez-vous Altav », « qu'est-ce qui vous intéresse »,
+« ce qui motive votre engagement ».
+
+> **Conséquence directe : l'Excel des pré-inscrits ne sert plus à rien.** Il était réclamé
+> depuis le début de la mission pour migrer « les ~489 pré-inscrits » introuvables dans Wix.
+> Ils sont dans Wix — dans le CMS, pas dans l'appli Formulaires. 525 lignes, exportables,
+> avec les coordonnées. C'est la source à migrer vers HubSpot.
+
+#### 2. « Formulaire d'inscription personnalisé » : c'est le formulaire du pied de page
+
+13 conversations en boîte de réception portent ce nom. Il n'existe **ni dans les 52 formulaires,
+ni dans les 17 anciens, ni parmi les 137 collections CMS** — parce que ce n'est pas un formulaire
+d'appli : c'est un **élément natif de l'éditeur Wix**, posé dans le pied de page du site.
+
+Vérifié sur `altavconsulting.com`, ses champs sont :
+
+| Champ | Type |
+|---|---|
+| Nom · E-mail · Téléphone | texte |
+| **Statut** | liste : Entrepreneur (chef d'entreprise) · En cours de création d'entreprise · En questionnement · Profession libérale · Autre |
+| Parlez-nous de votre projet | texte long |
+
+Cela confirme le constat du 3 août : ses demandes ne sont comptées nulle part et tombent
+uniquement dans la boîte de réception. C'est le formulaire que Franck a accepté de refaire (Q9),
+et le champ `Statut` est le futur champ caché du formulaire **Contact général**.
+
+### Ce qu'il faut retenir du scan
+
+- **137 collections de formulaires** existent dans le CMS, contre 69 formulaires comptés dans
+  l'appli. Le désordre est plus large que ce que montre l'interface Formulaires.
+- Les formulaires qui comptent vraiment ne sont **pas** ceux que l'interface met en avant.
+  L'inventaire du 3 août, fait depuis l'appli Formulaires, ratait les deux principaux.
+- Les deux canaux vivants sont donc : l'ancien formulaire de pré-inscription (525 réponses) et
+  le formulaire du pied de page. Ce sont eux à repointer vers HubSpot **en premier**.
+
 ### Plan de traitement
 
 *Aucune dépendance. Peut avancer en parallèle de la création des formulaires.*

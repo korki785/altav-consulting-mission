@@ -101,18 +101,21 @@ Pas les séquences de nurturing : l'**acquisition** d'abord.
    le traitement des messages. **Inventaire fait le 05/08 : 60 conversations, 43 leads
    commerciaux jamais traités, dont 20 pré-inscriptions du 20/05 au 01/08.**
    Voir [décisions](docs/06-decisions-franck.md).
-3. Export Wix des réponses de `Inscription - DRH`, `Inscription - ADG` et
-   `Certification Promo 4 & 5` → 23 contacts en `ENTREPRISE`, 19 en `CLIENT`.
+3. Export Wix : la collection CMS `Pré-inscription Formation Ubuntu` (525 lignes), plus les
+   réponses de `Inscription - DRH`, `Inscription - ADG` et `Certification Promo 4 & 5`
+   → 23 contacts en `ENTREPRISE`, 19 en `CLIENT`.
 4. Création des 6 formulaires HubSpot *(pré-inscription sans champ caché)*, puis bascule des
-   anciens liens et refonte du formulaire du pied de page.
+   anciens liens. **Deux canaux à repointer en priorité** : l'ancien formulaire de
+   pré-inscription et le formulaire du pied de page — les seuls réellement vivants.
 5. Mise en place du cycle de vie en 7 étapes défini par Franck.
 6. **Alors seulement** : les séquences de nurturing, qui auront enfin de quoi se déclencher.
 
 ## Ce qu'il me faut
 
 - ~~Accès **back-office Wix**~~ — obtenu le 03/08/2026.
-- Accès **Excel pré-inscrits** *(les ~489 ne se retrouvent pas dans les formulaires Wix — 132
-  pré-inscriptions cumulées seulement)*.
+- ~~Accès **Excel pré-inscrits**~~ — inutile, trouvé le 05/08 : les pré-inscriptions sont dans le
+  **CMS Wix**, collection `Pré-inscription Formation Ubuntu` — **525 lignes** avec e-mail et
+  téléphone, la dernière du 01/08/2026. C'est la source à migrer vers HubSpot.
 - ~~Décision : **qui porte le CRM en interne**~~ — tranché le 04/08 : **Franck**. La réponse aux
   demandes entrantes revient à Franck ou au commercial qu'il a recruté.
 - **Nom, email et date d'arrivée du commercial**, et un siège HubSpot pour lui *(nombre de
@@ -142,9 +145,8 @@ Burundi. Sans pays fiable, ce rapport n'est pas mesurable. Chantier à arbitrer.
 ---
 
 ## Données personnelles
+
 Aucun CSV n'est versionné (`.gitignore`). Le dépôt ne contient que les scripts et la
 documentation. La base fait ~7 500 personnes physiques : noms, emails, téléphones. Un
 `git add` forcé publierait des données que l'historique git conserverait ensuite
 définitivement.
-
-Test d'accès agent — 5 août 2026
