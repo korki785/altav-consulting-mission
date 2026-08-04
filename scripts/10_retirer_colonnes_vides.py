@@ -36,8 +36,10 @@ import csv
 import shutil
 import sys
 
-CIBLE = "contacts_hubspot.csv"
-SAUVEGARDE = "contacts_hubspot.colonnes.bak.csv"
+import chemins
+
+CIBLE = chemins.TRAVAIL / "contacts_hubspot.csv"
+SAUVEGARDE = chemins.SAUVEGARDES / "contacts_hubspot.colonnes.bak.csv"
 DELIMITEUR = ";"
 
 # Colonnes retirees : jamais mappees, bruit structurel Wix.

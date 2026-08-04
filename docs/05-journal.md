@@ -1,4 +1,4 @@
-# Journal de traitement — base contacts Altav
+# 5. Journal de traitement — base contacts Altav
 
 Ce document trace le nettoyage de l'export Wix, les décisions prises et leurs
 raisons. Objectif : qu'on puisse reprendre ce travail dans six mois, ou qu'un
@@ -10,7 +10,7 @@ Les adresses email citées en exemple sont anonymisées.
 
 ## Point de départ
 
-Export Wix `CRM Contact.csv` : **8 915 lignes, 51 colonnes**, séparateur `;`,
+Export Wix `donnees/source/CRM Contact.csv` : **8 915 lignes, 51 colonnes**, séparateur `;`,
 UTF-8 avec BOM. **167 libellés distincts** dans la colonne `Libellés`, créés au
 fil des années par plusieurs personnes sans convention commune — un mélange de
 noms de fichiers d'import (`senegalDRH.csv`, `fromlinkedin4.csv`), d'intitulés
@@ -23,7 +23,7 @@ de priorité entre libellés ne se déclenchent donc jamais — un libellé = un
 `Adresse 4 - Rue`, `Adresse 4 - Ville` ont été supprimées avant de lancer le
 pipeline, hors script — chacune n'était remplie que pour 1 contact sur 8 915.
 Aucun script ne fait ce nettoyage : relancer le pipeline depuis
-`CRM Contact.csv` les fait réapparaître. Suppression correcte sur le fond,
+`donnees/source/CRM Contact.csv` les fait réapparaître. Suppression correcte sur le fond,
 juste non automatisée.
 
 ---
@@ -33,14 +33,14 @@ juste non automatisée.
 Quatre scripts, exécutés dans cet ordre, repartant toujours de la source :
 
 ```bash
-python3 tag_contacts.py          # segmentation + dédoublonnage
-python3 appliquer_suppressions.py # emails morts
-python3 purger_internes.py        # collaborateurs Altav
-python3 deduire_noms.py           # noms déduits par règle
-python3 deduire_noms_claude.py    # noms déduits par modèle (payant)
+python3 scripts/01_tag_contacts.py           # segmentation + dédoublonnage
+python3 scripts/02_appliquer_suppressions.py # emails morts
+python3 scripts/03_purger_internes.py        # collaborateurs Altav
+python3 scripts/04_deduire_noms.py           # noms déduits par règle
+python3 scripts/05_deduire_noms_claude.py    # noms déduits par modèle (payant)
 ```
 
-`CRM Contact.csv` n'est jamais modifié. Chaque script écrit une sauvegarde
+`donnees/source/CRM Contact.csv` n'est jamais modifié. Chaque script écrit une sauvegarde
 `.bak` avant modification et accepte `--dry-run` (sauf le premier).
 
 ---
@@ -84,7 +84,7 @@ plutôt que dans une nouvelle colonne — pour rester importable dans Wix.
 
 ### 4. Emails morts : supprimer ou marquer, selon la valeur du contact
 
-La liste `contacts a supprimer.csv` (976 adresses) est un export Wix de bounces
+La liste `donnees/source/contacts a supprimer.csv` (976 adresses) est un export Wix de bounces
 et désabonnés. La règle métier n'est pas « supprimer la personne » mais
 « ne plus lui écrire ».
 
@@ -111,7 +111,7 @@ et leur adresse professionnelle en `E-mail 2`, récupérée lors du dédoublonna
 
 Cette étape a d'abord été faite en commande directe, hors script — ce qui
 cassait la reproductibilité du pipeline (relancer aurait fait revenir les 12).
-Transformée en `purger_internes.py`.
+Transformée en `scripts/03_purger_internes.py`.
 
 ### 6. Déduction des noms — règle déterministe
 
@@ -159,7 +159,7 @@ Le modèle réussit précisément là où la regex échouait :
 **Hors périmètre assumé :** le découpage algorithmique des blocs collés. Sans
 séparateur, plusieurs coupures sont valides et rien ne permet de trancher. Un
 faux prénom dans une séquence coûte plus cher qu'une case vide. *Ne pas
-« améliorer » `deduire_noms.py` en ajoutant ce découpage.*
+« améliorer » `scripts/04_deduire_noms.py` en ajoutant ce découpage.*
 
 ---
 
@@ -213,9 +213,9 @@ Chaque script a un `--dry-run` pour ça.
 **Technique, optionnel :**
 - 3 878 contacts toujours sans nom. Enrichissement externe payant possible
   (Dropcontact, Societeinfo) — coût par contact, décision à part.
-- ~~Relire `deductions_claude_a_verifier.csv` (1 162 lignes) par échantillon.~~
+- ~~Relire `donnees/revue/deductions_claude_a_verifier.csv` (1 162 lignes) par échantillon.~~
   Relu et validé par Nael le 2026-07-20. Les 1 162 noms déduits sont confirmés
-  dans `contacts_wix_tagges.csv` (`Origine_nom = DEDUIT_CLAUDE`).
+  dans `donnees/travail/contacts_wix_tagges.csv` (`Origine_nom = DEDUIT_CLAUDE`).
 - 28 groupes de fusion à clé courte : risque d'homonymes non vérifié.
 
 **Prochain gain, sans dépendance :** séquence de nurturing sur les 489 contacts

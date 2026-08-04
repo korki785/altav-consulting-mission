@@ -46,9 +46,11 @@ import json
 import os
 import sys
 
-CIBLE = "contacts_hubspot.csv"
-SAUVEGARDE = "contacts_hubspot.inversions.bak.csv"
-REVUE = "inversions_claude_a_verifier.csv"
+import chemins
+
+CIBLE = chemins.TRAVAIL / "contacts_hubspot.csv"
+SAUVEGARDE = chemins.SAUVEGARDES / "contacts_hubspot.inversions.bak.csv"
+REVUE = chemins.REVUE / "inversions_claude_a_verifier.csv"
 DELIMITEUR = ";"
 
 COL_PRENOM = "Prénom"
@@ -60,11 +62,7 @@ MODELE_DEFAUT = "claude-opus-4-8"
 TAILLE_LOT = 40
 MAX_TOKENS = 8000
 
-FICHIERS_ENV = [
-    os.path.expanduser("~/gk-advancing/.env"),
-    os.path.expanduser("~/automation-orfeo/.env"),
-    os.path.expanduser("~/living-memory/.env"),
-]
+FICHIERS_ENV = chemins.FICHIERS_ENV
 
 SYSTEME = """Tu verifies l'attribution prenom / nom de famille de fiches contact.
 

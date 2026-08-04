@@ -36,8 +36,10 @@ import sys
 import unicodedata
 from collections import Counter
 
-CIBLE = "contacts_wix_tagges.csv"
-SAUVEGARDE = "contacts_wix_tagges.bak.csv"
+import chemins
+
+CIBLE = chemins.TRAVAIL / "contacts_wix_tagges.csv"
+SAUVEGARDE = chemins.SAUVEGARDES / "contacts_wix_tagges.bak.csv"
 DELIMITEUR = ";"
 
 MODELE_DEFAUT = "claude-opus-4-8"
@@ -45,11 +47,7 @@ TAILLE_LOT = 40          # local-parts par requete
 MAX_TOKENS = 8000
 
 # Fichiers ou chercher la cle si elle n'est pas dans l'environnement.
-FICHIERS_ENV = [
-    os.path.expanduser("~/gk-advancing/.env"),
-    os.path.expanduser("~/automation-orfeo/.env"),
-    os.path.expanduser("~/living-memory/.env"),
-]
+FICHIERS_ENV = chemins.FICHIERS_ENV
 
 COLONNE_EMAIL = re.compile(r"^e-?mail\s*1?$")
 

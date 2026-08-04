@@ -23,8 +23,10 @@ import shutil
 import sys
 import unicodedata
 
-CIBLE = "contacts_wix_tagges.csv"
-SAUVEGARDE = "contacts_wix_tagges.bak.csv"
+import chemins
+
+CIBLE = chemins.TRAVAIL / "contacts_wix_tagges.csv"
+SAUVEGARDE = chemins.SAUVEGARDES / "contacts_wix_tagges.bak.csv"
 DELIMITEUR = ";"
 
 # Fragment cherche dans les adresses. Couvre altav-consulting.com,

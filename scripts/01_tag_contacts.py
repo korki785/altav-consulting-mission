@@ -19,12 +19,14 @@ import sys
 import unicodedata
 from collections import Counter, OrderedDict
 
+import chemins
+
 # ---------------------------------------------------------------------------
 # Parametres
 # ---------------------------------------------------------------------------
 
-SOURCE_DEFAUT = "CRM Contact.csv"
-SORTIE_DEFAUT = "contacts_wix_tagges.csv"
+SOURCE_DEFAUT = chemins.SOURCE / "CRM Contact.csv"
+SORTIE_DEFAUT = chemins.TRAVAIL / "contacts_wix_tagges.csv"
 DELIMITEUR = ";"
 
 # Ordre de priorite : le tag le plus fort gagne en cas de conflit.

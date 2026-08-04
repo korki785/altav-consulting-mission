@@ -29,8 +29,10 @@ import sys
 import unicodedata
 from collections import Counter
 
-CIBLE = "contacts_wix_tagges.csv"
-SAUVEGARDE = "contacts_wix_tagges.bak.csv"
+import chemins
+
+CIBLE = chemins.TRAVAIL / "contacts_wix_tagges.csv"
+SAUVEGARDE = chemins.SAUVEGARDES / "contacts_wix_tagges.bak.csv"
 DELIMITEUR = ";"
 
 # Colonnes attendues (detection tolerante plus bas).

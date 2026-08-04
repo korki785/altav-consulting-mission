@@ -1,4 +1,4 @@
-# Mise en place HubSpot — `type_compte`
+# Référence — `type_compte` dans HubSpot
 
 Guide de paramétrage. **Les règles de classification et leur justification sont dans
 [`README.md`](README.md), section « Règles de classification CRM ».** Ce document ne les

@@ -2,6 +2,8 @@
 # Le dépôt contient la base contacts d'Altav (~7 500 personnes : noms,
 # emails, téléphones). Un `git add .` publierait ces données sur GitHub,
 # et l'historique git les conserverait même après suppression du fichier.
+# Double barrière : le répertoire entier, et tout CSV où qu'il soit.
+donnees/
 *.csv
 
 # Secrets
@@ -12,7 +14,12 @@
 .DS_Store
 
 # Journaux d'exécution
+journaux/
 *.log
+
+# Caches Python
+__pycache__/
+*.pyc
 
 # Les scripts (*.py) sont volontairement versionnés : ils portent la logique
 # de traitement, sans aucune donnée personnelle.

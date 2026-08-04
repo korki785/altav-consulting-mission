@@ -68,8 +68,10 @@ import shutil
 import sys
 import unicodedata
 
-CIBLE = "contacts_hubspot.csv"
-SAUVEGARDE = "contacts_hubspot.noms.bak.csv"
+import chemins
+
+CIBLE = chemins.TRAVAIL / "contacts_hubspot.csv"
+SAUVEGARDE = chemins.SAUVEGARDES / "contacts_hubspot.noms.bak.csv"
 DELIMITEUR = ";"
 
 COL_PRENOM = "Prénom"

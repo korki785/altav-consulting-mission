@@ -44,8 +44,10 @@ import re
 import shutil
 import sys
 
-CIBLE = "contacts_hubspot.csv"
-SAUVEGARDE = "contacts_hubspot.bak.csv"
+import chemins
+
+CIBLE = chemins.TRAVAIL / "contacts_hubspot.csv"
+SAUVEGARDE = chemins.SAUVEGARDES / "contacts_hubspot.bak.csv"
 DELIMITEUR = ";"
 
 COL_TEL = "Téléphone 1"

@@ -33,8 +33,10 @@ import csv
 import os
 import sys
 
-SOURCE = "contacts_wix_tagges.csv"
-SORTIE = "contacts_hubspot.csv"
+import chemins
+
+SOURCE = chemins.TRAVAIL / "contacts_wix_tagges.csv"
+SORTIE = chemins.TRAVAIL / "contacts_hubspot.csv"
 DELIMITEUR = ";"
 
 COLONNE = "type_compte"

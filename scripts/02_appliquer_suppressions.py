@@ -30,9 +30,11 @@ import sys
 import unicodedata
 from collections import Counter
 
-CIBLE = "contacts_wix_tagges.csv"
-LISTE_INACTIFS = "contacts a supprimer.csv"
-SAUVEGARDE = "contacts_wix_tagges.bak.csv"
+import chemins
+
+CIBLE = chemins.TRAVAIL / "contacts_wix_tagges.csv"
+LISTE_INACTIFS = chemins.SOURCE / "contacts a supprimer.csv"
+SAUVEGARDE = chemins.SAUVEGARDES / "contacts_wix_tagges.bak.csv"
 DELIMITEUR = ";"
 
 # Tags dont la relation commerciale justifie de garder la ligne meme si
