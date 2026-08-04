@@ -111,7 +111,10 @@ Pas les séquences de nurturing : l'**acquisition** d'abord.
 - ~~Accès **back-office Wix**~~ — obtenu le 03/08/2026.
 - Accès **Excel pré-inscrits** *(les ~489 ne se retrouvent pas dans les formulaires Wix — 132
   pré-inscriptions cumulées seulement)*.
-- Décision : **qui porte le CRM en interne**. Condition de tout le reste. *Toujours ouverte.*
+- ~~Décision : **qui porte le CRM en interne**~~ — tranché le 04/08 : **Franck**. La réponse aux
+  demandes entrantes revient à Franck ou au commercial qu'il a recruté.
+- **Nom, email et date d'arrivée du commercial**, et un siège HubSpot pour lui *(nombre de
+  sièges inclus dans l'abonnement Starter à vérifier)*.
 - ~~Fichier des certifiés de Stéphane~~ — inutile : Franck confirme le 04/08 que les 19 réponses
   du formulaire Wix `Certification Promo 4 & 5` sont bien des clients ayant payé.
 - **Export Wix des réponses** de `Inscription - DRH`, `Inscription - ADG` et
@@ -119,6 +122,8 @@ Pas les séquences de nurturing : l'**acquisition** d'abord.
 - ~~Réponses aux **9 questions**~~ — obtenues le 04/08/2026.
 - Accord de Franck pour désactiver l'automatisation Wix de 2023 en doublon, et pour envoyer les
   réponses aux demandes en attente *(voir [décisions](docs/06-decisions-franck.md))*.
+- Arbitrage sur le destinataire par défaut des tâches : Franck ou son commercial
+  *(recommandation : le commercial — Franck est déjà le goulot du dispositif)*.
 
 ## Limite connue
 

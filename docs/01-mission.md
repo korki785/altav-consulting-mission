@@ -24,7 +24,8 @@ Automatisation du tunnel de conversion (CRM + séquences). Objectif : lever le g
 ### 1. Socle CRM
 - Migrer la base pré-inscrits (~489).
 - Pipeline : **pré-inscrit → contacté → payé → converti**.
-- Désigner le **responsable CRM interne**. Condition de tout le reste.
+- ~~Désigner le **responsable CRM interne**~~ — **Franck**, tranché le 04/08/2026. Condition de
+  tout le reste, désormais levée. Voir [`06-decisions-franck.md`](06-decisions-franck.md).
 
 ### 2. Nurturing inbound *(premier gain)*
 - Mail de confirmation réécrit (l'actuel trop brut).

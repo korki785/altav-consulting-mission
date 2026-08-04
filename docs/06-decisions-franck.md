@@ -184,8 +184,52 @@ un prospect qui reçoit deux fois le même message d'Altav.
 | 5 | Valider et envoyer ces réponses | **oui** |
 | 6 | Importer ces contacts dans HubSpot avec le bon tag | non |
 
-**La question de fond reste entière.** Franck écrit lui-même en Q8 qu'il n'existe « pas de
-processus clairement défini » pour ces demandes. Brancher le formulaire sur HubSpot fait
-arriver la demande au bon endroit — ça ne dit toujours pas **qui répond**. C'est la même
-question que « qui porte le CRM en interne », restée sans réponse depuis le début de la mission.
-Un workflow qui crée une tâche sans destinataire ne fait que déplacer le silence.
+Franck écrit lui-même en Q8 qu'il n'existe « pas de processus clairement défini » pour ces
+demandes. Brancher le formulaire sur HubSpot fait arriver la demande au bon endroit — encore
+faut-il savoir **qui répond**. C'est tranché ci-dessous.
+
+---
+
+## Qui porte le CRM — tranché le 4 août 2026
+
+C'était la condition bloquante posée depuis le début de la mission
+*(voir [`01-mission.md`](01-mission.md))*. Elle est levée.
+
+| Rôle | Titulaire |
+|---|---|
+| **Propriétaire du CRM** | **Franck** |
+| **Réponse aux demandes entrantes** | Franck, ou **le commercial qu'il a recruté** |
+
+Un CRM que personne ne tient redevient un Excel. Il a maintenant un nom.
+
+### La réserve à poser, une fois
+
+Franck est déjà le goulot du dispositif : la formation Ubuntu qu'il porte fait 70 à 80 % du
+chiffre d'affaires. Lui confier en plus la réponse à chaque demande entrante recrée exactement
+la situation qui a produit les 63 messages non traités — non par négligence, mais par
+saturation.
+
+**Recommandation :** le commercial recruté devient le **destinataire par défaut** des tâches
+créées par les formulaires ; Franck reste propriétaire du CRM — il arbitre, suit les tableaux
+de bord, et reçoit les demandes que le commercial fait remonter. Propriété et exécution ne sont
+pas le même rôle.
+
+C'est une recommandation, pas un blocage : la mise en place est identique dans les deux cas,
+seul l'utilisateur assigné change. Elle se corrige en une minute dans HubSpot si l'organisation
+évolue.
+
+### Ce que ça débloque immédiatement
+
+- **L'assignation des tâches.** Chaque formulaire crée une tâche avec un propriétaire réel.
+  Sans destinataire, un workflow ne fait que déplacer le silence.
+- **Le rappel sous 5 minutes** après une pré-inscription devient exécutable : il y a quelqu'un
+  pour passer l'appel.
+- **Les tableaux de bord commerciaux** demandés par Franck ont un référentiel : les
+  performances se lisent par propriétaire.
+
+### Ce qu'il reste à obtenir
+
+- **Nom et email du commercial**, et sa date d'arrivée.
+- **Un siège HubSpot pour lui** — à vérifier sur l'abonnement Starter en cours : le nombre de
+  sièges inclus et le coût du siège supplémentaire conditionnent l'assignation nominative.
+- **La règle d'escalade** : sous quel délai une demande sans réponse remonte à Franck.
