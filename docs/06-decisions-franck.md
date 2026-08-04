@@ -203,18 +203,63 @@ Le décompte du 3 août est confirmé : **69 formulaires sur 95 autorisés, 52 a
 `Inscription - DRH` (15 envois) et `Inscription - ADG` (8) sont bien là — les 23 futurs
 `ENTREPRISE`.
 
-### Incident 2 — 63 messages non traités
+### Incident 2 — messages non traités : **inventaire fait le 5 août**
+
+**60 conversations** dans la boîte de réception Wix, la plus ancienne du 18 mai, la plus récente
+du 4 août. **43 sont des leads commerciaux jamais traités.**
+
+| Catégorie | Conv. | Quoi |
+|---|---|---|
+| **Pré-inscription Formation Ubuntu** | **20** | des gens qui demandent à entrer en formation |
+| Formulaire d'inscription personnalisé | 13 | à identifier — quel formulaire, quelle intention |
+| Contact général (`Contact 2`) | 4 | demandes entrantes du site |
+| Brochure Executive Coaching | 2 | demande de document |
+| **Livre blanc** | **2** | demande de document |
+| Session d'info / inscription coaching | 2 | inscriptions à un événement |
+| — *sous-total leads commerciaux* | **43** | |
+| Participants en cours (`supervision ubuntu`) | 9 | hors acquisition |
+| Feedback séance de coaching | 3 | hors acquisition |
+| Démarchage entrant | 2 | à ignorer |
+| Fil en cours / à qualifier / test interne | 3 | |
+
+**Les 20 pré-inscriptions s'étalent du 20 mai au 1er août 2026** — la dernière date de samedi
+dernier. Aucune n'a reçu de réponse.
+
+Détail nominatif : `donnees/revue/messages_wix_a_traiter.csv` — **non versionné**, il contient
+des données personnelles. Une ligne par conversation : date, nom, formulaire d'origine, nombre
+de messages, catégorie, action.
+
+> **Méthode :** la liste a été établie sans ouvrir aucune conversation. Ouvrir un fil le marque
+> comme lu et détruit l'information « personne n'a jamais répondu ». Les 50 non-lus sont
+> intacts.
+
+### Ce que cet inventaire répond — la question ouverte de l'incident 1
+
+**Voilà par où arrivent les pré-inscriptions.** Elles n'entrent pas par les quatre formulaires
+`Pré-inscription à la formation UBUNTU` de l'appli Wix Formulaires — ceux-là sont morts depuis
+février 2025. Elles arrivent par un formulaire de l'**ancienne appli**, dont les réponses
+tombent directement dans la **boîte de réception**, que personne ne relève.
+
+Ce n'est donc pas un problème d'acquisition. **L'acquisition fonctionne.** Le canal amène des
+pré-inscrits toutes les deux semaines environ. Ce qui manque, c'est quelqu'un au bout — et c'est
+exactement le diagnostic de la mission : le goulot est la conversion, pas la demande.
+
+Corollaire pour la bascule : c'est **ce formulaire-là** qu'il faut repointer vers HubSpot en
+priorité, pas les quatre formulaires morts.
+
+### Plan de traitement
 
 *Aucune dépendance. Peut avancer en parallèle de la création des formulaires.*
 
 | # | Action | Demande Franck ? |
 |---|---|---|
-| 1 | Extraire les 13 réponses de formulaire non lues et les 50 messages de la boîte Wix : date, nom, email, demande | non |
-| 2 | Trier : demande commerciale vivante · spam · déjà traité ailleurs | non |
-| 3 | **Envoyer le livre blanc** à la personne qui l'a demandé | non — c'est un PDF, pas une décision |
-| 4 | Préparer les réponses aux demandes commerciales, en lot | non |
-| 5 | Valider et envoyer ces réponses | **oui** |
-| 6 | Importer ces contacts dans HubSpot avec le bon tag | non |
+| 1 | ~~Extraire et trier les messages de la boîte Wix~~ | **fait le 05/08** — 60 conversations, 43 leads |
+| 2 | Relancer les **20 pré-inscriptions** en priorité, de la plus récente à la plus ancienne | **oui** — ce sont des envois |
+| 3 | **Envoyer le livre blanc** aux 2 personnes qui l'ont demandé, la brochure aux 2 autres | non — ce sont des PDF, pas des décisions |
+| 4 | Identifier ce qu'est le « Formulaire d'inscription personnalisé » (13 conversations) | non — lecture seule |
+| 5 | Préparer les réponses aux 43 leads, en lot | non |
+| 6 | Valider et envoyer ces réponses | **oui** |
+| 7 | Importer ces 43 contacts dans HubSpot avec le bon tag | non |
 
 Franck écrit lui-même en Q8 qu'il n'existe « pas de processus clairement défini » pour ces
 demandes. Brancher le formulaire sur HubSpot fait arriver la demande au bon endroit — encore

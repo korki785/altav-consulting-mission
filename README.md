@@ -98,7 +98,9 @@ Pas les séquences de nurturing : l'**acquisition** d'abord.
 1. ~~Envoi des 9 questions à Franck~~ — envoyé le 03/08, **répondu le 04/08**. Toutes tranchées.
 2. ~~Diagnostic du doublon d'automatisation~~ — fait le 05/08 : **fausse alerte**, aucun double
    mail possible. Mais le formulaire de pré-inscription est mort depuis le 20/02/2025. Reste :
-   le tri des 63 messages non lus. Voir [décisions](docs/06-decisions-franck.md).
+   le traitement des messages. **Inventaire fait le 05/08 : 60 conversations, 43 leads
+   commerciaux jamais traités, dont 20 pré-inscriptions du 20/05 au 01/08.**
+   Voir [décisions](docs/06-decisions-franck.md).
 3. Export Wix des réponses de `Inscription - DRH`, `Inscription - ADG` et
    `Certification Promo 4 & 5` → 23 contacts en `ENTREPRISE`, 19 en `CLIENT`.
 4. Création des 6 formulaires HubSpot *(pré-inscription sans champ caché)*, puis bascule des
@@ -120,9 +122,9 @@ Pas les séquences de nurturing : l'**acquisition** d'abord.
 - **Export Wix des réponses** de `Inscription - DRH`, `Inscription - ADG` et
   `Certification Promo 4 & 5` — seule façon d'identifier les 23 `ENTREPRISE` et les 19 `CLIENT`.
 - ~~Réponses aux **9 questions**~~ — obtenues le 04/08/2026.
-- **Par où passent réellement les pré-inscriptions aujourd'hui ?** Les 4 formulaires Wix de
-  pré-inscription ne reçoivent plus rien depuis février 2025 — les 136 pré-inscrits de la promo 8
-  sont entrés par un autre canal, à identifier avant toute bascule.
+- ~~Par où passent réellement les pré-inscriptions ?~~ — répondu le 05/08 : par un formulaire de
+  l'**ancienne appli Wix**, dont les réponses tombent dans la boîte de réception que personne ne
+  relève. C'est ce formulaire-là qu'il faut repointer vers HubSpot, pas les 4 formulaires morts.
 - Accord de Franck pour envoyer les réponses aux demandes en attente.
 - Arbitrage sur le destinataire par défaut des tâches : Franck ou son commercial
   *(recommandation : le commercial — Franck est déjà le goulot du dispositif)*.
