@@ -154,22 +154,54 @@ vivants, certains antérieurs au 20 juillet.
 L'accès au back-office Wix est obtenu depuis le 3 août. Le diagnostic est faisable seul ; seule
 l'action qui touche à de vrais envois demande son accord.
 
-### Incident 1 — doublon d'automatisation
+### Incident 1 — doublon d'automatisation : **diagnostiqué le 5 août, fausse alerte**
 
-*Bloque le rebranchement du formulaire de pré-inscription. À traiter en premier.*
+Diagnostic mené dans le back-office Wix, en lecture seule. **Aucun prospect ne reçoit deux
+mails de confirmation.** Le doublon est impossible par construction — et la raison est plus
+instructive que l'alerte elle-même.
 
-| # | Action | Demande Franck ? |
-|---|---|---|
-| 1 | Ouvrir les deux automatisations `pré-inscription formation ubuntu`, comparer le formulaire ciblé et l'action déclenchée | non — lecture seule |
-| 2 | Confirmer sur un pré-inscrit récent qu'il a bien reçu deux mails | non — lecture seule |
-| 3 | Lister ce que contiennent les « Modifications non publiées » des 4 automatisations concernées, dont 2 actives | non — lecture seule |
-| 4 | **Désactiver** la plus ancienne (2023, déclencheur `Un formulaire est envoyé`) | **oui** — ça touche des envois réels |
+Les deux automatisations portent le même nom mais **écoutent deux applis de formulaires
+différentes** :
 
-Désactiver, jamais supprimer : réversible d'un clic si le diagnostic était faux.
+| Automatisation | Créée le | Déclencheur | Appli source | Déclenchements | Dernier |
+|---|---|---|---|---|---|
+| `pré-inscription formation ubuntu` | 22 juin 2026 | `Form submitted` | **Wix Formulaires** *(nouvelle appli)* | 1 | **jamais** |
+| `pré-inscription formation ubuntu` | 19 sept. 2023 | `Un formulaire est envoyé` | **Old Wix Forms** *(appli dépréciée)* | 527 | 1er août 2026 |
 
-À noter : toutes les automatisations Wix d'acquisition s'éteignent de toute façon à la bascule
-vers HubSpot. Mais si le double mail part aujourd'hui, il n'y a aucune raison d'attendre — c'est
-un prospect qui reçoit deux fois le même message d'Altav.
+Un formulaire appartient à une seule des deux applis. **Une même soumission ne peut donc pas
+déclencher les deux automatisations.** Le doublon supposé n'a jamais pu se produire.
+
+Ce que le journal d'exécution montre à la place :
+
+- L'automatisation de 2026 **n'a jamais rien envoyé**. Toutes ses exécutions sont `Ignoré`, motif :
+  « les données ne correspondent pas aux critères définis dans le déclencheur ».
+- Ce qui la déclenche, ce ne sont pas des pré-inscriptions : les 4 exécutions du 4 août
+  (12:50, 17:16, 19:47, 19:59) correspondent exactement à 4 envois du formulaire
+  **`Préparation Module 8`** — un questionnaire de préparation destiné aux participants en
+  cours de formation. `Ignoré` est ici le comportement correct.
+- L'automatisation de 2023 tourne encore : 2 exécutions `Terminé` sur les 30 derniers jours
+  (7 juillet, 1er août), le reste `Ignoré`.
+
+**Rien à désactiver.** L'accord de Franck n'est plus nécessaire sur ce point.
+
+### Ce que le diagnostic a révélé à la place — plus grave que le doublon
+
+- **Le formulaire de pré-inscription principal est mort.** `Pré-inscription à la formation UBUNTU`
+  compte 86 envois, dont **le dernier date du 20 février 2025**. Les trois autres (43, 3, 0)
+  ne reçoivent rien non plus. Le canal d'acquisition supposé n'acquiert plus depuis 18 mois.
+- **Question ouverte, à poser à Franck :** par où sont donc passés les **136 pré-inscrits de la
+  promo 8** ? Ce n'est aucun des quatre formulaires de pré-inscription. Tant qu'on ne sait pas
+  par où entre réellement un pré-inscrit aujourd'hui, on ne peut pas rediriger ce canal vers
+  HubSpot.
+- **Erreur active sur l'automatisation de 2023 :** « Some of the forms are missing ». Sa liste de
+  formulaires cibles référence des formulaires supprimés depuis.
+- **`Old Wix Forms` est une appli dépréciée** — Wix affiche « L'ancienne version de notre appli
+  n'est plus disponible » pour les 17 anciens formulaires. L'automatisation qui tourne encore
+  repose dessus.
+
+Le décompte du 3 août est confirmé : **69 formulaires sur 95 autorisés, 52 actifs.**
+`Inscription - DRH` (15 envois) et `Inscription - ADG` (8) sont bien là — les 23 futurs
+`ENTREPRISE`.
 
 ### Incident 2 — 63 messages non traités
 
