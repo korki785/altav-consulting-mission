@@ -5,23 +5,30 @@ ni sur le compte de Franck.
 
 ---
 
-## La règle qui prime sur tout le reste
+## Le principe qui gouverne cette spec : reproduire, pas refondre
 
-> *« L'objectif est que le prospect exprime **simplement** son souhait d'intégrer la
-> formation. »* — Franck, réponse à la Q5
+Le formulaire de pré-inscription actuel **fonctionne** : 525 soumissions depuis décembre 2022,
+141 sur la seule année 2026, tous les champs renseignés à 99 %. Aucun signal ne dit qu'il pose
+problème.
 
-Un formulaire d'acquisition demande **le minimum pour qu'un contact existe et soit rappelé**.
-Tout le reste — société, poste, secteur, motivation — se collecte **après** l'engagement : au
-rappel téléphonique, qui doit partir sous 5 minutes, ou par un second message.
+**On le reproduit donc à l'identique dans HubSpot.** Le seul nettoyage appliqué est factuel et
+sans risque : les champs à **0 sur 525** disparaissent, les libellés passent en français, et les
+valeurs mal enregistrées sont normalisées. **Aucun champ vivant n'est retiré.**
 
-Le contexte impose cette sobriété : **136 pré-inscrits, 26 confirmés** sur la promo 8. Le déchet
-est déjà massif en aval ; il n'y a aucune raison d'en ajouter en amont.
-
-> **Note d'honnêteté.** Une première version de cette spec reconduisait les 12 champs du
-> formulaire Wix actuel, en s'appuyant sur leurs taux de remplissage (518 à 525 sur 525). Cet
-> argument ne vaut rien : ces taux ne mesurent que les gens **allés au bout**, pas ceux qui ont
-> renoncé devant douze champs. Reconduire l'existant n'était pas une décision, c'était un statu
-> quo. Corrigé le 5 août.
+> **Deux erreurs commises sur ce document, corrigées le 5 août.**
+>
+> 1. Une première version reconduisait les 12 champs en les justifiant par leurs taux de
+>    remplissage. L'argument était creux : ces taux ne mesurent que les gens allés au bout.
+>    Ce n'était pas une décision, c'était un statu quo présenté comme une analyse.
+> 2. Une seconde version réduisait le formulaire à 4 champs, en s'appuyant sur la phrase de
+>    Franck *« que le prospect exprime simplement son souhait d'intégrer la formation »*.
+>    **Mauvaise lecture** : ce « simplement » s'oppose au fait de **choisir sa promo**, pas au
+>    nombre de champs — tout le paragraphe de Franck porte sur la promo. Personne n'a demandé
+>    de raccourcir le formulaire.
+>
+> **Position retenue :** on ne modifie pas un formulaire qui marche sans preuve qu'il pose
+> problème. Si un jour on veut tester une version courte, on le fera avec des chiffres, pas
+> avec une intuition.
 
 ---
 
@@ -30,8 +37,7 @@ est déjà massif en aval ; il n'y a aucune raison d'en ajouter en amont.
 1. **Le classement se fait à la source.** Chaque formulaire porte des champs cachés qui écrivent
    `Température CRM` et `Type de compte` à la seconde de la soumission. Personne ne requalifie
    après coup — c'est exactement ce qui a produit les 68 pré-inscrits classés `FROID`.
-2. **Le moins de champs possible.** Un champ de plus doit se payer par une vente, pas par une
-   élégance de modèle.
+2. **On reproduit l'existant** tant qu'aucune mesure ne justifie de le changer.
 3. **Aucune notion de promo** — décision de Franck. La promo est une propriété interne,
    renseignée après encaissement.
 
@@ -41,7 +47,7 @@ est déjà massif en aval ; il n'y a aucune raison d'en ajouter en amont.
 
 ### 1. Pré-inscription à la formation UBUNTU 🟢 *demandé par Franck*
 
-*Le canal vivant. 141 soumissions en 2026.*
+*Le canal vivant. 141 soumissions en 2026. Reproduit à l'identique.*
 
 | Champ | Type | Obligatoire |
 |---|---|---|
@@ -49,16 +55,31 @@ est déjà massif en aval ; il n'y a aucune raison d'en ajouter en amont.
 | Nom | texte | ✅ |
 | E-mail | e-mail | ✅ |
 | Téléphone | téléphone | ✅ |
-
-**Quatre champs. Rien d'autre.**
+| Société | texte | ✅ |
+| Poste occupé | texte | ✅ |
+| Secteur d'activité | texte | — |
+| Niveau d'étude | déroulant — BAC+2 · Master · Doctorat | — |
+| Tranche d'âge | déroulant — 30-35 · 35-40 · 40-50 · Plus de 50 | — |
+| Années d'expérience | déroulant — 5 ans · 5 à 10 · 10 à 15 · Plus de 15 | — |
+| Comment connaissez-vous la formation UBUNTU ? | cases à cocher — Réseaux sociaux · Amis et relations · Site ALTAV · Autre | — |
+| Qu'est-ce qui vous intéresse dans la formation ? | cases à cocher — les 7 valeurs actuelles | — |
+| Ce qui motive votre engagement | texte long | — |
 
 **Champs cachés :** `Température CRM = CHAUD` · `Type de compte = INDIVIDUEL` ·
 `Date de pré-inscription = date du jour`
 
 **Aucun champ promo, pas même caché.**
 
-Le téléphone est obligatoire : c'est lui qui rend possible le rappel sous 5 minutes, et
-44 clients à e-mail mort ne sont joignables que par là.
+**Trois corrections de forme, sans effet sur ce qui est demandé :**
+
+- Les libellés mélangent français et anglais — « What is your company name? » à côté de
+  « Quel age avez vous ? ». Tout passe en français.
+- « Comment connaissez-vous » est stocké en JSON : `["par les réseaux sociaux","Autre"]`.
+  **15 combinaisons enregistrées pour 4 valeurs réelles.** Reconstruit en cases à cocher propres.
+- Les années d'expérience sont sales : `'+ de 15 ans`, `de 5 à 10 ans`. Valeurs normalisées.
+
+*Suggestion, non appliquée :* ajouter « Moins de 30 ans » aux tranches d'âge. Aujourd'hui un
+candidat de 28 ans n'a aucune case à cocher. **À proposer à Franck, pas à décider seul.**
 
 ### 2. Contact général *(pied de page du site)* 🟢 *demandé par Franck*
 
@@ -72,8 +93,7 @@ Le téléphone est obligatoire : c'est lui qui rend possible le rappel sous 5 mi
 
 **Champs cachés :** `Température CRM = INBOUND` · `Type de compte = INDIVIDUEL`
 
-Champs repris **à l'identique** de l'existant : c'est un formulaire que Franck accepte de
-refaire, pas de repenser.
+Champs repris **à l'identique** de l'existant.
 
 **Ses trois conditions d'acceptation** *(Q9)*, à traiter comme critères de recette :
 
@@ -101,6 +121,7 @@ automatique.
 |---|---|---|
 | Prénom · Nom · E-mail · Téléphone | | ✅ |
 | Société | texte | ✅ |
+| Poste occupé | texte | ✅ |
 | Votre besoin | texte long | — |
 
 **Champs cachés :** `Température CRM = CHAUD` · **`Type de compte = ENTREPRISE`**
@@ -113,6 +134,7 @@ de Franck — qui paie la facture.
 | Champ | Type | Obligatoire |
 |---|---|---|
 | Prénom · Nom · E-mail | | ✅ |
+| Société | texte | — |
 
 **Champs cachés :** `Température CRM = INBOUND` · `Type de compte = INDIVIDUEL`
 
@@ -121,12 +143,12 @@ On échange un document contre une adresse, pas contre un questionnaire.
 ### 6. Session d'information / webinaire 🟠 *proposé, pas demandé*
 
 > **Ce formulaire ne figure pas dans la liste de Franck.** Sa réponse à la Q2 en cite cinq ;
-> celui-ci est une proposition de ma part, retenue en interne le 5 août.
-> **À confirmer par lui avant création.**
+> celui-ci est une proposition de ma part. **À confirmer par lui avant création.**
 
 | Champ | Type | Obligatoire |
 |---|---|---|
 | Prénom · Nom · E-mail · Téléphone | | ✅ |
+| Société · Poste occupé | texte | — |
 
 **Champs cachés :** `Température CRM = CHAUD` · `Type de compte = INDIVIDUEL` ·
 `Événement = <nom de la session>` — **le seul champ caché à changer d'un événement à l'autre**
@@ -137,36 +159,39 @@ du `CHAUD` piloté par une date, ce qu'aucun des cinq autres ne fait.
 
 ---
 
-## Ce qu'on ne demande plus, et où ça se collecte
+## Les 7 champs supprimés
 
-Le formulaire Wix actuel pose douze questions. Neuf disparaissent des formulaires d'acquisition.
+Uniquement ceux à **0 sur 525**. Aucun n'a jamais été rempli par personne.
 
-| Champ retiré | Où il se collecte désormais |
+| Champ | Motif |
 |---|---|
-| Société · Poste occupé · Secteur d'activité | au rappel téléphonique, ou par mail de qualification |
-| Niveau d'étude · Tranche d'âge · Années d'expérience | dossier d'inscription, après règlement des frais |
-| Source déclarée | remplacée par la source HubSpot, automatique |
-| Attente vis-à-vis de la formation · Motivation | entretien commercial — c'est de la matière de conversation, pas de formulaire |
+| Rédigez un message | jamais rempli |
+| E-mail 2 · Téléphone 3 | jamais remplis |
+| J'accepte les termes et conditions | jamais coché — remplacé par une mention de consentement explicite |
+| Votre niveau d'étude supérieure | doublon du champ « niveau d'étude » |
+| Qu'est-ce qui motive votre engagement *(version FR)* | doublon de la version anglaise |
+| Choisissez la garniture de votre pizza : 2 | résidu de template |
 
-**Le signal B2B n'est pas perdu**, il arrive simplement après l'engagement au lieu de le
-freiner. Et pour les 437 pré-inscrits déjà en base, il existe déjà : société, poste et secteur
-sont dans le fichier des 525.
-
-**Sept champs sont supprimés sans reprise**, parce qu'ils sont à **0 sur 525** : « Rédigez un
-message », « E-mail 2 », « Téléphone 3 », « J'accepte les termes et conditions », « Votre niveau
-d'étude supérieure » *(doublon)*, « Qu'est-ce qui motive votre engagement » *(doublon français
-d'un champ anglais)*, et « Choisissez la garniture de votre pizza : 2 » — résidu d'un template.
+*« Choix de ma formation » (7/525) disparaît aussi : le choix de la promo relève d'ALTAV, pas du
+candidat — décision de Franck.*
 
 ---
 
 ## Propriétés HubSpot à créer
 
-Deux seulement, contre huit dans la version précédente.
-
 | Propriété | Type | Valeurs |
 |---|---|---|
+| `Source déclarée` | cases à cocher | Réseaux sociaux · Amis et relations · Site ALTAV · Autre |
+| `Attente vis-à-vis de la formation` | cases à cocher | les 7 valeurs actuelles, reprises telles quelles |
+| `Motivation` | texte long | libre |
+| `Niveau d'étude` | menu déroulant | BAC+2 · Master · Doctorat |
+| `Tranche d'âge` | menu déroulant | 30-35 · 35-40 · 40-50 · Plus de 50 |
+| `Années d'expérience` | menu déroulant | 5 ans · 5 à 10 ans · 10 à 15 ans · Plus de 15 ans |
 | `Statut du visiteur` | menu déroulant | Chef d'entreprise · En création · En questionnement · Profession libérale · Autre |
 | `Événement` | texte | nom de la session ou du webinaire |
+
+Société, poste et secteur se branchent sur les propriétés **standard** de HubSpot
+*(`Nom de l'entreprise`, `Poste`, `Secteur d'activité`)* — rien à créer.
 
 *Déjà créées :* `Température CRM`, `Type de compte`, `Email actif`, `Date de pré-inscription`.
 
@@ -176,7 +201,7 @@ Deux seulement, contre huit dans la version précédente.
 
 | Formulaire | Message affiché | Mail automatique | Alerte Franck |
 |---|---|---|---|
-| Pré-inscription | confirmation + prochaines étapes | mail de confirmation réécrit | ✅ |
+| Pré-inscription | confirmation + prochaines étapes | mail de confirmation | ✅ |
 | Contact général | accusé de réception | — | ✅ |
 | Demande d'information | accusé de réception | — | ✅ |
 | Je souhaite former mes équipes | accusé + délai de rappel annoncé | — | ✅ **priorité** |
@@ -184,26 +209,23 @@ Deux seulement, contre huit dans la version précédente.
 | Session d'information | confirmation + date et lien | rappel la veille | ✅ |
 
 > ⚠️ **Vérifié le 5 août : la création de tâche n'est pas disponible.** Les workflows sont
-> verrouillés sur l'abonnement actuel — HubSpot renvoie vers **Sales Hub Pro**, et cite
-> explicitement « créez des tâches » parmi ce qu'ils débloquent.
->
-> **Conséquence :** l'alerte prend la forme d'une **notification par e-mail** envoyée à Franck à
-> chaque soumission — fonctionnalité native des formulaires, sans workflow. Suffisant tant qu'il
-> est seul utilisateur : la notification arrive dans sa boîte, il n'a pas de file de tâches à
-> consulter. C'est même préférable au vu de la contrainte de conception : lui retirer des gestes,
-> pas lui créer une liste à tenir.
->
-> À revoir si le palier change — voir [roadmap, phase 3](07-roadmap.md).
+> verrouillés — HubSpot renvoie vers **Sales Hub Pro**. L'alerte prend donc la forme d'une
+> **notification par e-mail** à Franck, native aux formulaires. Voir
+> [solution provisoire](09-solution-provisoire.md).
+
+**Le ton des messages** vient de Franck : on lui demande un exemple de mail qu'il envoie
+habituellement à ses prospects, et on s'en sert comme modèle. Écrire de zéro puis lui faire
+corriger serait plus de travail pour lui, et moins juste.
 
 ---
 
-## Ce que Franck doit valider
+## Ce qui attend Franck
 
-1. **Le formulaire de pré-inscription à quatre champs** — c'est un changement net par rapport à
-   l'existant, qui en pose douze.
-2. **Le formulaire « Session d'information »**, qu'il n'a pas demandé.
-3. **Les messages de confirmation et le mail réécrit** — ils portent sa voix, pas la mienne.
-4. **Où et quand se collectent société, poste et secteur**, puisqu'ils sortent du formulaire.
+| # | Point | Bloque quoi |
+|---|---|---|
+| 1 | **Les supports en circulation** — quel QR code sur quelle brochure, quel lien dans quel groupe | la bascule des anciens liens *(étape 21)* |
+| 2 | **Un exemple de mail** qu'il envoie à ses prospects | les messages de confirmation |
+| 3 | **Le formulaire « Session d'information »**, qu'il n'a pas demandé | ce formulaire seul |
+| 4 | *(mineur)* L'ajout de « Moins de 30 ans » aux tranches d'âge | rien |
 
-Rien ne part avant son accord écrit : les formulaires touchent son compte, sa marque et des
-supports déjà en circulation.
+**Seul le point 1 est bloquant.** La création des formulaires avance sans attendre.

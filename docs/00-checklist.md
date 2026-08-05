@@ -42,11 +42,13 @@ précédente. On lit de haut en bas, on s'arrête à la première pastille rouge
 |---|---|---|
 | 🟢 | **16.** Spécifier les 6 formulaires — [spec complète](08-formulaires-hubspot.md) | 05/08/2026 |
 | 🟢 | **16 bis.** Vérifier si la création de tâche demande un workflow — **oui, workflows verrouillés, alerte par e-mail à la place** | 05/08/2026 |
-| 🔴 | **17.** Faire valider la spec par Franck | **Franck** |
-| 🔴 | **18.** Créer le formulaire de **pré-inscription** — sans champ promo | étape 17 |
-| 🔴 | **19.** Refaire le formulaire du **pied de page** — champ `Statut` conservé | étape 17 |
-| 🔴 | **20.** Créer les 4 formulaires restants | étape 18 |
-| 🔴 | **21.** Vider et repointer les anciens liens — QR codes et WhatsApp préservés | étape 20 |
+| 🟠 | **17.** Informer Franck du changement et obtenir **les supports en circulation** — quel QR code sur quelle brochure, quel lien dans quel groupe | **Franck** |
+| 🔴 | **17 bis.** Faire relire par Franck les messages de confirmation et le mail réécrit | **Franck** |
+| 🔴 | **17 ter.** Faire confirmer le formulaire « Session d'information », qu'il n'a pas demandé | **Franck** |
+| 🔴 | **18.** Créer le formulaire de **pré-inscription** — sans champ promo | — *(n'attend pas Franck)* |
+| 🔴 | **19.** Refaire le formulaire du **pied de page** — champ `Statut` conservé | — *(déjà validé en Q9)* |
+| 🔴 | **20.** Créer les 4 formulaires restants | étape 18 · *session d'info : étape 17 ter* |
+| 🔴 | **21.** Vider et repointer les anciens liens — QR codes et WhatsApp préservés | étape 20 · **étape 17** |
 | 🔴 | **22.** Tester : une soumission arrive dans HubSpot **déjà étiquetée** | étape 21 |
 | 🔴 | **22 bis.** Activer les notifications par e-mail à Franck sur les 6 formulaires | étape 20 |
 | 🔴 | **22 ter.** Créer les 3 vues manuelles de relance — [provisoire](09-solution-provisoire.md) | étape 22 |
