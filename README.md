@@ -15,16 +15,19 @@ ouverte — voir [décisions](docs/06-decisions-franck.md).
 
 ## Documentation
 
-Lire dans cet ordre. Chaque document est autonome.
+Lire dans cet ordre. Chaque document est autonome. **Pour l'avancement, une seule adresse :
+la [checklist](docs/00-checklist.md).**
 
 | # | Document | Contenu |
 |---|---|---|
+| **0** | **[Checklist](docs/00-checklist.md)** | **Où on en est : fait · à faire · écarté, daté, avec les dépendances** |
 | 1 | [Mission](docs/01-mission.md) | Constat, principe, plan de déploiement en 4 volets |
 | 2 | [Classification](docs/02-classification.md) | Les 4 axes : `Tag_CRM`, `type_compte`, `Email_actif`, `Origine_nom` |
 | 3 | [Mise en œuvre HubSpot](docs/03-hubspot.md) | Ce que permet chaque palier d'abonnement, ce qui a été écarté |
 | 4 | [Acquisition](docs/04-acquisition.md) | État des lieux Wix, décision « les formulaires vivent dans HubSpot » |
 | 5 | [Journal de traitement](docs/05-journal.md) | Chaque décision de nettoyage et sa justification |
 | 6 | [Décisions de Franck](docs/06-decisions-franck.md) | Réponses aux 9 questions, cycle de vie en 7 étapes — **fait foi** |
+| 7 | [Roadmap](docs/07-roadmap.md) | Les 5 phases jusqu'à la fin de mission, et ce qui peut la faire échouer |
 | — | [Référence `type_compte`](docs/reference-type-compte.md) | Paramétrage détaillé de la propriété custom |
 
 Livrables client (envoyés ou à envoyer à Franck) : [`livrables/`](livrables/) —
@@ -100,24 +103,12 @@ Le fichier source `donnees/source/CRM Contact.csv` n'est jamais modifié.
 
 ## Prochaine étape
 
-Pas les séquences de nurturing : l'**acquisition** d'abord.
+Pas les séquences de nurturing : l'**acquisition** d'abord — spécifier puis créer les
+6 formulaires HubSpot, en commençant par la pré-inscription et le formulaire du pied de page,
+les deux seuls canaux réellement vivants.
 
-1. ~~Envoi des 9 questions à Franck~~ — envoyé le 03/08, **répondu le 04/08**. Toutes tranchées.
-2. ~~Diagnostic du doublon d'automatisation~~ — fait le 05/08 : **fausse alerte**, aucun double
-   mail possible. Mais le formulaire de pré-inscription est mort depuis le 20/02/2025. Reste :
-   l'inventaire de la boîte de réception. **Fait le 05/08 : 60 conversations, 43 relevant de
-   l'acquisition, dont 20 pré-inscriptions du 20/05 au 01/08 — non lues dans Wix, suite donnée
-   inconnue.** Aucune relance engagée : décision du 05/08.
-   Voir [décisions](docs/06-decisions-franck.md).
-3. ~~Export de la collection CMS `Pré-inscription Formation Ubuntu`~~ — fait le 05/08 :
-   525 lignes, 68 contacts requalifiés en `CHAUD`, 417 fiches HubSpot mises à jour, 0 doublon
-   créé. Reste l'export des réponses `Inscription - DRH`, `Inscription - ADG` et
-   `Certification Promo 4 & 5` → 23 contacts en `ENTREPRISE`, 19 en `CLIENT`.
-4. Création des 6 formulaires HubSpot *(pré-inscription sans champ caché)*, puis bascule des
-   anciens liens. **Deux canaux à repointer en priorité** : l'ancien formulaire de
-   pré-inscription et le formulaire du pied de page — les seuls réellement vivants.
-5. Mise en place du cycle de vie en 7 étapes défini par Franck.
-6. **Alors seulement** : les séquences de nurturing, qui auront enfin de quoi se déclencher.
+L'état détaillé de chaque action vit dans la **[checklist](docs/00-checklist.md)**.
+Le chemin complet jusqu'à la fin de mission est dans la **[roadmap](docs/07-roadmap.md)**.
 
 ## Ce qu'il me faut
 
