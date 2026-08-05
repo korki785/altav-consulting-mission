@@ -62,7 +62,7 @@ Cible — **6 formulaires au lieu de 52** *(validée par Franck le 4 août, voir
 | Pré-inscription formation UBUNTU | `CHAUD` | INDIVIDUEL | **aucun** | « je veux entrer en formation » — l'intention la plus forte |
 | Session d'information / webinaire | `CHAUD` | INDIVIDUEL | `evenement` | inscription à une date précise |
 | Demande d'information | `CHAUD` | INDIVIDUEL | — | question sur la formation, sans engagement de date |
-| « Je forme mes équipes » | `CHAUD` | **ENTREPRISE** | — | c'est la société qui paie |
+| « Je souhaite former mes équipes » | `CHAUD` | **ENTREPRISE** | — | c'est la société qui paie |
 | Livre blanc | `INBOUND` | INDIVIDUEL | — | vient chercher du contenu, pas la formation |
 | Contact général *(pied de page)* | `INBOUND` | INDIVIDUEL | `statut` | tout-venant du site, sujet non qualifié |
 

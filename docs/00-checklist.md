@@ -40,7 +40,8 @@ précédente. On lit de haut en bas, on s'arrête à la première pastille rouge
 
 | | Étape | Dépend de |
 |---|---|---|
-| 🟠 | **16.** Spécifier les 6 formulaires — champ par champ, valeurs écrites, tâche déclenchée | — |
+| 🟢 | **16.** Spécifier les 6 formulaires — [spec complète](08-formulaires-hubspot.md) | 05/08/2026 |
+| 🟠 | **16 bis.** Vérifier dans l'abonnement si la création de tâche demande un workflow | — |
 | 🔴 | **17.** Faire valider la spec par Franck | **Franck** |
 | 🔴 | **18.** Créer le formulaire de **pré-inscription** — sans champ promo | étape 17 |
 | 🔴 | **19.** Refaire le formulaire du **pied de page** — champ `Statut` conservé | étape 17 |

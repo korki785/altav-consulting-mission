@@ -28,6 +28,7 @@ la [checklist](docs/00-checklist.md).**
 | 5 | [Journal de traitement](docs/05-journal.md) | Chaque décision de nettoyage et sa justification |
 | 6 | [Décisions de Franck](docs/06-decisions-franck.md) | Réponses aux 9 questions, cycle de vie en 7 étapes — **fait foi** |
 | 7 | [Roadmap](docs/07-roadmap.md) | Les 5 phases jusqu'à la fin de mission, et ce qui peut la faire échouer |
+| 8 | [Formulaires HubSpot](docs/08-formulaires-hubspot.md) | Spec des 6 formulaires, champ par champ — **à valider par Franck** |
 | — | [Référence `type_compte`](docs/reference-type-compte.md) | Paramétrage détaillé de la propriété custom |
 
 Livrables client (envoyés ou à envoyer à Franck) : [`livrables/`](livrables/) —
