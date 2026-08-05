@@ -31,8 +31,8 @@ le désordre qu'on vient de nettoyer.
 
 **Ce qu'on installe**
 
-1. Les **6 formulaires HubSpot** — pré-inscription, session d'info, demande d'information,
-   « je forme mes équipes », livre blanc, contact général. Chacun porte un champ caché qui
+1. Les **6 formulaires HubSpot** — pré-inscription, demande d'information, contact général,
+   « je souhaite former mes équipes », livre blanc, et session d'info *(proposée, pas demandée)*. Chacun porte un champ caché qui
    écrit `Température CRM` et `Type de compte` **à la seconde de la soumission**.
 2. Le **formulaire du pied de page** refait et embarqué dans le site, champ `Statut` conservé.
 3. La **bascule des anciens liens** : chaque ancien formulaire d'acquisition est vidé et
@@ -45,7 +45,8 @@ Ce sont les deux seuls canaux réellement vivants — les quatre formulaires nom
 **Débloqué par :** accord de Franck avant toute création sur son compte.
 
 **Terminée quand :** une soumission de test arrive dans HubSpot **déjà étiquetée**, sans
-intervention humaine, et crée une tâche assignée à Franck.
+intervention humaine, et notifie Franck. *(Notification par e-mail, pas tâche : les workflows
+sont verrouillés — vérifié le 5 août.)*
 
 ---
 
@@ -77,23 +78,33 @@ C'est ici que la mission produit du chiffre d'affaires.
 
 | Déclencheur | Action |
 |---|---|
-| À la soumission | mail de confirmation réécrit *(l'actuel est trop brut)* + tâche de rappel |
+| À la soumission | mail de confirmation réécrit *(l'actuel est trop brut)* + notification à Franck |
 | Sous 5 minutes | rappel téléphonique du pré-inscrit |
 | J + 5 | envoi du livre blanc |
 | J + 30 | relance des non-confirmés |
 | Fin de promo | bascule automatique sur la promo suivante |
 
-**⚠️ Point de décision — le palier HubSpot.** Les workflows demandent le palier
-**Professional** ; l'abonnement actuel est **Starter**. Trois issues :
+**⚠️ Point de décision — le palier HubSpot.** *Vérifié le 5 août : les workflows sont
+verrouillés.* HubSpot renvoie vers **Sales Hub Pro** et cite « créez des tâches » parmi ce qu'ils
+débloquent. Un **essai de 14 jours** est proposé, sans frais ni renouvellement automatique.
+Trois issues :
 
 1. **Monter en Professional** — la seule qui donne les séquences complètes.
 2. **Rester en Starter** et se limiter aux automatisations natives des formulaires
-   *(mail de confirmation, tâche)*. Le J+5 / J+30 / bascule promo devient manuel.
+   *(mail de confirmation, notification par e-mail)*. Le J+5 / J+30 / bascule promo devient manuel.
 3. **Différer** — installer les phases 1 et 2, mesurer un mois, décider sur des chiffres réels.
 
 *Recommandation : option 3.* Après un mois de phase 1, on connaît le volume réel de leads
 entrants et le coût du travail manuel. Le palier se justifie alors par un calcul, pas par une
 intuition. **À arbitrer avec Franck, pas seul.**
+
+**L'essai de 14 jours est une cartouche unique.** Le déclencher pendant qu'on débogue encore le
+mapping, c'est le gaspiller à regarder des erreurs de configuration. Ordre imposé : formulaires
+testés et mapping vérifié **d'abord**, essai **ensuite**, décision **après**.
+
+En attendant, tout ce qui ne demande pas de workflow est installé et fonctionne — voir
+[solution provisoire](09-solution-provisoire.md), qui porte aussi la checklist de bascule du jour
+de l'upgrade.
 
 **Terminée quand :** un pré-inscrit qui ne paie pas reçoit trois relances sans que personne
 n'y pense.

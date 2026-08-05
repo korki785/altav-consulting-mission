@@ -350,8 +350,10 @@ assigné change.
 
 ### Ce que ça débloque immédiatement
 
-- **L'assignation des tâches.** Chaque formulaire crée une tâche avec un propriétaire réel.
-  Sans destinataire, un workflow ne fait que déplacer le silence.
+- **La destination des demandes entrantes.** Chaque formulaire notifie un destinataire réel.
+  Sans destinataire, une automatisation ne fait que déplacer le silence. *(Notification par
+  e-mail : les workflows, donc les tâches assignées, sont verrouillés sur l'abonnement actuel —
+  vérifié le 05/08.)*
 - **Les tableaux de bord commerciaux** demandés par Franck ont un référentiel.
 
 ### Ce qu'il reste à obtenir

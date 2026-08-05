@@ -183,10 +183,17 @@ Deux seulement, contre huit dans la version précédente.
 | Livre blanc | lien de téléchargement immédiat | envoi du PDF | — |
 | Session d'information | confirmation + date et lien | rappel la veille | ✅ |
 
-> ⚠️ **À vérifier avant création : la création de tâche demande peut-être un workflow**, donc le
-> palier Professional. En Starter, l'alerte prend la forme d'une **notification par e-mail** à
-> Franck plutôt que d'une tâche assignée. Suffisant tant qu'il est seul utilisateur — mais à
-> confirmer dans son abonnement avant de promettre l'un ou l'autre. C'est l'étape 16 bis.
+> ⚠️ **Vérifié le 5 août : la création de tâche n'est pas disponible.** Les workflows sont
+> verrouillés sur l'abonnement actuel — HubSpot renvoie vers **Sales Hub Pro**, et cite
+> explicitement « créez des tâches » parmi ce qu'ils débloquent.
+>
+> **Conséquence :** l'alerte prend la forme d'une **notification par e-mail** envoyée à Franck à
+> chaque soumission — fonctionnalité native des formulaires, sans workflow. Suffisant tant qu'il
+> est seul utilisateur : la notification arrive dans sa boîte, il n'a pas de file de tâches à
+> consulter. C'est même préférable au vu de la contrainte de conception : lui retirer des gestes,
+> pas lui créer une liste à tenir.
+>
+> À revoir si le palier change — voir [roadmap, phase 3](07-roadmap.md).
 
 ---
 

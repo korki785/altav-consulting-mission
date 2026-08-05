@@ -41,16 +41,18 @@ précédente. On lit de haut en bas, on s'arrête à la première pastille rouge
 | | Étape | Dépend de |
 |---|---|---|
 | 🟢 | **16.** Spécifier les 6 formulaires — [spec complète](08-formulaires-hubspot.md) | 05/08/2026 |
-| 🟠 | **16 bis.** Vérifier dans l'abonnement si la création de tâche demande un workflow | — |
+| 🟢 | **16 bis.** Vérifier si la création de tâche demande un workflow — **oui, workflows verrouillés, alerte par e-mail à la place** | 05/08/2026 |
 | 🔴 | **17.** Faire valider la spec par Franck | **Franck** |
 | 🔴 | **18.** Créer le formulaire de **pré-inscription** — sans champ promo | étape 17 |
 | 🔴 | **19.** Refaire le formulaire du **pied de page** — champ `Statut` conservé | étape 17 |
 | 🔴 | **20.** Créer les 4 formulaires restants | étape 18 |
 | 🔴 | **21.** Vider et repointer les anciens liens — QR codes et WhatsApp préservés | étape 20 |
 | 🔴 | **22.** Tester : une soumission arrive dans HubSpot **déjà étiquetée** | étape 21 |
+| 🔴 | **22 bis.** Activer les notifications par e-mail à Franck sur les 6 formulaires | étape 20 |
+| 🔴 | **22 ter.** Créer les 3 vues manuelles de relance — [provisoire](09-solution-provisoire.md) | étape 22 |
 
-**Fin de phase :** une soumission de test crée un contact classé et une tâche pour Franck, sans
-intervention humaine.
+**Fin de phase :** une soumission de test crée un contact classé et envoie une notification à
+Franck, sans intervention humaine. *(Pas de tâche : les workflows sont verrouillés.)*
 
 ---
 
@@ -76,17 +78,19 @@ payé, et depuis combien de temps ».
 
 | | Étape | Dépend de |
 |---|---|---|
-| 🔴 | **31.** Mesurer un mois de volume réel de leads entrants | phase 1 |
-| 🔴 | **32.** **Arbitrer le palier HubSpot** — Starter ou Professional | étape 31 · **Franck** |
+| 🔴 | **31.** **Lancer l'essai de 14 jours** — une fois le mapping vérifié, pas avant | étape 22 |
+| 🔴 | **31 bis.** Configurer et éprouver les séquences pendant l'essai | étape 31 |
+| 🔴 | **32.** **Arbitrer le palier HubSpot** — sur les chiffres de l'essai | étape 31 bis · **Franck** |
 | 🔴 | **33.** Réécrire le mail de confirmation *(l'actuel est trop brut)* | phase 1 |
 | 🔴 | **34.** Rappel téléphonique sous 5 min après pré-inscription | étape 32 |
 | 🔴 | **35.** Livre blanc à J+5 | étape 32 |
 | 🔴 | **36.** Relance des non-confirmés à J+30 | étape 32 |
 | 🔴 | **37.** Bascule automatique sur la promo suivante en fin de promo | étape 32 |
 
-> ⚠️ **Les étapes 34 à 37 demandent les workflows, donc le palier Professional.** L'abonnement
-> actuel est Starter. C'est l'étape 32 qui débloque — et elle se décide sur les chiffres de
-> l'étape 31, pas avant.
+> ⚠️ **Les étapes 34 à 37 demandent les workflows — vérifié le 05/08 : ils sont verrouillés.**
+> HubSpot renvoie vers **Sales Hub Pro**. Un **essai de 14 jours** est proposé, sans frais ni
+> renouvellement automatique : de quoi mesurer avant d'acheter. C'est l'étape 32 qui tranche, et
+> elle se décide sur les chiffres de l'étape 31, pas avant.
 
 **Fin de phase :** un pré-inscrit qui ne paie pas reçoit trois relances sans que personne n'y
 pense.
