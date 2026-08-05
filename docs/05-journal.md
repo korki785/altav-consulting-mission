@@ -224,6 +224,105 @@ J+30, rappel sous 5 min après inscription.
 
 ---
 
+## 8. Requalification des pré-inscrits — 5 août 2026
+
+Le pipeline de juillet déduit `Tag_CRM` du champ `Libellés` de l'export Wix. Or le
+formulaire de pré-inscription réel — un ancien formulaire Wix, dont les réponses vivent
+dans une collection CMS et non dans l'appli Formulaires — **n'écrit aucun libellé**. Ses
+répondants tombaient donc dans la règle 1 : *libellé vide → FROID*.
+
+Conséquence : des gens ayant explicitement demandé à entrer en formation étaient rangés
+avec les imports scrapés.
+
+### Source
+
+Collection CMS `Pré-inscription Formation Ubuntu`, exportée le 5 août :
+**525 soumissions, 437 adresses distinctes** (71 personnes se sont pré-inscrites
+plusieurs fois, jusqu'à 6 fois). Champs : date et heure, prénom, nom, e-mail, téléphone,
+comment ils ont connu Altav, ce qui les intéresse, motivation, **société, poste occupé,
+secteur d'activité, niveau d'étude, âge, années d'expérience**.
+
+Ce fichier remplace l'« Excel des pré-inscrits » réclamé depuis le début de la mission :
+la donnée était dans Wix, dans le CMS.
+
+### Rapprochement
+
+| | |
+|---|---|
+| Adresses distinctes | 437 |
+| Déjà dans la base | 430 |
+| Absentes | 7 *(dont 2 internes Altav, retirés par le pipeline)* |
+| Contacts de la base reconnus | 424 |
+| dont déjà `CLIENT` | 339 — **intacts** |
+| **Requalifiés `FROID`/`INBOUND` → `CHAUD`** | **68** |
+
+Par année de dernière pré-inscription : 14 en 2023, 17 en 2024, 28 en 2025, 9 en 2026.
+
+### Décision : aucun seuil d'ancienneté
+
+Un pré-inscrit de 2023 jamais converti passe `CHAUD` comme les autres. Dans le cycle de vie
+défini par Franck, on quitte l'étape *Pré-inscrit* par le **règlement des frais**, pas par le
+temps écoulé — et la séquence prévue fait basculer les non-convertis sur la promo suivante.
+Les exclure aurait reproduit la fuite que la mission répare : les 110 non-relancés de la
+promo 8.
+
+La colonne `date_preinscription` est écrite pour les 424, y compris les clients : la relance
+trie par ancienneté, l'ancienneté justifie un message différent, pas une exclusion.
+
+`scripts/11_requalifier_preinscrits.py` — `--dry-run`, `--echantillon N`, idempotent, ne
+touche jamais aux `CLIENT`.
+
+**Résultat : CHAUD 318 → 386 (+21 %)**, FROID 6 241 → 6 196, INBOUND 171 → 148.
+7 483 contacts avant et après.
+
+### Répercussion dans HubSpot
+
+Propriété **`Date de pré-inscription`** (type Calendrier) créée. Import en deux fois :
+10 lignes en test, puis 409.
+
+| | Test | Reste | Total |
+|---|---|---|---|
+| Lignes | 10 | 409 | 419 |
+| **Contacts créés** | 0 | 0 | **0** |
+| Mises à jour | 10 | 407 | **417** |
+| Erreurs | 0 | 2 | 2 |
+
+> **Ce que l'échantillon a évité.** HubSpot mappait `E-mail 1` sur la propriété `E-mail 3`
+> et n'avait sélectionné **aucun identifiant unique**. Tel quel, les 419 lignes auraient créé
+> **419 doublons**. Le piège se represente à chaque import : il a fallu recorriger le mapping
+> pour le second fichier.
+
+Les 2 lignes en erreur (`evodie_p@yahoo.com`, `magzum@yahoo.fr`) portent le motif *ID
+alternatif en double* : l'adresse vit sur deux fiches HubSpot. Doublon préexistant, tag déjà
+correct (`CLIENT`), seule la date manque.
+
+**Noms des propriétés HubSpot**, qui ne sont pas ceux du CSV :
+
+| Colonne CSV | Propriété HubSpot | Remplissage |
+|---|---|---|
+| `Tag_CRM` | Température CRM | 99,97 % |
+| `type_compte` | Type de compte | 99,97 % |
+| `Email_actif` | Email actif | 99,97 % |
+| `date_preinscription` | Date de pré-inscription | 5,58 % |
+| `Libellés` | Wix — Libellés d'origine | **0 %** — créée, jamais remplie |
+| `Origine_nom` | *n'existe pas* | — |
+
+`Wix — Libellés d'origine` vide est un manque réel : c'est le champ qui justifie chaque
+`Température CRM`. Sans lui, impossible de vérifier dans HubSpot pourquoi un contact est
+`FROID`.
+
+### Reste ouvert
+
+- **Le signal B2B.** Société renseignée sur 524/525, poste sur 525/525, secteur sur 518/525.
+  En juillet, le 80/20 B2B/B2C était déclaré non pilotable faute de données. Pour ces 437
+  personnes, elles existent. À exploiter **sans** casser la règle : société renseignée ≠ lead
+  entreprise, c'est le poste et qui paie qui tranchent.
+- 5 pré-inscrits absents de la base, dont une du 1er août, à créer.
+- `lionelngoyagoye@gmai.com` — faute de frappe du contact (`gmai.com`). HubSpot propose de
+  supprimer l'adresse ; refusé, ce serait effacer le seul point de contact d'un client.
+
+---
+
 ## Données
 
 Aucun CSV n'est versionné (`.gitignore`). Le dépôt ne contient que les scripts

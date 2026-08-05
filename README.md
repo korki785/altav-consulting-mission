@@ -54,7 +54,8 @@ depuis n'importe quel répertoire.
 
 ## Pipeline
 
-Deux étages : segmentation de l'export Wix (1–5), puis préparation de l'import HubSpot (6–10).
+Trois étages : segmentation de l'export Wix (1–5), préparation de l'import HubSpot (6–10),
+puis enrichissement depuis le CMS Wix (11).
 Chaque script sauvegarde avant d'écrire et accepte `--dry-run` (sauf le premier).
 
 ```bash
@@ -71,13 +72,19 @@ python3 scripts/07_preparer_import_hubspot.py # normalisation pré-import
 python3 scripts/08_nettoyer_noms.py           # casse, tokens répétés, déchets
 python3 scripts/09_verifier_noms_claude.py    # inversions prénom/nom (payant)
 python3 scripts/10_retirer_colonnes_vides.py  # retrait des colonnes mortes
+
+# enrichissement depuis le CMS Wix
+python3 scripts/11_requalifier_preinscrits.py  # pré-inscrits FROID/INBOUND -> CHAUD
 ```
 
 Les scripts 05 et 09 appellent l'API Anthropic : clé lue dans `ANTHROPIC_API_KEY`, sinon dans
 un `.env` (voir `scripts/chemins.py`).
 
-**Résultat : 7 483 contacts, 22 colonnes.** FROID 6 241 · CLIENT 753 · CHAUD 318 · INBOUND 171.
+**Résultat : 7 483 contacts, 23 colonnes.** FROID 6 196 · CLIENT 753 · **CHAUD 386** · INBOUND 148.
 Contacts nommés : 3 605 (48 %), contre 33 % au départ.
+
+*Le vivier chaud est passé de 318 à 386 le 05/08 : 68 pré-inscrits étaient classés froids ou
+tièdes. Voir [journal, §8](docs/05-journal.md).*
 
 ---
 
@@ -102,9 +109,10 @@ Pas les séquences de nurturing : l'**acquisition** d'abord.
    l'acquisition, dont 20 pré-inscriptions du 20/05 au 01/08 — non lues dans Wix, suite donnée
    inconnue.** Aucune relance engagée : décision du 05/08.
    Voir [décisions](docs/06-decisions-franck.md).
-3. Export Wix : la collection CMS `Pré-inscription Formation Ubuntu` (525 lignes), plus les
-   réponses de `Inscription - DRH`, `Inscription - ADG` et `Certification Promo 4 & 5`
-   → 23 contacts en `ENTREPRISE`, 19 en `CLIENT`.
+3. ~~Export de la collection CMS `Pré-inscription Formation Ubuntu`~~ — fait le 05/08 :
+   525 lignes, 68 contacts requalifiés en `CHAUD`, 417 fiches HubSpot mises à jour, 0 doublon
+   créé. Reste l'export des réponses `Inscription - DRH`, `Inscription - ADG` et
+   `Certification Promo 4 & 5` → 23 contacts en `ENTREPRISE`, 19 en `CLIENT`.
 4. Création des 6 formulaires HubSpot *(pré-inscription sans champ caché)*, puis bascule des
    anciens liens. **Deux canaux à repointer en priorité** : l'ancien formulaire de
    pré-inscription et le formulaire du pied de page — les seuls réellement vivants.
