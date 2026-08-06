@@ -281,8 +281,27 @@ Vérifié sur `altavconsulting.com`, ses champs sont :
 | Champ | Type |
 |---|---|
 | Nom · E-mail · Téléphone | texte |
-| **Statut** | liste : Entrepreneur (chef d'entreprise) · En cours de création d'entreprise · En questionnement · Profession libérale · Autre |
-| Parlez-nous de votre projet | texte long |
+| **Statut** | liste : Entrepreneur (Chef d'entreprise) · En cours de création d'entreprise · En questionnement · Profession libérale · Autre |
+| Parlez-nous de votre projet… | texte long |
+
+> **Relevé exact du 6 août, dans le DOM de `www.altavconsulting.com`.** Le relevé du 5 août était
+> fait à l'œil ; celui-ci lit la structure. Trois écarts, tous mineurs mais tous à reproduire :
+>
+> 1. **`Entrepreneur (Chef d'entreprise)`** prend une **majuscule à Chef**. Le relevé du 5 août
+>    l'écrivait en minuscule, et la propriété HubSpot avait été créée d'après lui — corrigée le
+>    6 août.
+> 2. **Le formulaire n'affiche aucun libellé.** `Nom`, `E-mail`, `Téléphone`,
+>    `Parlez-nous de votre projet...` sont des **placeholders** à l'intérieur des champs, et
+>    `Statut` est l'option vide en tête de la liste déroulante. Reproduire à l'identique impose
+>    donc de masquer les libellés côté HubSpot — sinon la version refaite paraît plus lourde que
+>    l'actuelle, et la condition n° 1 de Franck tombe.
+> 3. Le bouton s'appelle **`Envoyer`**, et le message affiché après envoi est
+>    **« Merci pour votre envoi ! »**. C'est le ton actuel du site, à reprendre comme base du
+>    message de confirmation plutôt que d'en écrire un.
+>
+> **Relevé au passage, hors périmètre :** un **widget de chat « Contactez-nous »** est actif en
+> bas à droite du site. Il alimente la boîte de réception Wix, pas HubSpot, et ne figure dans
+> aucun des 6 formulaires spécifiés. Canal d'entrée non couvert — à signaler à Franck.
 
 Cela confirme le constat du 3 août : ses demandes ne sont comptées nulle part et tombent
 uniquement dans la boîte de réception. C'est le formulaire que Franck a accepté de refaire (Q9),

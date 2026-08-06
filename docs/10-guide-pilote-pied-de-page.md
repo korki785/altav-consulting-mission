@@ -33,6 +33,14 @@ bascule est l'étape 21, elle vient après la recette.
 [spec](08-formulaires-hubspot.md#propriétés-hubspot-à-créer) se créent au même endroit, plus
 tard, quand leur formulaire arrive.*
 
+> 🟢 **Fait le 6 août 2026.** Propriété créée dans le portail **Altav Consulting** *(ID
+> `148924865`, instance **EU** — les URL sont en `app-eu1.hubspot.com`)*.
+> **Nom interne : `statut_du_visiteur`.** Groupe *Informations sur le contact*, le même que
+> `Température CRM`. Vérification : le compteur de propriétés Contact est passé de 230 à 231.
+>
+> *La création est attribuée à **Franck Pecastaing** dans le journal d'audit — c'est le compte
+> sous lequel la session est ouverte.*
+
 **Chemin :** roue crantée ⚙️ *(en haut à droite)* → **Gestion des données** → **Propriétés** →
 bouton **Créer une propriété** *(en haut à droite)*.
 
@@ -57,17 +65,29 @@ bouton **Créer une propriété** *(en haut à droite)*.
 
 | # | Libellé de l'option |
 |---|---|
-| 1 | `Entrepreneur (chef d'entreprise)` |
+| 1 | `Entrepreneur (Chef d'entreprise)` |
 | 2 | `En cours de création d'entreprise` |
 | 3 | `En questionnement` |
 | 4 | `Profession libérale` |
 | 5 | `Autre` |
 
 > ⚠️ **Écart entre deux documents, tranché ici.** La [spec des formulaires](08-formulaires-hubspot.md)
-> abrège ces libellés en « Chef d'entreprise · En création · … ». Le [relevé du 5 août sur le
+> abrège ces libellés en « Chef d'entreprise · En création · … ». Le [relevé sur le
 > site](06-decisions-franck.md) donne la version longue ci-dessus. **C'est la version longue qui
 > fait foi** — principe de la spec : on reproduit, on ne refond pas. Un visiteur qui a lu
 > « En cours de création d'entreprise » ne doit pas trouver « En création ».
+>
+> **La majuscule de `Chef` compte.** Elle vient du relevé DOM du 6 août ; le relevé à l'œil du
+> 5 août l'écrivait en minuscule. Reproduire, c'est reproduire jusque-là.
+
+> **Le nom interne des options se fige à la création — vérifié le 6 août.** Au chargement en
+> bloc, HubSpot recopie le libellé dans le nom interne, parenthèses et apostrophe comprises, puis
+> **le verrouille**. Corriger le libellé ensuite ne corrige pas le nom interne : les deux
+> divergent, et l'écart ne se voit qu'en export CSV ou par l'API.
+>
+> **Conséquence pratique :** saisir les libellés **exacts du premier coup**. Si un libellé doit
+> changer après coup et que l'alignement compte, la seule voie propre est de supprimer la
+> propriété et de la recréer — sans perte tant qu'aucun contact ne la porte.
 
 **Écran 3 — Règles**
 
@@ -95,13 +115,29 @@ formulaire** → type **Formulaire intégré** → modèle **Vierge**.
 
 ### Les 5 champs visibles, dans cet ordre
 
-| Ordre | Champ à glisser | Propriété HubSpot | Libellé affiché | Obligatoire |
+| Ordre | Champ à glisser | Propriété HubSpot | Texte affiché | Obligatoire |
 |---|---|---|---|---|
 | 1 | Nom | `Nom` *(lastname)* | `Nom` | ✅ |
 | 2 | E-mail | `E-mail` *(email)* | `E-mail` | ✅ |
 | 3 | Téléphone | `Numéro de téléphone` *(phone)* | `Téléphone` | — |
 | 4 | Statut du visiteur | `Statut du visiteur` *(créée en partie A)* | `Statut` | ✅ |
-| 5 | Message | `Message` *(propriété standard HubSpot)* | `Parlez-nous de votre projet` | ✅ |
+| 5 | Message | `Message` *(propriété standard HubSpot)* | `Parlez-nous de votre projet...` | ✅ |
+
+> ⚠️ **Ces textes sont des placeholders, pas des libellés — relevé DOM du 6 août.** Le formulaire
+> Wix n'affiche **aucun libellé au-dessus des champs** : `Nom`, `E-mail`, `Téléphone` et
+> `Parlez-nous de votre projet...` sont écrits **à l'intérieur** des champs, et `Statut` est
+> l'option vide en tête de la liste déroulante.
+>
+> **Dans l'éditeur HubSpot, pour chacun des 5 champs :** vider le libellé *(ou décocher son
+> affichage)* et porter le texte dans le champ **Texte d'espace réservé**. Pour le champ 4,
+> l'équivalent est le texte affiché quand aucune valeur n'est sélectionnée.
+>
+> **Ce n'est pas un détail cosmétique.** Un formulaire à libellés visibles occupe environ le
+> double de hauteur. Posé dans le pied de page à la place de l'actuel, il se verra — et la
+> condition n° 1 de Franck, *parfaitement intégré au design du site*, tombe à la première
+> capture d'écran.
+>
+> *Noter les points de suspension de `Parlez-nous de votre projet...` : ils sont dans l'original.*
 
 **Deux points de mapping qui ne se devinent pas :**
 
@@ -151,15 +187,21 @@ n'apparaît dans aucune vue filtrée.
 
 | Réglage | Valeur |
 |---|---|
+| Texte du bouton | `Envoyer` — *celui du formulaire actuel* |
 | Message après envoi | **Afficher un message** *(pas de redirection — le visiteur reste sur le site)* |
-| Texte du message | `Merci, votre message est bien arrivé. Nous revenons vers vous rapidement.` |
+| Texte du message | `Merci pour votre envoi !` — *celui du formulaire actuel* |
 | Envoyer une notification par e-mail | ✅ **activé** |
 | Destinataire | **Franck**, en attendant l'arbitrage de l'étape 22 bis |
 | Type de notification | E-mail. *La création de tâche est grisée — workflows verrouillés, vérifié le 5 août.* |
 
-> **Le texte de confirmation est provisoire.** Le ton définitif vient de Franck : on lui demande
-> un exemple de mail qu'il envoie habituellement, et on s'en sert de modèle *(étape 17 bis)*.
-> Écrire de zéro puis lui faire corriger serait plus de travail pour lui, et moins juste.
+> **Le bouton et le message de confirmation sont repris du site, mot pour mot** — relevé DOM du
+> 6 août. Ce n'était pas prévu par la spec, qui annonçait un « accusé de réception » à écrire.
+> Reprendre l'existant est plus juste : c'est déjà le ton d'ALTAV, et ça évite de faire relire à
+> Franck un texte que personne n'a demandé.
+>
+> **Si un texte plus complet est voulu un jour**, il vient de Franck : on lui demande un exemple
+> de mail qu'il envoie habituellement, et on s'en sert de modèle *(étape 17 bis)*. Écrire de zéro
+> puis lui faire corriger serait plus de travail pour lui, et moins juste.
 
 **Onglet Style :** ne rien régler pour l'instant. Le calage visuel se fait en partie C, sur le
 site, où l'on voit le résultat.
