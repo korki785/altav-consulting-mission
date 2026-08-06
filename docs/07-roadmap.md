@@ -7,7 +7,7 @@ Le chiffre qui mesure la réussite existe déjà : **promo 8 — 136 pré-inscri
 Les 110 autres n'ont pas été relancés, non par négligence mais parce que rien ne déclenchait la
 relance. La mission est finie quand ce ratio se pilote et s'améliore tout seul.
 
-Cinq phases. Chacune se lit : ce qu'on installe, ce qui la débloque, ce qu'elle produit, et à
+Six phases. Chacune se lit : ce qu'on installe, ce qui la débloque, ce qu'elle produit, et à
 quoi on sait qu'elle est terminée.
 
 ---
@@ -18,6 +18,11 @@ Base nettoyée, classée, importée, requalifiée. **7 483 contacts**, 4 axes de
 propriétaire du CRM désigné.
 
 **Terminée quand :** ✅ le CRM contient une base fiable et un propriétaire nommé.
+
+> **Précision du 6 août.** Franck est propriétaire et décideur ; **Stéphane administrera l'outil
+> en exploitation** — *« ce n'est pas moi qui vais gérer une fois en exploitation »*. Le
+> propriétaire nommé ne change pas, celui qui tient l'outil au quotidien, si. D'où la
+> [phase 6](#phase-6--la-passation--que-loutil-survive-à-la-mission).
 
 ---
 
@@ -42,11 +47,20 @@ le désordre qu'on vient de nettoyer.
 Ce sont les deux seuls canaux réellement vivants — les quatre formulaires nommés
 « Pré-inscription » dans l'appli Wix ne reçoivent plus rien depuis février 2025.
 
-**Débloqué par :** accord de Franck avant toute création sur son compte.
+**Dans quel ordre — arbitré le 6 août par Franck.** Le **pied de page passe en premier**, comme
+pilote : *« Faisons d'abord un test par celui du bas de page comme test. »* C'est le formulaire
+le plus petit et celui qui ne porte aucun chiffre d'affaires — il éprouve la plomberie sans
+risque. La pré-inscription vient ensuite, **avec Stéphane**, parce qu'elle n'est pas un terrain
+vierge : *« il y a plusieurs choses qui ont été mises en place, il faudra sûrement les
+améliorer »*. On inventorie avant d'écraser quoi que ce soit.
+
+**Débloqué par :** accord de Franck avant toute création sur son compte · disponibilité de
+Stéphane pour la pré-inscription.
 
 **Terminée quand :** une soumission de test arrive dans HubSpot **déjà étiquetée**, sans
-intervention humaine, et notifie Franck. *(Notification par e-mail, pas tâche : les workflows
-sont verrouillés — vérifié le 5 août.)*
+intervention humaine, et notifie qui de droit. *(Notification par e-mail, pas tâche : les
+workflows sont verrouillés — vérifié le 5 août. Destinataire à trancher : Franck, Stéphane, ou
+les deux.)*
 
 ---
 
@@ -152,14 +166,45 @@ personne.
 
 ---
 
+## Phase 6 — La passation : que l'outil survive à la mission
+
+*Ouverte le 6 août. Franck : « il faudra que Stéphane sache l'administrer, ce n'est pas moi qui
+vais gérer une fois en exploitation. »*
+
+Tout ce qui précède est construit par quelqu'un qui part. Un CRM que l'administrateur n'ose pas
+modifier se fige, puis se contourne — et le désordre des 167 libellés se reconstitue par la même
+mécanique qu'en 2022 : un formulaire créé ailleurs parce que le bon endroit fait peur.
+
+**Ce qu'on installe**
+
+- Le **périmètre administré par Stéphane**, arbitré avec Franck : formulaires, propriétés, vues.
+- Un **accès HubSpot** aux droits correspondants.
+- Un **mode d'emploi d'administration** — créer un formulaire, poser un champ caché, modifier
+  une vue enregistrée.
+- Une **passation à blanc** : Stéphane crée seul un formulaire de bout en bout.
+
+**Débloqué par :** la phase 1 *(il faut quelque chose à administrer)* · la disponibilité de
+Stéphane.
+
+**Terminée quand :** Stéphane crée et modifie un formulaire sans nous appeler, et un lead entré
+par ce formulaire arrive classé.
+
+> Le critère est la passation à blanc, **pas** le mode d'emploi. Un document que personne n'a
+> exécuté ne prouve rien.
+
+---
+
 ## Ce qui peut faire échouer la mission
 
 Trois risques, par ordre de probabilité. Aucun n'est technique.
 
-1. **L'adoption.** Un CRM que personne ne tient redevient un Excel. Franck est propriétaire et
-   seul utilisateur, et il porte déjà 70 à 80 % du chiffre d'affaires. **Chaque automatisation
-   doit lui retirer un geste.** Une seule qui lui crée une tâche manuelle de plus et le système
-   sera contourné.
+1. **L'adoption — et elle se joue maintenant à deux endroits.** Un CRM que personne ne tient
+   redevient un Excel. Franck décide et porte 70 à 80 % du chiffre d'affaires : **chaque
+   automatisation doit lui retirer un geste**, une seule qui lui en crée un et le système sera
+   contourné. Mais c'est **Stéphane** qui tiendra l'outil, et il n'aura pas assisté à sa
+   construction : ce qui est astucieux pour Franck peut être intouchable pour lui. Les deux
+   contraintes ne tirent pas dans le même sens, et arbitrer en faveur de la seule commodité de
+   Franck fait perdre l'administrateur.
 2. **Le désordre qui se reconstitue.** La cause racine des 167 libellés, c'est un formulaire
    neuf à chaque événement pendant quatre ans. Franck s'est engagé sur le principe ; l'engagement
    tient tant que créer un formulaire dans HubSpot reste plus simple que dans Wix.

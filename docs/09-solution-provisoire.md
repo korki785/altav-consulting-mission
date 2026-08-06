@@ -45,16 +45,23 @@ Trois lignes, et une seule coûte quelque chose.
 
 Trois vues de contacts, filtrées, à créer une fois :
 
-| Vue | Filtre | Franck y fait quoi |
+| Vue | Filtre | Ce qu'on y fait |
 |---|---|---|
-| **Livre blanc à envoyer** | `Température CRM = INBOUND` **et** date de création > il y a 5 jours **et** livre blanc non envoyé | envoie le PDF |
-| **Pré-inscrits à relancer** | `Date de pré-inscription` entre 30 et 60 jours **et** cycle de vie = *Pré-inscrit* | relance |
-| **Non convertis de la promo en cours** | cycle de vie = *Pré-inscrit* **et** `Date de pré-inscription` > 60 jours | bascule sur la promo suivante |
+| **Livre blanc à envoyer** | `Température CRM = INBOUND` **et** date de création > il y a 5 jours **et** livre blanc non envoyé | envoyer le PDF |
+| **Pré-inscrits à relancer** | `Date de pré-inscription` entre 30 et 60 jours **et** cycle de vie = *Pré-inscrit* | relancer |
+| **Non convertis de la promo en cours** | cycle de vie = *Pré-inscrit* **et** `Date de pré-inscription` > 60 jours | basculer sur la promo suivante |
 
-**À dire sans l'enjoliver :** ces trois vues demandent à Franck de les ouvrir chaque semaine. Il
-est seul et porte 70 à 80 % du chiffre d'affaires. **Il y a un risque réel qu'elles ne soient pas
-ouvertes.** C'est précisément ce que l'upgrade supprime — et c'est l'argument chiffré à lui
-présenter le jour venu.
+**Qui les ouvre — question ouverte au 6 août.** Ce document a été écrit en supposant Franck.
+Depuis, il a dit ne pas vouloir gérer l'outil en exploitation : *« ce n'est pas moi qui vais
+gérer une fois en exploitation »*. **Ces trois vues sont donc un candidat naturel au périmètre
+de Stéphane** *(étape 46)*. À trancher avec eux, pas à décider ici.
+
+**À dire sans l'enjoliver :** ces trois vues demandent à quelqu'un de les ouvrir **chaque
+semaine**. Si c'est Franck, il est seul et porte 70 à 80 % du chiffre d'affaires. Si c'est
+Stéphane, c'est du travail récurrent qu'on lui ajoute avant même qu'il ait pris l'outil en main.
+**Dans les deux cas, il y a un risque réel qu'elles ne soient pas ouvertes** — et personne ne le
+verra, puisqu'une vue non ouverte ne produit aucun signal. C'est précisément ce que l'upgrade
+supprime, et c'est l'argument chiffré à présenter le jour venu.
 
 ---
 
@@ -87,8 +94,8 @@ Inverser 3 et 4 gaspille l'essai. C'est la seule erreur vraiment coûteuse de ce
 
 Checklist de bascule, pour que rien ne soit oublié ni laissé en double.
 
-- [ ] Basculer les 6 formulaires de « notification par e-mail » vers **création de tâche assignée
-      à Franck**
+- [ ] Basculer les 6 formulaires de « notification par e-mail » vers **création de tâche
+      assignée** — au destinataire tranché à l'étape 22 bis, pas à Franck par défaut
 - [ ] Créer les workflows : rappel sous 5 min, livre blanc J+5, relance J+30, bascule promo
 - [ ] **Désactiver les trois vues manuelles** — sinon Franck fait le travail deux fois, et c'est
       le meilleur moyen de lui faire abandonner l'outil
