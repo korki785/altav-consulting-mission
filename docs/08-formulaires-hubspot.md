@@ -236,16 +236,21 @@ corriger serait plus de travail pour lui, et moins juste.
 
 | # | Point | Bloque quoi |
 |---|---|---|
-| 1 | **Les supports en circulation** — quel QR code sur quelle brochure, quel lien dans quel groupe | la bascule des anciens liens *(étape 21)* |
+| 1 | **La mise en relation avec Stéphane** — et son périmètre d'administration | la pré-inscription *(étape 20)* et toute la phase 6 |
 | 2 | **Un exemple de mail** qu'il envoie à ses prospects | les messages de confirmation |
 | 3 | **Le formulaire « Session d'information »**, qu'il n'a pas demandé | ce formulaire seul |
-| 4 | **La mise en relation avec Stéphane** — et son périmètre d'administration | la pré-inscription *(étape 20)* et toute la phase 6 |
-| 5 | **Les destinataires des notifications** — Franck, Stéphane, ou les deux | l'étape 22 bis, pas la création |
+| 4 | **Les destinataires des notifications** — Franck, Stéphane, ou les deux | l'étape 22 bis, pas la création |
+| 5 | **Le champ `Nom`** du pied de page : unique comme aujourd'hui, ou scindé en `Prénom` + `Nom` | rien — mais salit la base tant que ce n'est pas tranché |
 | 6 | *(mineur)* L'ajout de « Moins de 30 ans » aux tranches d'âge | rien |
 
-**Les points 1 et 4 sont bloquants**, chacun sur une moitié différente : le 1 bloque la bascule
-des anciens liens, le 4 bloque la pré-inscription. **Le pilote du pied de page n'attend ni l'un
-ni l'autre** — c'est précisément pour ça qu'il passe en premier.
+**Seul le point 1 est bloquant**, et il bloque la pré-inscription, pas le pilote.
+
+> **Retiré de cette liste le 6 août : « les supports en circulation ».** On demandait à Franck
+> quel QR code était imprimé sur quelle brochure. **Question inutile :** un QR code encode une
+> URL, il ne redirige pas. Tant qu'aucune adresse n'est supprimée — c'est la stratégie retenue
+> depuis Q3 — le support physique n'a aucune importance. La liste des URL vivantes se relève
+> seul dans le back-office *(étape 17 quater)*, et elle est plus fiable qu'un inventaire de
+> mémoire.
 
 ## Ce qui attend Stéphane
 

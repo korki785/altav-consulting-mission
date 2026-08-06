@@ -56,16 +56,17 @@ précédente. On lit de haut en bas, on s'arrête à la première pastille rouge
 |---|---|---|
 | 🟢 | **16.** Spécifier les 6 formulaires — [spec complète](08-formulaires-hubspot.md) | 05/08/2026 |
 | 🟢 | **16 bis.** Vérifier si la création de tâche demande un workflow — **oui, workflows verrouillés, alerte par e-mail à la place** | 05/08/2026 |
-| 🟠 | **17.** Informer Franck du changement et obtenir **les supports en circulation** — quel QR code sur quelle brochure, quel lien dans quel groupe | **Franck** |
+| 🟠 | **17.** Informer Franck du changement — *pour information, il n'a aucune liste à fournir* | — |
 | 🔴 | **17 bis.** Faire relire par Franck les messages de confirmation et le mail réécrit | **Franck** |
 | 🔴 | **17 ter.** Faire confirmer le formulaire « Session d'information », qu'il n'a pas demandé | **Franck** |
+| 🔴 | **17 quater.** Recenser les **URL d'acquisition** depuis le back-office Wix — adresse, nombre de réponses, date de la dernière | — *(remplace la liste demandée à Franck)* |
 | 🔴 | **18.** Créer les **8 propriétés** manquantes dans HubSpot — [liste](08-formulaires-hubspot.md#propriétés-hubspot-à-créer). *Le pilote n'en demande qu'une : `Statut du visiteur`* | — *(rien ne se mappe sans elles)* |
 | 🔴 | **19.** **Pilote —** refaire le formulaire du **pied de page**, champ `Statut` conservé — [guide d'exécution](10-guide-pilote-pied-de-page.md) | étape 18 · *(déjà validé en Q9)* |
 | 🔴 | **19 bis.** Recetter le pilote sur les **3 critères de Franck** — intégré au design, transparent pour le visiteur, alimente HubSpot | étape 19 · **Franck** |
 | 🔴 | **19 ter.** Inventorier **ce que Stéphane a déjà mis en place** sur la pré-inscription | **Stéphane** |
 | 🔴 | **20.** Créer le formulaire de **pré-inscription** — sans champ promo, **avec Stéphane** | étape 19 bis · étape 19 ter · **Stéphane** |
 | 🔴 | **20 bis.** Créer les 4 formulaires restants | étape 20 · *session d'info : étape 17 ter* |
-| 🔴 | **21.** Vider et repointer les anciens liens — QR codes et WhatsApp préservés | étape 20 bis · **étape 17** |
+| 🔴 | **21.** Vider et repointer les anciens liens — QR codes et WhatsApp préservés | étape 20 bis · étape 17 quater |
 | 🔴 | **22.** Tester : une soumission arrive dans HubSpot **déjà étiquetée** | étape 21 |
 | 🔴 | **22 bis.** Activer les notifications par e-mail sur les 6 formulaires — **destinataires à trancher : Franck, Stéphane, ou les deux** | étape 20 bis · **Franck** |
 | 🔴 | **22 ter.** Créer les 3 vues manuelles de relance — [provisoire](09-solution-provisoire.md) | étape 22 |
@@ -86,6 +87,23 @@ précédente. On lit de haut en bas, on s'arrête à la première pastille rouge
 >
 > **Le pilote sert à ça :** prouver la méthode sur un formulaire sans enjeu, pour arriver devant
 > Stéphane avec une démonstration plutôt qu'une proposition.
+
+> **Correction du 6 août — l'étape 17 n'est plus bloquante, et ne l'a jamais vraiment été.**
+> Elle demandait à Franck *« quel QR code sur quelle brochure, quel lien dans quel groupe »*.
+> C'était une question inutile.
+>
+> **Un QR code encode une URL, définitivement.** Le papier ne redirige pas, il contient une
+> adresse. Tant que cette adresse continue d'exister et d'amener au bon endroit, **le support
+> physique n'a aucune importance** — brochure, PowerPoint ou groupe WhatsApp, c'est le même
+> problème et c'est la même solution.
+>
+> Et cette solution est déjà la stratégie retenue *(Q3, « redirection, pas suppression »)* :
+> **aucune URL n'est supprimée, chacune est vidée et repointée en place.** C'est ça qui protège
+> les supports en circulation, pas un inventaire.
+>
+> **La seule liste qui compte est celle qu'on produit soi-même** *(étape 17 quater)* : les URL
+> vivantes, relevées dans le back-office, avec leur volume de réponses. Franck n'a rien à
+> fournir — l'étape 17 devient une information, pas une demande.
 
 **Fin de phase :** une soumission de test crée un contact classé et envoie une notification,
 sans intervention humaine. *(Pas de tâche : les workflows sont verrouillés.)*

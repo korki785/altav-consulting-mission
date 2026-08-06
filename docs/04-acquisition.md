@@ -89,6 +89,24 @@ Les QR codes imprimés et les liens partagés dans WhatsApp ne se remplacent pas
 formulaire d'acquisition est donc **vidé et repointé** vers son équivalent HubSpot : le support
 en circulation continue de fonctionner et amène au bon endroit.
 
+> **Ce qui rend cette stratégie suffisante — et rend inutile l'inventaire des supports.**
+> Un QR code **encode une URL**, il ne redirige pas : le papier contient une adresse, et cette
+> adresse ne changera jamais. Il en va de même d'un lien collé dans un groupe WhatsApp ou d'un
+> PDF déjà envoyé.
+>
+> **Conséquence :** tant qu'aucune URL n'est supprimée, savoir *sur quel support* elle a été
+> diffusée n'a aucune valeur opérationnelle. Une brochure, un PowerPoint et un post LinkedIn
+> posent exactement le même problème, et la même opération les traite tous les trois.
+>
+> **La seule liste utile est celle des URL**, relevée dans le back-office avec le volume de
+> réponses de chacune. Elle se produit sans rien demander à personne, et elle est plus fiable
+> qu'un inventaire reconstitué de mémoire. C'est l'étape 17 quater de la
+> [checklist](00-checklist.md).
+>
+> *Le seul cas qui échapperait à la règle : un support pointant vers une URL déjà supprimée
+> avant la mission. Elle est déjà morte aujourd'hui, aucune information de Franck ne la
+> ressusciterait.*
+
 Les ~30 formulaires de feedback et d'événements passés **restent dans Wix**. Ils s'adressent à
 des contacts déjà `CLIENT` ; aucune valeur d'acquisition, rien à synchroniser.
 
