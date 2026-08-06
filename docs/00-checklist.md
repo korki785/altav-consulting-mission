@@ -102,8 +102,24 @@ sans intervention humaine. *(Pas de tâche : les workflows sont verrouillés.)*
 | 🔴 | **26.** Obtenir l'export Wix `Inscription - DRH`, `- ADG`, `Certification 4 & 5` | **Franck** |
 | 🔴 | **27.** Basculer les 23 contacts en `ENTREPRISE` et les 19 en `CLIENT` | étape 26 |
 | 🔴 | **28.** Créer les 5 pré-inscrits absents de la base | — |
+| 🔴 | **28 bis.** **Dédoublonner HubSpot — une personne, une fiche.** 2 doublons connus, puis passe globale | — |
 | 🔴 | **29.** Exploiter le signal B2B des 437 — société, poste, secteur | étape 27 |
 | 🔴 | **30.** Remplir `Wix — Libellés d'origine`, propriété créée mais vide | — |
+| 🔴 | **30 bis.** Faire remonter le **signal de paiement Wix** vers l'étape « Frais réglés » | étape 23 |
+| 🔴 | **30 ter.** **Inventorier Evalangdo** — qui l'administre, quelles données, export ou API, quel identifiant commun | **Franck** |
+| 🔴 | **30 quater.** Arbitrer si Evalangdo entre dans le périmètre de la mission | étape 30 ter · **Franck** |
+
+> **Ces trois dernières étapes viennent du cadre posé par Franck le 6 août** — un rôle par outil,
+> HubSpot en source unique de vérité. Voir [architecture des outils](11-architecture-des-outils.md).
+>
+> **Le paiement reste dans Wix, le cycle de vie est dans HubSpot, et rien ne relie les deux.**
+> Tant que ce chaînon manque, « Frais réglés » se coche à la main — et une étape de cycle de vie
+> tenue à la main se désynchronise en quelques semaines. Toute la mesure de la phase 5 repose
+> dessus.
+>
+> **Evalangdo n'apparaît dans aucun document antérieur.** Angle mort complet : pas d'accès, pas
+> d'export, pas d'identifiant commun connu. L'inventaire d'abord ; il peut parfaitement rester
+> hors périmètre, c'est l'arbitrage de l'étape 30 quater.
 
 **Fin de phase :** on répond sans ouvrir un fichier à « combien de pré-inscrits n'ont pas encore
 payé, et depuis combien de temps ».
@@ -205,8 +221,13 @@ et un lead entré par ce formulaire arrive classé.
 ## Points de vigilance permanents
 
 - **« Non lu » n'est pas « sans réponse ».** Aucun accès à la messagerie de Franck.
+- **HubSpot est la source unique de vérité, une personne = une fiche.** Cadre de Franck du
+  6 août. Wix vend, HubSpot connaît le client, Evalangdo réalise les tests — un seul outil fait
+  autorité par donnée. [Détail](11-architecture-des-outils.md).
 - **HubSpot remappe mal à chaque import** : `E-mail 1` → `E-mail 3` sans identifiant unique.
-  Tel quel, 419 lignes créent 419 doublons. À recorriger systématiquement.
+  Tel quel, 419 lignes créent 419 doublons. À recorriger systématiquement — c'est la première
+  cause de doublons du dossier, loin devant la saisie humaine, et elle contredit directement la
+  règle « une personne, une fiche ». **Aucun import sans vérifier le mapping, écran par écran.**
 - **L'écran « Problèmes de formatage » est global** — 635 fiches. *Tout accepter* les modifie
   toutes.
 - **Franck décide, Stéphane administrera.** Chaque automatisation doit retirer un geste à

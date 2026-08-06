@@ -10,6 +10,12 @@ relance. La mission est finie quand ce ratio se pilote et s'améliore tout seul.
 Six phases. Chacune se lit : ce qu'on installe, ce qui la débloque, ce qu'elle produit, et à
 quoi on sait qu'elle est terminée.
 
+> **Le cadre, posé par Franck le 6 août.** Un rôle par outil : **Wix vend, HubSpot connaît le
+> client, Evalangdo réalise les tests.** HubSpot est la **source unique de vérité** sur les
+> personnes — une personne, une fiche. Tout ce qui suit tient dans ce cadre ; c'est lui qui
+> justifie que les formulaires quittent Wix plutôt que d'être synchronisés.
+> Voir [architecture des outils](11-architecture-des-outils.md).
+
 ---
 
 ## Phase 0 — Le socle *(terminée)*
@@ -78,6 +84,18 @@ Sans étape, pas de mesure. Sans mesure, pas de pilotage.
   exactement le split.)*
 - L'articulation avec `Tag_CRM` : `Tag_CRM` reste l'axe d'origine et ne bouge plus, le cycle de
   vie devient l'axe opérationnel.
+- Le **dédoublonnage** de la base — une personne, une fiche. Deux doublons connus depuis le
+  5 août, et un mécanisme d'import qui en fabrique à chaque passage.
+
+**Le chaînon qui manque, et il est structurel :** l'étape « Frais réglés » est dans HubSpot, le
+paiement est dans Wix, **rien ne relie les deux**. Cochée à la main, une étape de cycle de vie se
+désynchronise en quelques semaines — et toute la mesure de la phase 5 repose dessus. C'est la
+première question à instruire une fois les 7 étapes créées.
+
+**L'angle mort :** Evalangdo. Cité par Franck le 6 août comme le troisième outil de
+l'architecture, absent de tout le dossier jusque-là. Pas d'accès, pas d'export connu, pas
+d'identifiant commun vérifié. Inventaire d'abord, arbitrage de périmètre ensuite — il peut très
+bien rester dehors.
 
 **Terminée quand :** on peut répondre, sans ouvrir un fichier, à « combien de pré-inscrits
 n'ont pas encore payé, et depuis combien de temps ».
