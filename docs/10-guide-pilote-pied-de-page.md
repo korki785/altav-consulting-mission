@@ -117,11 +117,14 @@ formulaire** → type **Formulaire intégré** → modèle **Vierge**.
 
 | Ordre | Champ à glisser | Propriété HubSpot | Texte affiché | Obligatoire |
 |---|---|---|---|---|
-| 1 | Nom | `Nom` *(lastname)* | `Nom` | ✅ |
-| 2 | E-mail | `E-mail` *(email)* | `E-mail` | ✅ |
-| 3 | Téléphone | `Numéro de téléphone` *(phone)* | `Téléphone` | — |
-| 4 | Statut du visiteur | `Statut du visiteur` *(créée en partie A)* | `Statut` | ✅ |
-| 5 | Message | `Message` *(propriété standard HubSpot)* | `Parlez-nous de votre projet...` | ✅ |
+| 1 | Prénom | `Prénom` *(firstname)* | `Prénom` | ✅ *(imposé par HubSpot)* |
+| 2 | Nom | `Nom` *(lastname)* | `Nom` | ✅ |
+| 3 | E-mail | `E-mail` *(email)* | `E-mail` | ✅ |
+| 4 | Téléphone | `Numéro de téléphone` *(phone)* | `Téléphone` *(libellé conservé)* | — |
+| 5 | Statut du visiteur | `Statut du visiteur` *(créée en partie A)* | `Statut` | ✅ |
+| 6 | Message | `Message` *(propriété standard HubSpot)* | `Parlez-nous de votre projet...` | ✅ |
+
+*Prénom et Nom sont posés **côte à côte sur une même ligne**, pour ne pas allonger le formulaire.*
 
 > ⚠️ **Ces textes sont des placeholders, pas des libellés — relevé DOM du 6 août.** Le formulaire
 > Wix n'affiche **aucun libellé au-dessus des champs** : `Nom`, `E-mail`, `Téléphone` et
@@ -139,6 +142,24 @@ formulaire** → type **Formulaire intégré** → modèle **Vierge**.
 >
 > *Noter les points de suspension de `Parlez-nous de votre projet...` : ils sont dans l'original.*
 
+> **Décision du 6 août — le téléphone s'écarte volontairement du Wix, et c'est assumé.**
+>
+> Le formulaire Wix est un champ **texte libre**. HubSpot impose son propre composant dès que le
+> champ est relié à la propriété `Numéro de téléphone` : sélecteur de pays, validation de format,
+> et **type de champ verrouillé** — j'ai essayé un champ texte simple, HubSpot l'a reconverti en
+> affichant *« toutes les modifications seront écrasées »*.
+>
+> **Nael tranche : on garde le composant HubSpot.** La raison n'est pas qu'on subit la
+> contrainte, c'est qu'elle est meilleure — **un champ téléphone valide le format, un champ texte
+> libre non**. Le Wix accepte n'importe quoi ; le nouveau non.
+>
+> **Ce champ garde donc son libellé visible**, contrairement aux quatre autres : le composant
+> n'accepte pas de texte d'espace réservé.
+>
+> *Conséquence acceptée :* le sélecteur s'ouvre sur 🇺🇸 **+1**. Un visiteur français doit changer
+> le pays. Écarté comme non bloquant — *« ils savent le faire »*. **Ne pas « corriger » ce champ
+> plus tard au nom de la reproduction à l'identique : c'est une décision, pas un oubli.**
+
 **Deux points de mapping qui ne se devinent pas :**
 
 - **Le champ 5 ne se crée pas.** HubSpot a déjà une propriété standard `Message`, prévue pour ça.
@@ -148,15 +169,29 @@ formulaire** → type **Formulaire intégré** → modèle **Vierge**.
 - **Le champ 4 affiche `Statut`, pas `Statut du visiteur`.** C'est le libellé du formulaire Wix
   actuel. La propriété, elle, garde son nom complet côté CRM.
 
-> **Un point à remonter à Franck, sans le décider seul.** Le formulaire Wix a **un seul champ
-> `Nom`**. Reproduit à l'identique, il verse « Jean Dupont » dans le champ **Nom de famille** de
-> HubSpot, prénom compris. C'est exactement le désordre qui a coûté le chantier de juillet — 33 %
-> à 48 % de contacts correctement nommés, deux scripts de déduction, une passe de vérification.
-> Le formulaire de pré-inscription, lui, a bien deux champs séparés.
+> **Décision du 6 août — le champ `Nom` unique est scindé en `Prénom` + `Nom`.** C'est le second
+> écart volontaire avec le Wix, et il est plus lourd que celui du téléphone.
 >
-> **Ce guide applique la consigne validée en Q9 : à l'identique, un seul champ.** La correction —
-> scinder en `Prénom` + `Nom` — coûte un champ de plus au visiteur et se décide avec Franck, pas
-> ici. **À poser en même temps que les autres points en attente.**
+> **Le formulaire Wix a un seul champ `Nom`.** Reproduit à l'identique, il verse « Jean Dupont »
+> dans le champ **Nom de famille**, prénom compris, et laisse `Prénom` vide.
+>
+> **Ce qui a tranché, c'est la personnalisation des séquences** *(argument de Nael)* :
+>
+> | Ce qu'on écrit dans une séquence | Ce que reçoit Jean Dupont |
+> |---|---|
+> | `Bonjour {{firstname}},` | **`Bonjour ,`** |
+> | `Bonjour {{lastname}},` | `Bonjour Jean Dupont,` |
+>
+> Le premier est une séquence visiblement cassée, le second est bancal. Toute la **phase 3**
+> repose sur ces envois. Et le rattrapage coûterait un nouveau script de déduction prénom/nom —
+> exactement le chantier de juillet, qui a fait passer les contacts nommés de 33 % à 48 % au prix
+> de deux scripts et d'une vérification manuelle.
+>
+> **Sur la validation Q9 de Franck** *(« à l'identique »)* : elle tient toujours, mais elle a été
+> donnée **sans connaissance de cette conséquence**. L'écart est donc à lui signaler, pas à lui
+> cacher — il n'est pas contredit, il est informé d'un élément qu'il n'avait pas.
+>
+> *Note :* HubSpot **impose** `Prénom` comme obligatoire — impossible de le rendre facultatif.
 
 ### Les 2 champs cachés
 
@@ -206,14 +241,51 @@ n'apparaît dans aucune vue filtrée.
 **Onglet Style :** ne rien régler pour l'instant. Le calage visuel se fait en partie C, sur le
 site, où l'on voit le résultat.
 
+### Les deux réglages de compte qu'il faut ouvrir à chaque formulaire
+
+*Roue crantée du panneau de gauche → **Paramètres** → onglet **Général**.*
+
+| Réglage | État par défaut sur ce portail | Ce qu'il faut |
+|---|---|---|
+| **Créer automatiquement de nouveaux contacts à partir d'adresses e-mail inconnues** | 🔴 **désactivé** | ✅ **activé** |
+| **Définir les nouveaux contacts comme contacts marketing** | 🟢 activé | ✅ activé |
+
+> ⚠️ **Le premier réglage est le piège le plus coûteux de tout ce guide — trouvé désactivé le
+> 6 août.** Sans lui, le formulaire enregistre bien les soumissions dans son propre tableau,
+> mais **ne crée aucune fiche de contact** pour les adresses qu'il ne connaît pas — c'est-à-dire
+> pour la totalité des nouveaux leads.
+>
+> **Rien n'a l'air cassé.** Le visiteur voit son message de confirmation, la notification part,
+> le compteur de soumissions monte. Seul le CRM reste vide. On peut déclarer le pilote réussi et
+> ne s'apercevoir de rien pendant des semaines.
+>
+> **À vérifier sur les 5 formulaires suivants**, un par un. C'est un défaut du compte, pas du
+> formulaire : chaque nouveau formulaire naîtra avec.
+
+*Sur le second réglage :* il fait passer chaque personne qui écrit en **contact marketing**,
+donc dans le compteur facturé par HubSpot. C'est voulu — quelqu'un qui écrit spontanément est
+précisément la personne à qui envoyer un livre blanc, et la phase 3 repose là-dessus. Attention
+au « **ou mis à jour** » : un dormant qui remplit le formulaire bascule lui aussi. Voir
+[journal](05-journal.md) pour l'état de départ de la base.
+
 ---
 
 ## Partie C — Poser le formulaire dans le pied de page Wix
 
 *Toujours l'étape 19. C'est ici que se jouent les conditions n° 1 et n° 2 de Franck.*
 
-1. Dans HubSpot, formulaire ouvert → bouton **Publier** → **Intégrer** → copier le **code
-   d'intégration**.
+> 🟢 **Formulaire publié le 6 août 2026.** Code d'intégration, valable tel quel :
+>
+> ```html
+> <script src="https://js-eu1.hsforms.net/forms/embed/148924865.js" defer></script>
+> <div class="hs-form-frame" data-region="eu1" data-form-id="988b724a-88b5-499b-961d-ac8394e25e5c" data-portal-id="148924865"></div>
+> ```
+>
+> *Publier ne met rien en ligne : le formulaire n'existe pour le public que le jour où ce code
+> est posé dans le site.*
+
+1. *(déjà fait — code ci-dessus)* Dans HubSpot, après publication → **Obtenir un code intégré** →
+   onglet **Intégrer le code**.
 2. Dans l'éditeur Wix : ouvrir le **pied de page**, sélectionner le formulaire natif existant.
    **Ne pas le supprimer** — le déplacer temporairement hors écran ou le masquer.
 3. **Ajouter** → **Intégrer** → **Intégrer un code / HTML iframe** → coller le code HubSpot.
@@ -269,7 +341,18 @@ et l'étape 20 devient une conversation sur ce qu'on améliore, pas sur ce qu'on
 
 | Point | Pour qui | Bloque |
 |---|---|---|
-| Champ `Nom` unique ou scindé en `Prénom` + `Nom` | **Franck** | rien aujourd'hui — se rattrape, mais salit la base en attendant |
+| **Mention de consentement RGPD** — signalée par HubSpot à la publication, absente du formulaire | **Franck** | rien techniquement, **mais c'est une collecte de données personnelles sur un site français** |
+| **reCAPTCHA** — désactivé, signalé par HubSpot | — | rien tant que le volume est faible ; à activer au premier spam |
+| Signaler à Franck l'ajout de `Prénom` — il a validé « à l'identique » sans connaître la conséquence sur les séquences | **Franck** | rien |
 | Destinataire des notifications : Franck, Stéphane, ou les deux | **Franck** | étape 22 bis |
 | Texte de confirmation définitif | **Franck** | étape 17 bis |
 | Forfait Wix autorisant l'intégration de code | **Franck** | partie C, s'il est absent |
+
+> **Sur le consentement RGPD.** HubSpot affiche l'avertissement à chaque publication : *« Ajouter
+> un champ de confidentialité des données… important si vous avez besoin de recueillir le
+> consentement de vos contacts. »* La [spec](08-formulaires-hubspot.md) l'avait anticipé — elle
+> remplaçait la case « J'accepte les termes et conditions », jamais cochée sur 525 soumissions,
+> par « une mention de consentement explicite ». **Cette mention n'est pas encore posée.**
+>
+> Ce n'est pas une question technique et je ne la tranche pas : le texte engage ALTAV. Il vient
+> de Franck, ou de qui le conseille.

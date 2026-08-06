@@ -61,7 +61,7 @@ précédente. On lit de haut en bas, on s'arrête à la première pastille rouge
 | 🔴 | **17 ter.** Faire confirmer le formulaire « Session d'information », qu'il n'a pas demandé | **Franck** |
 | 🔴 | **17 quater.** Recenser les **URL d'acquisition** depuis le back-office Wix — adresse, nombre de réponses, date de la dernière | — *(remplace la liste demandée à Franck)* |
 | 🟠 | **18.** Créer les **8 propriétés** manquantes dans HubSpot — [liste](08-formulaires-hubspot.md#propriétés-hubspot-à-créer). **`Statut du visiteur` créée le 06/08**, les 7 autres attendent leur formulaire | — *(rien ne se mappe sans elles)* |
-| 🔴 | **19.** **Pilote —** refaire le formulaire du **pied de page**, champ `Statut` conservé — [guide d'exécution](10-guide-pilote-pied-de-page.md) | étape 18 · *(déjà validé en Q9)* |
+| 🟠 | **19.** **Pilote —** refaire le formulaire du **pied de page** — [guide d'exécution](10-guide-pilote-pied-de-page.md). **Créé et publié le 06/08**, reste à poser dans le pied de page Wix | étape 18 |
 | 🔴 | **19 bis.** Recetter le pilote sur les **3 critères de Franck** — intégré au design, transparent pour le visiteur, alimente HubSpot | étape 19 · **Franck** |
 | 🔴 | **19 ter.** Inventorier **ce que Stéphane a déjà mis en place** sur la pré-inscription | **Stéphane** |
 | 🔴 | **20.** Créer le formulaire de **pré-inscription** — sans champ promo, **avec Stéphane** | étape 19 bis · étape 19 ter · **Stéphane** |

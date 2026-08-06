@@ -323,6 +323,73 @@ correct (`CLIENT`), seule la date manque.
 
 ---
 
+## 9. Le pilote du pied de page — 6 août 2026
+
+Étape 19. Propriété `Statut du visiteur` créée *(nom interne `statut_du_visiteur`)*, formulaire
+**ALTAV — Contact général (pied de page)** monté et **publié**. Portail `148924865`, instance
+**EU** — toutes les URL sont en `app-eu1.hubspot.com`. Détail d'exécution dans le
+[guide](10-guide-pilote-pied-de-page.md).
+
+### Le réglage qui rendait le formulaire inutile
+
+**« Créer automatiquement de nouveaux contacts à partir d'adresses e-mail inconnues » était
+désactivé** — état par défaut du compte, découvert en configurant.
+
+Sans lui, une soumission est enregistrée dans le tableau du formulaire mais **ne crée aucune
+fiche de contact** pour une adresse inconnue : c'est-à-dire pour tout nouveau lead. Le visiteur
+voit sa confirmation, la notification part, le compteur monte — et le CRM reste vide.
+
+**Activé.** À vérifier sur chacun des 5 formulaires suivants : le défaut est au niveau du compte,
+chaque nouveau formulaire naîtra avec.
+
+### État marketing de la base — mesuré, pas supposé
+
+| Statut | Contacts |
+|---|---|
+| Contact **marketing** | **0** |
+| Contact **non marketing** | **7 478** |
+
+**La totalité de la base est en non marketing.** L'import du 20 juillet n'a rien basculé —
+comportement par défaut de HubSpot, qui ne crée des contacts marketing que si la case est cochée
+pendant l'assistant d'import.
+
+**Pourquoi ce chiffre compte :** HubSpot ne facture pas le stockage, il facture le droit
+d'envoyer des e-mails *marketing*. Un contact non marketing reste consultable, filtrable,
+appelable — et gratuit. C'est donc le **point de départ chiffré de l'étape 39** : basculer les
+6 196 dormants, c'est partir de zéro et payer chaque bascule.
+
+*Nuance qui évite un contresens :* les **séquences** de Sales Hub n'exigent **pas** le statut
+marketing — ce sont des envois 1-à-1 depuis la boîte de Franck. Seuls les envois **en masse**
+l'exigent.
+
+Le formulaire du pied de page, lui, a le réglage **« définir les nouveaux contacts comme contacts
+marketing » activé** — voulu, puisque la phase 3 repose sur ces envois. C'est le premier robinet
+du compteur facturé. Attention au *« ou mis à jour »* : un dormant qui remplit le formulaire
+bascule lui aussi.
+
+### Deux écarts volontaires avec le formulaire Wix
+
+| Champ | Wix | HubSpot | Pourquoi |
+|---|---|---|---|
+| Téléphone | texte libre | composant téléphone, sélecteur de pays | **valide le format** ; le texte libre accepte n'importe quoi |
+| Nom | un seul champ | **`Prénom` + `Nom`** | `{{firstname}}` vide casserait toutes les séquences de la phase 3 |
+
+Les deux sont des décisions de Nael, pas des contraintes subies. **Ne pas les « corriger » plus
+tard au nom de la reproduction à l'identique.** Le second est à signaler à Franck : il a validé
+« à l'identique » en Q9 sans connaître la conséquence sur les séquences.
+
+### Reste ouvert
+
+- **Mention de consentement RGPD absente.** HubSpot le signale à chaque publication. La spec
+  l'avait prévue en remplacement de la case « J'accepte les termes », jamais cochée sur 525
+  soumissions. Le texte engage ALTAV : il vient de Franck.
+- **reCAPTCHA désactivé.** Sans conséquence tant que le volume est faible ; à activer au premier
+  spam.
+- Le formulaire est **publié mais pas en ligne** : il n'existe pour le public que le jour où son
+  code d'intégration est posé dans le pied de page Wix.
+
+---
+
 ## Données
 
 Aucun CSV n'est versionné (`.gitignore`). Le dépôt ne contient que les scripts
