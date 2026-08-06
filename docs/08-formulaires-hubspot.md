@@ -13,7 +13,7 @@ ni sur le compte de Franck.
 >    *« il y a plusieurs choses qui ont été mises en place, il faudra sûrement les améliorer,
 >    mais surtout il faudra que Stéphane sache l'administrer »*. Ce que dit cette spec — *« on
 >    reproduit à l'identique »* — reste vrai par rapport à **l'existant Wix**, mais l'existant
->    HubSpot n'a pas été inventorié. **Étape 18 bis avant toute création.**
+>    HubSpot n'a pas été inventorié. **Étape 19 ter avant toute création.**
 > 3. Les quatre autres suivent.
 
 ---
@@ -239,7 +239,7 @@ corriger serait plus de travail pour lui, et moins juste.
 | 1 | **Les supports en circulation** — quel QR code sur quelle brochure, quel lien dans quel groupe | la bascule des anciens liens *(étape 21)* |
 | 2 | **Un exemple de mail** qu'il envoie à ses prospects | les messages de confirmation |
 | 3 | **Le formulaire « Session d'information »**, qu'il n'a pas demandé | ce formulaire seul |
-| 4 | **La mise en relation avec Stéphane** — et son périmètre d'administration | la pré-inscription *(étape 18)* et toute la phase 6 |
+| 4 | **La mise en relation avec Stéphane** — et son périmètre d'administration | la pré-inscription *(étape 20)* et toute la phase 6 |
 | 5 | **Les destinataires des notifications** — Franck, Stéphane, ou les deux | l'étape 22 bis, pas la création |
 | 6 | *(mineur)* L'ajout de « Moins de 30 ans » aux tranches d'âge | rien |
 
@@ -251,5 +251,5 @@ ni l'autre** — c'est précisément pour ça qu'il passe en premier.
 
 | # | Point | Bloque quoi |
 |---|---|---|
-| 1 | **L'inventaire de ce qu'il a déjà mis en place** sur la pré-inscription | l'étape 18 — rien ne s'écrase avant |
+| 1 | **L'inventaire de ce qu'il a déjà mis en place** sur la pré-inscription | l'étape 20 — rien ne s'écrase avant |
 | 2 | **Ce qu'il veut pouvoir administrer seul** | le mode d'emploi *(étape 48)* |

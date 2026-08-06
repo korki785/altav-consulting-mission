@@ -5,8 +5,13 @@ précédente. On lit de haut en bas, on s'arrête à la première pastille rouge
 
 🟢 fait · 🟠 en cours · 🔴 à faire
 
-> **Les numéros ne changent jamais.** Ils servent de référence aux autres documents. Quand
-> l'ordre change, ce sont les lignes qui bougent, pas les numéros — d'où les sauts.
+> **Les numéros montent toujours dans l'ordre de lecture.** Une étape insérée prend le numéro de
+> celle qu'elle précède, suffixée `bis`, `ter`. Quand l'ordre change, on renumérote — un numéro
+> qui redescend au fil de la lecture est un bug, pas une convention.
+>
+> *Renumérotation du 6 août, phase 1 uniquement :* l'ancienne **18** *(pré-inscription)* devient
+> **20**, l'ancienne **20** *(4 formulaires restants)* devient **20 bis**. Le nouveau **18** est
+> la création des propriétés HubSpot. Les phases 2 à 6 ne bougent pas.
 
 ---
 
@@ -54,15 +59,15 @@ précédente. On lit de haut en bas, on s'arrête à la première pastille rouge
 | 🟠 | **17.** Informer Franck du changement et obtenir **les supports en circulation** — quel QR code sur quelle brochure, quel lien dans quel groupe | **Franck** |
 | 🔴 | **17 bis.** Faire relire par Franck les messages de confirmation et le mail réécrit | **Franck** |
 | 🔴 | **17 ter.** Faire confirmer le formulaire « Session d'information », qu'il n'a pas demandé | **Franck** |
-| 🔴 | **18 ante.** Créer les **8 propriétés** manquantes dans HubSpot — [liste](08-formulaires-hubspot.md#propriétés-hubspot-à-créer). *Le pilote n'en demande qu'une : `Statut du visiteur`* | — *(rien ne se mappe sans elles)* |
-| 🔴 | **19.** **Pilote —** refaire le formulaire du **pied de page**, champ `Statut` conservé | étape 18 ante · *(déjà validé en Q9)* |
+| 🔴 | **18.** Créer les **8 propriétés** manquantes dans HubSpot — [liste](08-formulaires-hubspot.md#propriétés-hubspot-à-créer). *Le pilote n'en demande qu'une : `Statut du visiteur`* | — *(rien ne se mappe sans elles)* |
+| 🔴 | **19.** **Pilote —** refaire le formulaire du **pied de page**, champ `Statut` conservé — [guide d'exécution](10-guide-pilote-pied-de-page.md) | étape 18 · *(déjà validé en Q9)* |
 | 🔴 | **19 bis.** Recetter le pilote sur les **3 critères de Franck** — intégré au design, transparent pour le visiteur, alimente HubSpot | étape 19 · **Franck** |
-| 🔴 | **18 bis.** Inventorier **ce que Stéphane a déjà mis en place** sur la pré-inscription | **Stéphane** |
-| 🔴 | **18.** Créer le formulaire de **pré-inscription** — sans champ promo, **avec Stéphane** | étape 19 bis · étape 18 bis · **Stéphane** |
-| 🔴 | **20.** Créer les 4 formulaires restants | étape 18 · *session d'info : étape 17 ter* |
-| 🔴 | **21.** Vider et repointer les anciens liens — QR codes et WhatsApp préservés | étape 20 · **étape 17** |
+| 🔴 | **19 ter.** Inventorier **ce que Stéphane a déjà mis en place** sur la pré-inscription | **Stéphane** |
+| 🔴 | **20.** Créer le formulaire de **pré-inscription** — sans champ promo, **avec Stéphane** | étape 19 bis · étape 19 ter · **Stéphane** |
+| 🔴 | **20 bis.** Créer les 4 formulaires restants | étape 20 · *session d'info : étape 17 ter* |
+| 🔴 | **21.** Vider et repointer les anciens liens — QR codes et WhatsApp préservés | étape 20 bis · **étape 17** |
 | 🔴 | **22.** Tester : une soumission arrive dans HubSpot **déjà étiquetée** | étape 21 |
-| 🔴 | **22 bis.** Activer les notifications par e-mail sur les 6 formulaires — **destinataires à trancher : Franck, Stéphane, ou les deux** | étape 20 · **Franck** |
+| 🔴 | **22 bis.** Activer les notifications par e-mail sur les 6 formulaires — **destinataires à trancher : Franck, Stéphane, ou les deux** | étape 20 bis · **Franck** |
 | 🔴 | **22 ter.** Créer les 3 vues manuelles de relance — [provisoire](09-solution-provisoire.md) | étape 22 |
 
 > **Décision du 6 août — on commence par le pied de page, pas par la pré-inscription.**
@@ -209,6 +214,6 @@ et un lead entré par ce formulaire arrive classé.
   l'a posé. Les deux contraintes ne tirent pas dans le même sens — l'astuce qui fait gagner un
   clic à Franck est souvent celle que Stéphane n'osera pas toucher.
 - **La pré-inscription n'est pas un terrain vierge.** Des choses y ont déjà été mises en place,
-  contenu inconnu au 6 août. Rien ne s'y écrase avant l'inventaire *(étape 18 bis)*.
+  contenu inconnu au 6 août. Rien ne s'y écrase avant l'inventaire *(étape 19 ter)*.
 - **Le désordre se reconstitue tout seul** si créer un formulaire dans HubSpot devient plus
   pénible que dans Wix.
