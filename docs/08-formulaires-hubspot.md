@@ -237,6 +237,7 @@ corriger serait plus de travail pour lui, et moins juste.
 | # | Point | Bloque quoi |
 |---|---|---|
 | 1 | **La mise en relation avec Stéphane** — et son périmètre d'administration | la pré-inscription *(étape 20)* et toute la phase 6 |
+| 1 bis | **Valider les textes de consentement RGPD** du pilote — posés, mais ce sont ceux de HubSpot | la mise en ligne du formulaire : ils engagent ALTAV |
 | 2 | **Un exemple de mail** qu'il envoie à ses prospects | les messages de confirmation |
 | 3 | **Le formulaire « Session d'information »**, qu'il n'a pas demandé | ce formulaire seul |
 | 4 | **Les destinataires des notifications** — Franck, Stéphane, ou les deux | l'étape 22 bis, pas la création |

@@ -380,13 +380,46 @@ tard au nom de la reproduction à l'identique.** Le second est à signaler à Fr
 
 ### Reste ouvert
 
-- **Mention de consentement RGPD absente.** HubSpot le signale à chaque publication. La spec
-  l'avait prévue en remplacement de la case « J'accepte les termes », jamais cochée sur 525
-  soumissions. Le texte engage ALTAV : il vient de Franck.
 - **reCAPTCHA désactivé.** Sans conséquence tant que le volume est faible ; à activer au premier
   spam.
 - Le formulaire est **publié mais pas en ligne** : il n'existe pour le public que le jour où son
   code d'intégration est posé dans le pied de page Wix.
+
+### Le consentement RGPD — posé le soir même
+
+La conformité RGPD était **déjà activée** au niveau du compte. Restait à poser le bloc sur le
+formulaire, ce qui est fait :
+
+| Élément | État |
+|---|---|
+| Case **« J'accepte de recevoir d'autres communications »** — abonnement `Marketing Information` | facultative, décochée par défaut |
+| Case **« J'accepte que Altav Consulting stocke et traite mes données »** | **obligatoire** |
+| Mention de politique de confidentialité | lien actif vers `altavconsulting.com/politique-de-confidentialité` |
+
+**Les deux cases sont distinctes, et c'est le point qui compte.** On ne conditionne pas
+« je réponds à ta question » à « j'accepte de recevoir de la publicité ». Répondre à quelqu'un
+qui écrit ne demande pas de consentement ; l'ajouter aux envois marketing, si.
+
+**Textes retenus : ceux de HubSpot, sans réécriture.** Ils sont neutres et génériques. Une
+formulation sur mesure engagerait ALTAV et n'est pas de mon ressort — **elle reste à faire
+valider par Franck**, qui peut la faire relire s'il a un conseil.
+
+### Deux pièges de l'éditeur, vérifiés à l'usage
+
+**1. Les textes de consentement sont stockés par langue.** L'écran des options de consentement
+a un sélecteur « Vue actuelle », avec la mention *« Vous ne modifiez que cette langue »*. Le
+formulaire étant en français, il lit la variante **Français** — pas Anglais, et pas
+**Français (Canada)**, qui a son propre texte, différent. Modifier la mauvaise variante ne
+produit aucun effet visible, et rien ne le signale.
+
+**2. Le bloc de confidentialité fige son texte au moment où on le pose.** Il ne relit jamais les
+paramètres ensuite. Modifier le texte après coup, republier, décocher/recocher l'option : rien ne
+le met à jour.
+
+> **Conséquence, et c'est la règle à suivre pour les 5 formulaires suivants :**
+> **régler les textes de consentement AVANT de poser le bloc.** Sinon la seule issue est de
+> **supprimer le bloc et de le reposer** — et il revient nu : il faut alors reconfigurer
+> l'abonnement `Marketing Information` et la case correspondante.
 
 ---
 

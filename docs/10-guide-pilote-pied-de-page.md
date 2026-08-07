@@ -341,18 +341,61 @@ et l'étape 20 devient une conversation sur ce qu'on améliore, pas sur ce qu'on
 
 | Point | Pour qui | Bloque |
 |---|---|---|
-| **Mention de consentement RGPD** — signalée par HubSpot à la publication, absente du formulaire | **Franck** | rien techniquement, **mais c'est une collecte de données personnelles sur un site français** |
+| **Valider les textes de consentement RGPD** — posés, mais ce sont ceux de HubSpot | **Franck** | la mise en ligne : ils engagent ALTAV |
 | **reCAPTCHA** — désactivé, signalé par HubSpot | — | rien tant que le volume est faible ; à activer au premier spam |
 | Signaler à Franck l'ajout de `Prénom` — il a validé « à l'identique » sans connaître la conséquence sur les séquences | **Franck** | rien |
 | Destinataire des notifications : Franck, Stéphane, ou les deux | **Franck** | étape 22 bis |
 | Texte de confirmation définitif | **Franck** | étape 17 bis |
 | Forfait Wix autorisant l'intégration de code | **Franck** | partie C, s'il est absent |
 
-> **Sur le consentement RGPD.** HubSpot affiche l'avertissement à chaque publication : *« Ajouter
-> un champ de confidentialité des données… important si vous avez besoin de recueillir le
-> consentement de vos contacts. »* La [spec](08-formulaires-hubspot.md) l'avait anticipé — elle
-> remplaçait la case « J'accepte les termes et conditions », jamais cochée sur 525 soumissions,
-> par « une mention de consentement explicite ». **Cette mention n'est pas encore posée.**
+---
+
+## Partie B bis — Le bloc de consentement RGPD
+
+🟢 **Posé le 6 août 2026.** La conformité RGPD était déjà activée sur le compte ; il ne restait
+qu'à poser le bloc.
+
+**Chemin :** panneau **+** → onglet **Autre** → section *Sécurité et confidentialité* →
+**Confidentialité des données**, à glisser sous le champ Message.
+
+**Configuration retenue :**
+
+| Réglage | Valeur |
+|---|---|
+| Enregistrement de l'autorisation | **Consentements séparés (cases à cocher individuelles)** |
+| Consentement *Stocker et traiter des données* | ✅ **obligatoire** |
+| Consentement *Envoyer des communications* | abonnement **`Marketing Information`**, **facultatif**, décoché par défaut |
+| Déclaration de politique de confidentialité | ✅ activée, lien vers `altavconsulting.com/politique-de-confidentialité` |
+
+> **Les deux cases doivent rester distinctes.** Répondre à quelqu'un qui écrit ne demande aucun
+> consentement — la demande elle-même fonde le traitement. L'ajouter aux **envois marketing**, si.
+> Conditionner « je réponds à ta question » à « j'accepte de recevoir de la publicité » n'est pas
+> acceptable, et c'est précisément ce que la configuration en cases séparées empêche.
 >
-> Ce n'est pas une question technique et je ne la tranche pas : le texte engage ALTAV. Il vient
-> de Franck, ou de qui le conseille.
+> **Les textes sont ceux de HubSpot, non réécrits.** Neutres, génériques, suffisants pour un
+> formulaire de contact. Une formulation sur mesure engagerait ALTAV — **elle reste à valider par
+> Franck.**
+
+### ⚠️ Deux pièges, vérifiés à l'usage — ils coûtent une heure si on les découvre seul
+
+**1. Les textes de consentement sont stockés par langue.**
+
+L'écran ⚙️ → **Confidentialité et consentement** → **Options de consentement** porte un sélecteur
+**« Vue actuelle »**, avec la mention *« Vous ne modifiez que cette langue »*. Le formulaire étant
+en français, il lit la variante **Français** — ni **Anglais**, ni **Français (Canada)**, qui a son
+propre texte, différent.
+
+Modifier la mauvaise variante **ne produit aucun effet visible**, et rien ne le signale.
+
+**2. Le bloc fige son texte au moment où on le pose.**
+
+Il ne relit **jamais** les paramètres ensuite. Modifier le texte après coup, republier le
+formulaire, décocher puis recocher l'option : rien ne le met à jour.
+
+> **La règle qui découle des deux, et qui vaut pour les 5 formulaires suivants :**
+>
+> **Régler les textes de consentement AVANT de poser le bloc.**
+>
+> Si c'est déjà posé, la seule issue est de **supprimer le bloc et de le reposer**. Il revient
+> alors **nu** : il faut reconfigurer l'abonnement `Marketing Information` et sa case, sinon le
+> consentement marketing disparaît sans bruit.
