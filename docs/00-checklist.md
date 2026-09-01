@@ -1,6 +1,6 @@
 # 0. Checklist — l'ordre des choses
 
-État au **6 août 2026**. Une seule liste, dans l'ordre logique : chaque étape suppose la
+État au **7 août 2026**. Une seule liste, dans l'ordre logique : chaque étape suppose la
 précédente. On lit de haut en bas, on s'arrête à la première pastille rouge.
 
 🟢 fait · 🟠 en cours · 🔴 à faire
@@ -61,7 +61,7 @@ précédente. On lit de haut en bas, on s'arrête à la première pastille rouge
 | 🔴 | **17 ter.** Faire confirmer le formulaire « Session d'information », qu'il n'a pas demandé | **Franck** |
 | 🔴 | **17 quater.** Recenser les **URL d'acquisition** depuis le back-office Wix — adresse, nombre de réponses, date de la dernière | — *(remplace la liste demandée à Franck)* |
 | 🟠 | **18.** Créer les **8 propriétés** manquantes dans HubSpot — [liste](08-formulaires-hubspot.md#propriétés-hubspot-à-créer). **`Statut du visiteur` créée le 06/08**, les 7 autres attendent leur formulaire | — *(rien ne se mappe sans elles)* |
-| 🟠 | **19.** **Pilote —** refaire le formulaire du **pied de page** — [guide d'exécution](10-guide-pilote-pied-de-page.md). **Créé et publié le 06/08**, reste à poser dans le pied de page Wix | étape 18 |
+| 🟠 | **19.** **Pilote —** refaire le formulaire du **pied de page** — [guide d'exécution](10-guide-pilote-pied-de-page.md). **Créé et publié le 06/08**, **validé par Franck le 07/08**, reste à poser dans le pied de page Wix | étape 18 |
 | 🔴 | **19 bis.** Recetter le pilote sur les **3 critères de Franck** — intégré au design, transparent pour le visiteur, alimente HubSpot | étape 19 · **Franck** |
 | 🔴 | **19 ter.** Inventorier **ce que Stéphane a déjà mis en place** sur la pré-inscription | **Stéphane** |
 | 🔴 | **20.** Créer le formulaire de **pré-inscription** — sans champ promo, **avec Stéphane** | étape 19 bis · étape 19 ter · **Stéphane** |
@@ -70,6 +70,42 @@ précédente. On lit de haut en bas, on s'arrête à la première pastille rouge
 | 🔴 | **22.** Tester : une soumission arrive dans HubSpot **déjà étiquetée** | étape 21 |
 | 🔴 | **22 bis.** Activer les notifications par e-mail sur les 6 formulaires — **destinataires à trancher : Franck, Stéphane, ou les deux** | étape 20 bis · **Franck** |
 | 🔴 | **22 ter.** Créer les 3 vues manuelles de relance — [provisoire](09-solution-provisoire.md) | étape 22 |
+
+> **Validation du 7 août — Franck accepte le formulaire, et seulement le formulaire.**
+>
+> Il a confirmé **les champs et la mise en page**. C'est ce qui débloque la partie C : le
+> formulaire peut être posé dans le site.
+>
+> **Ce que sa validation ne couvre pas**, et qu'il ne faut pas lui faire dire :
+>
+> | Point | Pourquoi ça compte |
+> |---|---|
+> | **Les textes de consentement RGPD** | Ce sont ceux de HubSpot, non réécrits. Ils **engagent ALTAV**. Le [guide](10-guide-pilote-pied-de-page.md#partie-b-bis--le-bloc-de-consentement-rgpd) les donne comme bloquants pour la mise en ligne, et ils le restent. |
+> | **L'ajout de `Prénom`** | Il a validé « à l'identique » en Q9 sans connaître la conséquence sur les séquences. Toujours à lui signaler. |
+> | **Le destinataire des notifications** | Étape 22 bis, non tranchée. |
+>
+> **Poser le code dans Wix et publier le site sont deux gestes différents.** Le premier est
+> réversible et invisible du public tant qu'on ne publie pas. Le second met les textes RGPD non
+> validés devant des visiteurs réels. **On s'arrête avant le second.**
+
+> **Relevé du 7 août — trois constats de terrain sur le site Wix.** Détail dans le
+> [guide, partie C](10-guide-pilote-pied-de-page.md#partie-c--poser-le-formulaire-dans-le-pied-de-page-wix).
+>
+> 1. **Le forfait Wix est Business** — l'intégration de code est autorisée. Dernier point de
+>    blocage matériel de la partie C, levé.
+> 2. **Le pied de page est masqué sur la page d'accueil.** Le formulaire pilote ne sera donc pas
+>    visible sur la page la plus visitée. État antérieur à la mission ; l'afficher serait une
+>    décision de design, pas de CRM.
+> 3. **Le pied de page va grandir.** Le formulaire HubSpot est plus haut que les 451 px du Wix —
+>    prénom séparé, composant téléphone, deux cases RGPD. Conséquence assumée de décisions déjà
+>    prises, mais elle touche la condition n° 1 de Franck : à lui dire **avant** la recette.
+> 4. **Wix classe le script HubSpot en cookies `Essentiels` par défaut — c'est faux.** `hubspotutk`
+>    est un cookie de suivi. Laissé ainsi, il se charge avant tout consentement, sur le formulaire
+>    même qui demande ce consentement. Question juridique, elle remonte à Franck.
+>
+> **Le bloc HTML est posé dans le pied de page et le formulaire s'affiche** — largeur calée à
+> 501 px. Restent la hauteur, la position et la sauvegarde, qui se font à la souris. Rien n'est
+> ni sauvegardé ni publié.
 
 > **Décision du 6 août — on commence par le pied de page, pas par la pré-inscription.**
 > Franck : *« Faisons d'abord un test par celui du bas de page comme test. »*

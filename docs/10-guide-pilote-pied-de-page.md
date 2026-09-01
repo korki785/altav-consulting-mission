@@ -25,6 +25,11 @@ de toute la mission. Décision de Franck du 6 août.
 **On ne touche pas au formulaire Wix existant pendant tout ce guide.** Il continue de tourner. La
 bascule est l'étape 21, elle vient après la recette.
 
+> 🟢 **Forfait Wix vérifié le 7 août — le point de blocage n'existe pas.** Le site est en forfait
+> **Business (Premium)**, dans le compte Wix Studio de Nael, sous le nom `Altav Consulting`
+> *(metaSiteId `33a9d668-ce43-4734-b906-9665bf97cd31`)*. L'intégration de code est donc autorisée.
+> C'était la dernière inconnue de la partie C.
+
 ---
 
 ## Partie A — Créer la propriété `Statut du visiteur`
@@ -284,6 +289,59 @@ au « **ou mis à jour** » : un dormant qui remplit le formulaire bascule lui a
 > *Publier ne met rien en ligne : le formulaire n'existe pour le public que le jour où ce code
 > est posé dans le site.*
 
+### Relevé du 7 août — trois choses que la spec ne disait pas
+
+**1. Le pied de page est masqué sur la page d'accueil.**
+
+Vérifié à la fois sur le site en ligne et dans l'éditeur : sur `/`, l'élément `SITE_FOOTER` est en
+`display: none`. Il s'affiche sur les autres pages — `/formationubuntu`, `/coaching-ubuntu`, etc.
+
+> **Conséquence directe sur le pilote : le formulaire ne sera pas visible sur la page la plus
+> visitée du site.** Ce n'est pas un défaut de l'intégration, c'est l'état actuel du site, et il
+> précède la mission. Deux lectures possibles, à trancher avec Franck :
+>
+> - **on n'y touche pas** — le pilote reste un pilote, et le pied de page se juge là où il vit ;
+> - **on affiche le pied de page sur l'accueil** — mais c'est une modification du design du site,
+>   pas de la plomberie CRM, et elle sort du périmètre de l'étape 19.
+>
+> **Ne pas la faire en passant.** Le jour où l'accueil affiche un pied de page qu'il n'affichait
+> pas, quelqu'un le remarquera, et ce sera mis sur le compte du CRM.
+
+**2. Le formulaire vit dans le pied de page global, pas dans une page.**
+
+Chaîne réelle : `SITE_FOOTER` → `comp-k6unhq8n` → formulaire `comp-k6unhq9b`, le tout porté par la
+`masterPage`. **Une seule modification couvre donc toutes les pages qui affichent le pied de
+page.** Corollaire pratique : le pied de page ne s'édite pas depuis l'accueil, puisqu'il y est
+masqué — **ouvrir l'éditeur sur `La Formation Ubuntu`** pour y accéder.
+
+**3. Le calage visuel n'est plus « du travail à l'œil ».**
+
+Valeurs relevées sur le site en ligne, à reporter dans l'onglet **Style** du formulaire HubSpot :
+
+| Élément | Valeur |
+|---|---|
+| Champs *(Nom, E-mail, Téléphone, Statut)* | `492 × 39 px` |
+| Zone de message | `492 × 126 px` |
+| Fond des champs | `#243853` |
+| Bordure des champs | `2px solid #FFFFFF`, angles droits *(rayon `0`)* |
+| Texte saisi et texte d'espace réservé | `#FFFFFF` |
+| Police | `avenir-lt-w01_35-light`, `15px` |
+| Bouton `Envoyer` | `93 × 39 px`, fond transparent, bordure `2px solid #106F9A`, libellé blanc |
+| **Bloc du formulaire entier** | **`501 × 451 px`** |
+
+> ⚠️ **Le formulaire HubSpot ne tiendra pas dans 451 px de haut.** Il porte 6 champs visibles
+> *(Prénom et Nom sur une ligne)*, le composant téléphone avec son sélecteur de pays, **deux cases
+> de consentement RGPD** et le bouton. Le Wix n'a ni consentement, ni prénom séparé.
+>
+> **Le pied de page va donc grandir.** C'est la conséquence mécanique de deux décisions déjà
+> prises et assumées — le scindement `Prénom` / `Nom` et le bloc RGPD — pas un défaut d'intégration.
+> Mais cela touche la **condition n° 1 de Franck** *(« parfaitement intégré au design du site »)* :
+> à signaler avant la recette, pas pendant.
+
+**4. Le site est multilingue.** L'éditeur porte un sélecteur de langue *(Français)*. Le formulaire
+HubSpot intégré, lui, sera **en français uniquement**, quelle que soit la langue affichée. Sans
+gravité tant que le pilote tourne ; à reprendre au moment des 5 formulaires suivants.
+
 1. *(déjà fait — code ci-dessus)* Dans HubSpot, après publication → **Obtenir un code intégré** →
    onglet **Intégrer le code**.
 2. Dans l'éditeur Wix : ouvrir le **pied de page**, sélectionner le formulaire natif existant.
@@ -294,14 +352,59 @@ au « **ou mis à jour** » : un dormant qui remplit le formulaire bascule lui a
 
 **Trois pièges connus sur cette partie :**
 
-- **L'intégration de code Wix demande un forfait payant.** Si le bouton est grisé, c'est un
-  point de blocage à remonter à Franck, pas un problème HubSpot.
+- ~~**L'intégration de code Wix demande un forfait payant.**~~ — **levé le 7 août** : le site est
+  en forfait **Business**, l'intégration de code est autorisée.
+- **Le bloc HTML se pose dans la section survolée, pas dans le pied de page.** Ajouté depuis le
+  panneau **+**, il s'attache à la section visible au centre de l'écran — ici *La formation Ubuntu 2*,
+  celle des logos clients. Il faut ensuite le **faire glisser** dans le pied de page et attendre
+  la mention **« Attacher à : Pied de page »** avant de relâcher. Sans cela, le formulaire vit
+  dans une page et non dans le pied de page global : il ne sera présent que sur celle-là.
 - **Le bloc d'intégration Wix est une iframe** : le formulaire n'hérite **pas** des polices ni
   des couleurs du site. Le calage se fait dans l'onglet **Style** du formulaire HubSpot —
   police, taille, couleur du bouton — relevées sur le site. C'est la condition n° 1 de Franck,
   et c'est du travail à l'œil, pas un réglage.
 - **Vérifier sur mobile.** Le pied de page est l'endroit du site le plus souvent cassé en petite
   largeur, et une iframe ne se redimensionne pas toujours seule.
+
+### ⚠️ Le piège RGPD de la partie C — la question des cookies, posée une seule fois
+
+Au moment où l'on valide le code, Wix demande : **« Quels cookies ou technologies similaires sont
+définis par votre code ? »**. Il propose **`Essentiels`** par défaut, et **ce défaut est faux**.
+
+Le script HubSpot dépose `hubspotutk`, un cookie de **suivi** : il relie la soumission du
+formulaire à l'historique de navigation du visiteur. Ce n'est pas un cookie essentiel au
+fonctionnement du site.
+
+> **Pourquoi ça compte, et pas qu'un peu.** La catégorie choisie décide **à quel moment le script
+> a le droit de se charger** vis-à-vis de la bannière de consentement du site. Laissé en
+> `Essentiels`, il se charge **avant** tout consentement — sur un site qui affiche une politique
+> de confidentialité et un bloc de consentement RGPD dans ce même formulaire. La contradiction est
+> visible à l'œil nu.
+>
+> **À trancher, pas à subir** — et c'est une question juridique, pas technique : elle remonte à
+> Franck, au même titre que les textes de consentement.
+
+### État au 7 août — ce qui est posé, ce qui reste
+
+**Fait dans l'éditeur** *(non sauvegardé, non publié)* :
+
+| | Élément |
+|---|---|
+| 🟢 | Bloc **HTML intégré** créé **dans le pied de page** — composant `comp-msjb8w3y`, enfant de `SITE_FOOTER`, donc présent sur toutes les pages qui affichent le pied de page |
+| 🟢 | Code d'intégration collé et appliqué — le formulaire HubSpot **s'affiche** dans l'éditeur |
+| 🟢 | Largeur réglée à **501 px**, exactement celle du formulaire Wix |
+
+**Reste à faire à la souris** *(gestes que l'automatisation ne produit pas)* :
+
+| | Geste |
+|---|---|
+| 🔴 | **Hauteur** : le bloc est à 506 px, le formulaire HubSpot n'y tient pas — il est coupé sous le texte de consentement. Agrandir jusqu'à ce que le bouton `Envoyer` soit visible **sans barre de défilement interne**. |
+| 🔴 | **Position** : le bloc est à gauche (`left: 201`), par-dessus le bloc d'adresse. Le formulaire Wix est à `left: 508`. |
+| 🔴 | **Sauvegarder** — rien n'est enregistré tant que ce n'est pas fait. |
+
+> **La barre de défilement interne est le critère, pas la hauteur en pixels.** Une iframe Wix a une
+> hauteur fixe : si le formulaire dépasse, Wix ne l'agrandit pas, il fait défiler à l'intérieur.
+> Un visiteur qui doit faire défiler dans un formulaire de pied de page ne le remplit pas.
 
 ---
 
@@ -346,7 +449,10 @@ et l'étape 20 devient une conversation sur ce qu'on améliore, pas sur ce qu'on
 | Signaler à Franck l'ajout de `Prénom` — il a validé « à l'identique » sans connaître la conséquence sur les séquences | **Franck** | rien |
 | Destinataire des notifications : Franck, Stéphane, ou les deux | **Franck** | étape 22 bis |
 | Texte de confirmation définitif | **Franck** | étape 17 bis |
-| Forfait Wix autorisant l'intégration de code | **Franck** | partie C, s'il est absent |
+| ~~Forfait Wix autorisant l'intégration de code~~ — **levé le 07/08, forfait Business** | — | rien |
+| **Le pied de page grandit** — le formulaire HubSpot est plus haut que les 451 px du Wix | **Franck** | sa condition n° 1, à la recette |
+| **Catégorie de cookies du script HubSpot** — Wix propose `Essentiels`, ce qui est faux : `hubspotutk` est un cookie de suivi | **Franck** | la mise en ligne, au même titre que les textes de consentement |
+| **Le pied de page est masqué sur l'accueil** — l'afficher est une décision de design, hors étape 19 | **Franck** | rien techniquement |
 
 ---
 
