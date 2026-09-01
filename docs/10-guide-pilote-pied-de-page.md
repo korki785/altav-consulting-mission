@@ -384,29 +384,205 @@ fonctionnement du site.
 > **À trancher, pas à subir** — et c'est une question juridique, pas technique : elle remonte à
 > Franck, au même titre que les textes de consentement.
 
-### État au 7 août — ce qui est posé, ce qui reste
+### État au 1er septembre — le bloc est posé, la hauteur est le sujet
 
-**Fait dans l'éditeur** *(non sauvegardé, non publié)* :
+**Fait et sauvegardé dans Wix** *(non publié)* :
 
 | | Élément |
 |---|---|
-| 🟢 | Bloc **HTML intégré** créé **dans le pied de page** — composant `comp-msjb8w3y`, enfant de `SITE_FOOTER`, donc présent sur toutes les pages qui affichent le pied de page |
-| 🟢 | Code d'intégration collé et appliqué — le formulaire HubSpot **s'affiche** dans l'éditeur |
-| 🟢 | Largeur réglée à **501 px**, exactement celle du formulaire Wix |
+| 🟢 | Bloc **HTML intégré** dans le pied de page — enfant de `SITE_FOOTER`, donc présent sur toutes les pages qui l'affichent |
+| 🟢 | Code d'intégration posé, formulaire HubSpot rendu |
+| 🟢 | Largeur **501 px**, celle du formulaire Wix |
 
-**Reste à faire à la souris** *(gestes que l'automatisation ne produit pas)* :
+**Fait et publié dans HubSpot** — style des champs :
+
+| Réglage | Valeur |
+|---|---|
+| Police | Nunito Sans, 15 px — substitut d'Avenir LT Light, indisponible hors Wix |
+| Fond des champs | `#243853` |
+| Texte saisi · placeholder · texte d'aide · libellé | `#FFFFFF` |
+| Bordure | `#FFFFFF`, `2px`, solide |
+| Message d'erreur | `e51520` |
+
+> **Reste `Arrondissement des angles` à `0`** — il est encore à `3`. Le formulaire Wix a les
+> angles droits.
+
+### La hauteur : 918 px contre 451, et d'où ça vient
+
+Mesuré sur le formulaire **publié**, à 501 px de large — la largeur réelle dans le pied de page.
+
+| Bloc | Pleine largeur | **À 501 px** |
+|---|---|---|
+| Prénom + Nom *(même ligne, elles y restent)* | 56 | 56 |
+| E-mail | 56 | 56 |
+| Téléphone *(étiquette visible, imposée)* | 76 | 76 |
+| `Vous êtes` + liste Statut | 76 | 76 |
+| Message | 81 | 81 |
+| **Bloc RGPD** | **195** | **310** |
+| Bouton `Envoyer` | 43 | 43 |
+| **Total** | 803 | **918** |
+
+> **Le bloc RGPD fait un tiers du formulaire, et il enfle de 115 px rien qu'en rétrécissant à
+> 501.** Les deux paragraphes explicatifs passent de une à deux lignes chacun. **La largeur
+> achète de la hauteur** — c'est le levier le moins cher si le pied de page est refait.
+
+*Deux artefacts de l'éditeur corrigés au passage :* le drapeau 🇺🇸 du champ téléphone n'apparaît
+que dans l'éditeur — le formulaire publié affiche 🇫🇷, HubSpot géolocalise. Et le
+`Commencer la saisie...` gris au-dessus des champs est l'invite d'une étiquette vide, pas une
+étiquette réelle : les placeholders fonctionnent.
+
+### Décision du 1er septembre — Nael refait le pied de page et raccourcit les consentements
+
+**451 px est hors d'atteinte et on cesse de le viser.** Le bloc RGPD seul en fait 310, et il
+n'est pas négociable. Le pied de page sera refait pour accueillir un formulaire plus haut.
+
+**Textes de consentement retenus** — ils remplacent ceux de HubSpot, dont les deux paragraphes
+d'introduction disparaissent, leur contenu passant dans les libellés des cases :
+
+| | Texte |
+|---|---|
+| Case 1 *(facultative, abonnement `Marketing Information`)* | `Je souhaite recevoir les communications d'Altav Consulting.` |
+| Case 2 *(obligatoire)* | `J'accepte le traitement de mes données pour répondre à ma demande.` |
+| Ligne finale, 12 px | `Désabonnement à tout moment. Voir notre politique de confidentialité.` |
+
+Cible : **≈ 660 px** — −170 sur le RGPD, −20 en vidant l'étiquette `Vous êtes`, −70 en
+resserrant l'espacement.
+
+> **Les deux cases restent séparées.** Répondre à quelqu'un ne demande aucun consentement
+> marketing. Les fusionner conditionnerait « je réponds à ta question » à « j'accepte la
+> publicité ».
+>
+> **Rien sous 12 px** pour le texte de consentement. En dessous, l'argument « c'était écrit »
+> ne tient plus.
+
+> ⚠️ **Deux fautes dans la traduction française de HubSpot**, à corriger quoi qu'il arrive :
+> « de Altav » et « que Altav », pour `d'Altav` et `qu'Altav`.
+
+### Où ces textes s'éditent — et pourquoi ce n'est pas là où on croit
+
+Le panneau **Modifier la confidentialité des données** du bloc, dans le formulaire, ne contient
+**pas** les textes. Il l'annonce lui-même : *« Vous pouvez modifier les textes par défaut de
+consentement et de politique de confidentialité dans les paramètres »*.
+
+Ils vivent au **niveau du compte, par langue**. Le piège de la Partie B bis s'applique donc
+intégralement : régler les textes **avant** de reposer le bloc, et vérifier qu'on édite bien la
+variante **Français**.
+
+État constaté du bloc au 1er septembre, tout est conforme : consentements séparés, les deux
+consentements collectés, abonnement `Marketing Information` non obligatoire, et la déclaration
+de politique de confidentialité **décochée** — retirée parce que le lien existe déjà à gauche
+dans le pied de page.
+
+**Reste à faire à la souris** :
 
 | | Geste |
 |---|---|
-| 🔴 | **Hauteur** : le bloc est à 506 px, le formulaire HubSpot n'y tient pas — il est coupé sous le texte de consentement. Agrandir jusqu'à ce que le bouton `Envoyer` soit visible **sans barre de défilement interne**. |
-| 🔴 | **Position** : le bloc est à gauche (`left: 201`), par-dessus le bloc d'adresse. Le formulaire Wix est à `left: 508`. |
-| 🔴 | **Sauvegarder** — rien n'est enregistré tant que ce n'est pas fait. |
-
-> **La barre de défilement interne est le critère, pas la hauteur en pixels.** Une iframe Wix a une
-> hauteur fixe : si le formulaire dépasse, Wix ne l'agrandit pas, il fait défiler à l'intérieur.
-> Un visiteur qui doit faire défiler dans un formulaire de pied de page ne le remplit pas.
+| 🟢 | ~~Raccourcir les textes de consentement~~ — fait, mais l'ancien bloc ne les a jamais repris *(voir ci-dessous)* |
+| 🟢 | ~~Vider l'étiquette `Vous êtes`~~ · ~~`Arrondissement des angles` à `0`~~ — repris dans la v2 |
+| 🔴 | Refaire le pied de page Wix à la nouvelle hauteur, puis positionner le bloc |
 
 ---
+
+## Partie C bis — Le formulaire v2, et pourquoi il a fallu le refaire
+
+*1er septembre 2026.*
+
+### Le figeage du bloc de consentement est confirmé, et il est définitif
+
+La Partie B bis annonçait que le bloc de consentement fige son texte à la pose. **Vérifié à
+l'usage, et pire que prévu : il n'existe aucun moyen de le rafraîchir sur un formulaire existant.**
+
+Ce qui a été essayé, dans l'ordre, sur le formulaire du 6 août :
+
+| Tentative | Résultat |
+|---|---|
+| Modifier les textes dans les paramètres, en **Français** | textes bien enregistrés, bloc inchangé |
+| Republier le formulaire | inchangé |
+| Supprimer le bloc | **impossible** — il est imposé dès que la conformité RGPD est active sur le compte |
+| Décocher puis recocher les deux consentements | **impossible** — « Envoyer des communications » dépend de « Stocker et traiter des données », et aucun des deux ne se décoche |
+| Changer de mode de consentement, puis revenir | seule manœuvre qui a reconstruit le bloc |
+
+> **La seule voie fiable est un formulaire neuf.** Un bloc de consentement créé aujourd'hui lit
+> les paramètres d'aujourd'hui. Vérifié : la v2 a affiché les textes courts dès sa création, sans
+> aucune manipulation.
+
+### Deuxième raison de refaire : le formulaire publié avait divergé du brouillon
+
+Constaté le 1er septembre : le brouillon contenait ses six champs, et **la version publiée n'en
+servait plus qu'un — l'e-mail**, hauteur 220 px au lieu de 803. Republier n'y changeait rien.
+
+Cause probable, non confirmée : le réglage **« Formulaires raccourcis »**, qui masque
+automatiquement les champs que HubSpot pense pouvoir remplir seul. Il est **désactivé par
+défaut** sur un formulaire neuf — à vérifier sur tout formulaire dont l'affichage rétrécit sans
+raison.
+
+### Le formulaire v2
+
+**`ALTAV — Contact général (pied de page) v2`**
+`data-form-id` = **`5d78e7c0-72db-463a-ae45-0532bf6557a0`**
+
+Construit à partir du modèle **page blanche**, dans le même éditeur que la v1 — l'éditeur hérité
+produirait un code d'intégration d'une autre forme, et il faudrait remplacer tout le bloc dans
+Wix au lieu du seul identifiant.
+
+> **Dans l'éditeur HubSpot, on ne glisse rien.** Un clic sur une propriété dans le panneau
+> **Propriétés** l'ajoute au formulaire. Et le panneau de réglages ne suit pas la sélection : il
+> faut cliquer le **crayon** de la barre d'outils du champ pour l'ouvrir.
+
+### Le consentement retenu — décision de Nael
+
+**Mode implicite + case à cocher pour les communications.**
+
+| | Consentements séparés | **Implicite** *(retenu)* |
+|---|---|---|
+| Traitement des données | case cochée, acte affirmatif | phrase déclarative |
+| Communications marketing | case à cocher | **case à cocher — inchangé** |
+
+Le principe de la Partie B bis tient : la case marketing reste séparée et facultative, on ne
+conditionne pas « je réponds à ta question » à « j'accepte la publicité ». Ce qui change, c'est
+que le consentement au traitement devient présumé — défendable, puisque répondre à quelqu'un qui
+écrit spontanément ne repose pas sur le consentement mais sur la demande elle-même.
+
+**Textes en vigueur :**
+
+| | |
+|---|---|
+| Intro communication | `Désabonnement à tout moment.` |
+| Case marketing *(facultative, `Marketing Information`)* | `J'accepte de recevoir d'autres communications d'Altav Consulting.` |
+| Traitement | `Nous traitons vos données pour répondre à votre demande.` |
+
+La déclaration de politique de confidentialité est **décochée** : le lien existe déjà à gauche
+dans le pied de page.
+
+### ⚠️ Le piège du compte revient sur chaque formulaire neuf
+
+**« Créer automatiquement de nouveaux contacts à partir d'adresses e-mail inconnues » était de
+nouveau désactivé sur la v2.** Ce n'est pas un réglage de compte, c'est un réglage **par
+formulaire**, et son défaut est « désactivé ».
+
+Il se trouve dans la roue crantée du panneau de gauche → **Paramètres** → onglet **Général**,
+premier interrupteur. **À vérifier sur les 5 formulaires suivants, un par un.**
+
+*Au même endroit, onglet **Paramètres des soumissions** : la notification était déjà réglée sur
+`franck.pecastaing@altav-consulting.com`, HubSpot reprenant le créateur du formulaire. Ces
+notifications suivent les paramètres globaux du compte — à revérifier à la recette.*
+
+### La hauteur, enfin
+
+Mesurée dans le bloc Wix, à 501 px de large :
+
+| Étape | Hauteur |
+|---|---|
+| Formulaire du 6 août | **937** |
+| v2, consentement raccourci, étiquette `Vous êtes` retirée | 777 |
+| Remplissage des champs `10px` → `6px` | **737** |
+
+**−200 px.** Contre les 451 du formulaire Wix, le pied de page grandit de **286 px**.
+
+> **On ne descend pas plus bas sans perdre quelque chose.** Ce qui reste, ce sont les deux cases
+> de consentement, le composant téléphone et le prénom séparé — trois décisions prises et
+> assumées, pas du gras.
+
 
 ## Partie D — Recette
 

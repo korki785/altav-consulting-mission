@@ -1,6 +1,6 @@
 # 0. Checklist — l'ordre des choses
 
-État au **7 août 2026**. Une seule liste, dans l'ordre logique : chaque étape suppose la
+État au **1er septembre 2026**. Une seule liste, dans l'ordre logique : chaque étape suppose la
 précédente. On lit de haut en bas, on s'arrête à la première pastille rouge.
 
 🟢 fait · 🟠 en cours · 🔴 à faire
@@ -106,6 +106,41 @@ précédente. On lit de haut en bas, on s'arrête à la première pastille rouge
 > **Le bloc HTML est posé dans le pied de page et le formulaire s'affiche** — largeur calée à
 > 501 px. Restent la hauteur, la position et la sauvegarde, qui se font à la souris. Rien n'est
 > ni sauvegardé ni publié.
+
+> **Décision du 1er septembre — Nael refait le pied de page, et raccourcit les consentements.**
+> Détail chiffré dans le [guide, partie C](10-guide-pilote-pied-de-page.md#état-au-1er-septembre--le-bloc-est-posé-la-hauteur-est-le-sujet).
+>
+> Le bloc Wix est **sauvegardé** (non publié), le style HubSpot est **publié**. Reste la hauteur.
+>
+> **Le formulaire fait 918 px à 501 de large, contre 451 pour le Wix.** Mesuré, pas estimé : le
+> bloc RGPD en fait **310 à lui seul**, soit un tiers, et il enfle de 115 px rien qu'en passant
+> de la pleine largeur à 501 — les paragraphes d'introduction passent à deux lignes.
+>
+> **451 px est hors d'atteinte et cesse d'être la cible.** Nael tranche : le pied de page sera
+> refait pour accueillir un formulaire plus haut, et les textes de consentement sont raccourcis.
+> Cible **≈ 660 px**. Les deux cases restent séparées, rien sous 12 px.
+>
+> *L'arbitrage revenait à Franck ; Nael le prend. Il n'a donc pas été soumis — à mentionner
+> quand le pied de page refait lui sera montré, pas à cacher.*
+
+> **Le pilote repart sur un formulaire neuf — `v2`, `5d78e7c0-72db-463a-ae45-0532bf6557a0`.**
+> Détail dans le [guide, partie C bis](10-guide-pilote-pied-de-page.md#partie-c-bis--le-formulaire-v2-et-pourquoi-il-a-fallu-le-refaire).
+>
+> Deux raisons, toutes deux constatées le 1er septembre :
+>
+> 1. **Le bloc de consentement du formulaire du 6 août est irrécupérable.** Il fige ses textes à
+>    la pose, ne se supprime pas, et ses consentements ne se décochent pas. Aucune manipulation ne
+>    lui a fait relire les paramètres.
+> 2. **La version publiée avait divergé du brouillon** — six champs dans l'éditeur, un seul
+>    e-mail en ligne. Republier n'y changeait rien.
+>
+> **Résultat : hauteur 937 → 737 px**, formulaire complet, textes de consentement courts, champs
+> cachés `INBOUND` / `INDIVIDUEL` en place. Le code Wix ne change que par son `data-form-id` —
+> le bloc, sa position et sa largeur de 501 px ne bougent pas.
+>
+> ⚠️ **« Créer automatiquement de nouveaux contacts » était de nouveau désactivé sur le
+> formulaire neuf.** C'est un réglage par formulaire, pas par compte. À vérifier sur chacun des 5
+> formulaires suivants.
 
 > **Décision du 6 août — on commence par le pied de page, pas par la pré-inscription.**
 > Franck : *« Faisons d'abord un test par celui du bas de page comme test. »*
