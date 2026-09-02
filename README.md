@@ -3,9 +3,11 @@
 Automatisation du tunnel de conversion (CRM + séquences). Objectif : lever le goulot de
 **conversion**, pas la demande. CRM cible : **HubSpot**.
 
-**État au 4 août 2026** — base nettoyée (7 483 contacts) et importée dans HubSpot. Le chantier
-en cours est l'**acquisition** : tant qu'aucun formulaire n'alimente HubSpot, aucune séquence de
-nurturing n'a de déclencheur.
+**État au 2 septembre 2026** — base nettoyée (7 483 contacts) et importée dans HubSpot, et
+**le premier formulaire HubSpot est en ligne** : le pilote du pied de page tourne sur
+`altavconsulting.com`, chaque soumission crée un contact déjà classé `INBOUND` / `INDIVIDUEL`.
+L'acquisition a son premier canal ; restent les 5 autres formulaires, et la validation des
+3 critères par Franck.
 
 **Franck a répondu aux 9 questions le 4 août.** Les 9 sont tranchées, dont la seule bloquante :
 plus aucun formulaire d'acquisition dans Wix. La construction des formulaires HubSpot est

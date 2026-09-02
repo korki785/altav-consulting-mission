@@ -584,6 +584,130 @@ Mesurée dans le bloc Wix, à 501 px de large :
 > assumées, pas du gras.
 
 
+## Partie C ter — Le filtre anti-spam de HubSpot, quatrième défaut silencieux
+
+*1er septembre 2026, découvert à la recette.*
+
+**HubSpot bloque les soumissions venues d'un domaine qu'il ne connaît pas.** Motif : « Domaine
+de site non enregistré ». La soumission n'apparaît alors **nulle part** — ni contact, ni
+notification, ni compteur de soumissions. Elle vit dans une vue dédiée que rien ne signale, et
+elle est **supprimée automatiquement au bout de 90 jours** :
+
+```
+https://app-eu1.hubspot.com/submissions-spam/148924865
+```
+
+> **C'est le quatrième défaut silencieux de la mission**, après `Inbound` ≠ `INBOUND`, la
+> création automatique de contacts désactivée, et le bloc de consentement figé. Celui-ci est le
+> plus coûteux : il détruit des leads sans laisser de trace.
+
+### Ce que « domaine » veut dire ici — et le piège du tiret
+
+C'est le domaine de **la page qui héberge le formulaire**, pas celui de l'e-mail du visiteur.
+Un seul enregistrement suffit donc, une fois pour toutes — les `@gmail.com`, `@brarudi.bi` et
+autres adresses des visiteurs n'y sont pour rien.
+
+**Le piège trouvé sur ce portail :** le domaine enregistré était `altav-consulting.com` — celui
+des **e-mails**, avec un tiret. Le **site**, lui, est `altavconsulting.com`, sans tiret. Deux
+chaînes différentes ; celle qui héberge le formulaire n'était pas déclarée.
+
+**Réglé le 1er septembre** : `altavconsulting.com` ajouté dans ⚙️ → **Suivi et analyse** →
+**Code de suivi** → onglet **Suivi avancé** → *Domaines de sites supplémentaires*. Le champ
+n'accepte qu'un domaine nu — sans `https://`, sans `www.`, sans chemin.
+
+### Le vrai domaine du formulaire n'est ni l'un ni l'autre — c'est l'iframe Wix
+
+Relevé sur une soumission bloquée, champ `Valeur de champ` lu **avant** suppression :
+
+```
+33a9d668-ce43-4734-b906-9665bf97cd31.filesusr.com
+```
+
+**Le bloc HTML de Wix est une iframe, et cette iframe est servie depuis `filesusr.com`** — le
+domaine d'hébergement Wix — préfixé du metaSiteId du site. Le formulaire HubSpot vit dans
+l'iframe : c'est donc **ce domaine-là** qu'il déclare, pas `altavconsulting.com`. Enregistrer le
+domaine du site ne suffisait pas, et ne suffira pas non plus après publication.
+
+**Réglé le 2 septembre** en ajoutant ce domaine à la même liste :
+
+```
+33a9d668-ce43-4734-b906-9665bf97cd31.filesusr.com
+```
+
+> **Pas `filesusr.com` tout court** — ça accepterait les iframes de n'importe quel site Wix au
+> monde. Le préfixe metaSiteId est propre à ce site et stable dans le temps.
+
+**Vérifié dans la foulée :** soumission depuis l'Aperçu Wix → acceptée, fiche créée, vue spam
+vide, page de conversion enregistrée `https://33a9d668-….filesusr.com/html/…`. L'Aperçu est
+donc un banc de test valable une fois ce domaine enregistré.
+
+> ⚠️ **Le site publié utilise un TROISIÈME domaine — attrapé le 2 septembre, après
+> publication.** L'iframe de production est servie depuis :
+>
+> ```
+> www-altavconsulting-com.filesusr.com
+> ```
+>
+> Ce n'est ni le domaine du site, ni celui de l'Aperçu (`33a9d668-….filesusr.com`). Sans son
+> enregistrement, **toutes les soumissions réelles partaient en spam** alors que tous les tests
+> passaient. Enregistré le 2 septembre, soumission depuis le site publié vérifiée passante.
+>
+> **Bilan : trois domaines enregistrés, chacun nécessaire.**
+>
+> | Domaine | Couvre |
+> |---|---|
+> | `altavconsulting.com` | par principe — si Wix change un jour de mécanisme |
+> | `33a9d668-ce43-4734-b906-9665bf97cd31.filesusr.com` | l'Aperçu Wix *(banc de test)* |
+> | `www-altavconsulting-com.filesusr.com` | **le site publié** |
+
+### Confirmation à faire le jour de la publication
+
+1. Ouvrir `www.altavconsulting.com/formationubuntu` en navigation privée, soumettre
+2. Ouvrir la vue des soumissions de spam
+3. **Vide** → confirmé, la fiche est dans Contacts. **Sinon** → ouvrir la soumission, lire
+   **`Valeur de champ`** — la chaîne exacte reçue — et enregistrer précisément celle-là, puis
+   resoumettre. Ça converge en un tour.
+
+> **Ne jamais supprimer une soumission en spam sans avoir lu sa `Valeur de champ`.** C'est la
+> seule trace de ce que HubSpot a reçu, et donc le seul diagnostic. Une suppression prématurée
+> a coûté un aller-retour de test le 2 septembre.
+
+**Et ensuite :** surveiller cette vue les premières semaines. Le motif « domaine » sera réglé,
+mais les autres motifs — fondés sur le contenu — restent actifs et peuvent bloquer un vrai
+prospect qui écrit trois mots. Compte tenu de la base ALTAV, largement hors des sentiers que ce
+genre de filtre connaît, ce n'est pas une hypothèse d'école.
+
+### 🟢 Recette du 2 septembre — la chaîne complète fonctionne
+
+Vérifié en deux temps :
+
+- **Catégorisation** — sur fiche : **`Température CRM = INBOUND`**, **`Type de compte =
+  INDIVIDUEL`**, statut déclaré et message bien mappés. **Le lead naît classé.**
+- **Anti-spam** — après enregistrement du domaine `filesusr.com` du site : soumission depuis
+  l'Aperçu **acceptée directement**, fiche créée, vue spam vide.
+
+### 🟢 2 septembre, suite — le site est publié, le pilote est en ligne
+
+Décision de Nael. Séquence exécutée : ancien formulaire Wix retiré du pied de page, publication,
+enregistrement du domaine de production, soumission de test depuis le site publié **acceptée**.
+
+**Mobile vérifié sur le site publié** *(rendu forcé via `?showMobileView=true`)* : bloc
+**300 × 902**, pied de page mobile 1208, tous les champs affichés, bouton `Envoyer` visible
+sans défilement interne. Le formulaire charge **en différé** — un visiteur qui arrive
+directement au pied de page voit un vide navy pendant un instant ; c'est un comportement de
+chargement, pas un défaut.
+
+**Restent ouverts :**
+
+| Point | Pour qui |
+|---|---|
+| Les **3 critères de Franck** — intégré, transparent, alimente HubSpot — se parcourent avec lui | **Franck** |
+| **Franck n'a pas validé les textes de consentement ni la catégorie de cookies** — le site a été publié sur décision de Nael ; à lui signaler, pas à lui cacher | **Nael → Franck** |
+| Deux textes figés dans le bloc v2 : « de Altav » *(pour `d'Altav`)* et la phrase longue du consentement implicite. Remède : corriger dans les paramètres, puis basculer le mode de consentement aller-retour pour forcer la relecture | — |
+| Destinataire des notifications — Franck seul pour l'instant | étape 22 bis |
+
+---
+
 ## Partie D — Recette
 
 *Étape 19 bis. Les trois critères sont ceux que Franck a posés en Q9. Aucun ne se coche à sa

@@ -1,6 +1,6 @@
 # 0. Checklist — l'ordre des choses
 
-État au **1er septembre 2026**. Une seule liste, dans l'ordre logique : chaque étape suppose la
+État au **2 septembre 2026**. Une seule liste, dans l'ordre logique : chaque étape suppose la
 précédente. On lit de haut en bas, on s'arrête à la première pastille rouge.
 
 🟢 fait · 🟠 en cours · 🔴 à faire
@@ -61,8 +61,8 @@ précédente. On lit de haut en bas, on s'arrête à la première pastille rouge
 | 🔴 | **17 ter.** Faire confirmer le formulaire « Session d'information », qu'il n'a pas demandé | **Franck** |
 | 🔴 | **17 quater.** Recenser les **URL d'acquisition** depuis le back-office Wix — adresse, nombre de réponses, date de la dernière | — *(remplace la liste demandée à Franck)* |
 | 🟠 | **18.** Créer les **8 propriétés** manquantes dans HubSpot — [liste](08-formulaires-hubspot.md#propriétés-hubspot-à-créer). **`Statut du visiteur` créée le 06/08**, les 7 autres attendent leur formulaire | — *(rien ne se mappe sans elles)* |
-| 🟠 | **19.** **Pilote —** refaire le formulaire du **pied de page** — [guide d'exécution](10-guide-pilote-pied-de-page.md). **Créé et publié le 06/08**, **validé par Franck le 07/08**, reste à poser dans le pied de page Wix | étape 18 |
-| 🔴 | **19 bis.** Recetter le pilote sur les **3 critères de Franck** — intégré au design, transparent pour le visiteur, alimente HubSpot | étape 19 · **Franck** |
+| 🟢 | **19.** **Pilote —** refaire le formulaire du **pied de page** — [guide d'exécution](10-guide-pilote-pied-de-page.md). **EN LIGNE le 02/09** : formulaire v2 dans le pied de page publié, ancien formulaire Wix retiré, soumission réelle vérifiée passante, mobile calé | 02/09/2026 |
+| 🟠 | **19 bis.** Recetter le pilote sur les **3 critères de Franck** — la recette **technique** est passée le 02/09 (fiche créée, `INBOUND`/`INDIVIDUEL`, anti-spam réglé, mobile) ; restent les 3 critères, qui se parcourent **avec lui** | **Franck** |
 | 🔴 | **19 ter.** Inventorier **ce que Stéphane a déjà mis en place** sur la pré-inscription | **Stéphane** |
 | 🔴 | **20.** Créer le formulaire de **pré-inscription** — sans champ promo, **avec Stéphane** | étape 19 bis · étape 19 ter · **Stéphane** |
 | 🔴 | **20 bis.** Créer les 4 formulaires restants | étape 20 · *session d'info : étape 17 ter* |
@@ -123,6 +123,17 @@ précédente. On lit de haut en bas, on s'arrête à la première pastille rouge
 > *L'arbitrage revenait à Franck ; Nael le prend. Il n'a donc pas été soumis — à mentionner
 > quand le pied de page refait lui sera montré, pas à cacher.*
 
+> **2 septembre — LE PILOTE EST EN LIGNE.** Site publié sur décision de Nael, ancien formulaire
+> Wix retiré du pied de page. Soumission réelle depuis `www.altavconsulting.com` : acceptée,
+> fiche créée, classée `INBOUND` / `INDIVIDUEL`. **Un troisième domaine a dû être enregistré
+> pour la production** — `www-altavconsulting-com.filesusr.com`, différent de celui de l'Aperçu ;
+> sans lui, tous les tests passaient et toutes les vraies soumissions partaient en spam. Détail
+> dans le [guide, partie C ter](10-guide-pilote-pied-de-page.md#partie-c-ter--le-filtre-anti-spam-de-hubspot-quatrième-défaut-silencieux).
+>
+> **À signaler à Franck** : la publication s'est faite sans sa validation des textes de
+> consentement ni de la catégorie de cookies — arbitrages pris par Nael, à lui présenter avec le
+> pilote qui tourne.
+
 > **Le pilote repart sur un formulaire neuf — `v2`, `5d78e7c0-72db-463a-ae45-0532bf6557a0`.**
 > Détail dans le [guide, partie C bis](10-guide-pilote-pied-de-page.md#partie-c-bis--le-formulaire-v2-et-pourquoi-il-a-fallu-le-refaire).
 >
@@ -141,6 +152,18 @@ précédente. On lit de haut en bas, on s'arrête à la première pastille rouge
 > ⚠️ **« Créer automatiquement de nouveaux contacts » était de nouveau désactivé sur le
 > formulaire neuf.** C'est un réglage par formulaire, pas par compte. À vérifier sur chacun des 5
 > formulaires suivants.
+
+> **Recette du 2 septembre — la catégorisation à la source fonctionne.** Vérifié sur fiche :
+> `Température CRM = INBOUND`, `Type de compte = INDIVIDUEL`, statut et message mappés. **Le
+> lead naît classé.**
+>
+> ⚠️ **Quatrième défaut silencieux trouvé à la recette : le filtre anti-spam de HubSpot** —
+> détail dans le [guide, partie C ter](10-guide-pilote-pied-de-page.md#partie-c-ter--le-filtre-anti-spam-de-hubspot-quatrième-défaut-silencieux).
+> Le vrai domaine du formulaire est celui de l'**iframe Wix** —
+> `33a9d668-….filesusr.com` — ni celui du site, ni celui des e-mails. Enregistré le 02/09 ;
+> soumission de test **acceptée directement** dans la foulée, vue spam vide. Les soumissions
+> bloquées ne laissent aucune trace visible et s'effacent à 90 jours — lire `Valeur de champ`
+> avant toute suppression. Confirmation à refaire depuis le site publié, par acquit.
 
 > **Décision du 6 août — on commence par le pied de page, pas par la pré-inscription.**
 > Franck : *« Faisons d'abord un test par celui du bas de page comme test. »*
