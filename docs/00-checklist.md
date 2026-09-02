@@ -56,8 +56,15 @@ précédente. On lit de haut en bas, on s'arrête à la première pastille rouge
 |---|---|---|
 | 🟢 | **16.** Spécifier les 6 formulaires — [spec complète](08-formulaires-hubspot.md) | 05/08/2026 |
 | 🟢 | **16 bis.** Vérifier si la création de tâche demande un workflow — **oui, workflows verrouillés, alerte par e-mail à la place** | 05/08/2026 |
+> **Décision du 2 septembre — l'automatisation passera par Make, pas par HubSpot.** Les
+> workflows sont une fonction **Pro à 1 283 €/mois** ; ALTAV paie **10 €/mois** (Starter
+> Customer Platform, tous les hubs en Starter, 1 000 contacts marketing inclus dont 3 utilisés).
+> Hors budget, et disproportionné. **Make.com en offre gratuite** — 1 000 opérations/mois contre
+> 141 soumissions par an sur le formulaire le plus actif. HubSpot reste la source unique de
+> vérité ; Make exécute, ne stocke rien. Détail : [architecture](11-architecture-des-outils.md#lautomatisation-ne-passera-pas-par-hubspot--décision-du-2-septembre).
+
 | 🟠 | **17.** Informer Franck du changement — *pour information, il n'a aucune liste à fournir* | — |
-| 🔴 | **17 bis.** Faire relire par Franck les messages de confirmation et le mail réécrit | **Franck** |
+| 🟠 | **17 bis.** Faire relire par Franck les messages de confirmation et le mail réécrit — **Franck informé le 02/09**, en attente de son texte. Procédure de paramétrage documentée : [guide, partie C quater](10-guide-pilote-pied-de-page.md#partie-c-quater--le-message-de-confirmation--où-et-comment-le-changer) | **Franck** |
 | 🔴 | **17 ter.** Faire confirmer le formulaire « Session d'information », qu'il n'a pas demandé | **Franck** |
 | 🔴 | **17 quater.** Recenser les **URL d'acquisition** depuis le back-office Wix — adresse, nombre de réponses, date de la dernière | — *(remplace la liste demandée à Franck)* |
 | 🟠 | **18.** Créer les **8 propriétés** manquantes dans HubSpot — [liste](08-formulaires-hubspot.md#propriétés-hubspot-à-créer). **`Statut du visiteur` créée le 06/08**, les 7 autres attendent leur formulaire | — *(rien ne se mappe sans elles)* |
@@ -70,6 +77,7 @@ précédente. On lit de haut en bas, on s'arrête à la première pastille rouge
 | 🔴 | **22.** Tester : une soumission arrive dans HubSpot **déjà étiquetée** | étape 21 |
 | 🔴 | **22 bis.** Activer les notifications par e-mail sur les 6 formulaires — **destinataires à trancher : Franck, Stéphane, ou les deux** | étape 20 bis · **Franck** |
 | 🔴 | **22 ter.** Créer les 3 vues manuelles de relance — [provisoire](09-solution-provisoire.md) | étape 22 |
+| 🔴 | **22 quater.** Monter la **réponse automatique au visiteur** dans Make — [architecture](11-architecture-des-outils.md#lautomatisation-ne-passera-pas-par-hubspot--décision-du-2-septembre) | étape 19 bis · texte de Franck |
 
 > **Validation du 7 août — Franck accepte le formulaire, et seulement le formulaire.**
 >

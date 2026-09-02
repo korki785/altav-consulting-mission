@@ -120,3 +120,55 @@ l'étape 8)*.
 La règle « un rôle par outil » est juste. Elle ne devient vraie que si chaque passage d'un outil à
 l'autre est automatique. **Chaque chaînon laissé manuel est une promesse d'incohérence à trois
 mois**, et personne ne verra le moment où elle s'installe.
+
+---
+
+## L'automatisation ne passera pas par HubSpot — décision du 2 septembre
+
+**Constat : les workflows HubSpot sont hors budget.** Vérifié dans le portail le 2 septembre.
+
+| | |
+|---|---|
+| Abonnement réel | **Starter Customer Platform**, `20 €/mois` remisé 50 % → **10 €/mois payés** |
+| Comprend | Marketing Hub · Sales Hub · Service Hub · Content Hub · Data Hub, tous en **Starter** — 1 000 contacts marketing inclus, 3 utilisés |
+| **Workflows** | **verrouillés** — `/workflows/` redirige vers la page de vente. C'est une fonction **Pro** |
+| Coût de Pro | **1 283 €/mois** *(remisé, sinon 1 430 €)*, plus onboarding obligatoire |
+
+**Deux ordres de grandeur d'écart avec ce que paie ALTAV aujourd'hui.** Franck n'a pas ce budget,
+et le proposer serait disproportionné pour une mission dont le premier formulaire vient d'entrer
+en service.
+
+### La décision
+
+**Make.com devient la couche d'automatisation.** Offre gratuite : 1 000 opérations par mois.
+
+Pour situer le volume : le formulaire de pré-inscription, le plus actif du site, fait
+**141 soumissions par an**. L'enveloppe gratuite n'est pas une contrainte, elle est
+surdimensionnée.
+
+**Ce que ça ne change pas :** HubSpot reste la **source unique de vérité** sur la personne. Make
+ne stocke rien, ne qualifie rien, ne décide rien. Il déclenche des actions à partir de ce que
+HubSpot contient déjà. La règle du 6 août tient — Make est un exécutant, pas un troisième outil
+qui prétendrait connaître le client.
+
+### La conséquence technique à connaître
+
+**HubSpot ne peut pas prévenir Make.** Les webhooks sortants sont eux-mêmes une action de
+workflow, donc verrouillés. Make devra donc **interroger** HubSpot à intervalle régulier plutôt
+qu'être notifié.
+
+Conséquence pratique : une réponse « automatique » arrivera avec le délai du cycle
+d'interrogation — quelques minutes, pas l'instant. Sans importance pour un accusé de réception ;
+à savoir avant de promettre un délai à qui que ce soit.
+
+### Ce que ça débloque, et dans quel ordre
+
+| Besoin | État |
+|---|---|
+| Réponse automatique au visiteur qui soumet | premier chantier Make |
+| Création de tâche à chaque soumission *(étape 16 bis, abandonnée faute de workflows)* | redevient possible |
+| Séquences de nurturing *(phase 3)* | à réévaluer — Make peut orchestrer, HubSpot Starter sait envoyer |
+
+> **Le garde-fou.** Chaque scénario Make est une pièce de plus à transmettre à Stéphane
+> *(phase 6)*. Un scénario qu'on ne sait pas expliquer en trois phrases est un scénario qui ne
+> survivra pas à la passation. Documenter au fur et à mesure, ici.

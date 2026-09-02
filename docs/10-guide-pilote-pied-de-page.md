@@ -708,6 +708,68 @@ chargement, pas un défaut.
 
 ---
 
+## Partie C quater — Le message de confirmation : où et comment le changer
+
+*Écrit le 2 septembre pour l'étape 17 bis — Franck a été informé qu'il doit fournir le texte.
+Cette procédure sert le jour où il le rend, et elle sert Stéphane ensuite.*
+
+**Ce que voit le visiteur aujourd'hui, après avoir cliqué `Envoyer` :**
+
+```
+Merci pour votre envoi !
+```
+
+Repris mot pour mot du formulaire Wix d'origine — relevé DOM du 6 août. Ce n'est pas un texte
+écrit pour l'occasion, c'est celui d'ALTAV.
+
+### Où ça se règle
+
+Dans l'éditeur du formulaire, le message de confirmation n'est **pas** dans un panneau de
+réglages : c'est une **seconde carte sur le canvas**, à droite du formulaire, reliée à lui par un
+trait vertical. HubSpot la traite comme une étape à part entière.
+
+```
+https://app-eu1.hubspot.com/forms/148924865/editor/5d78e7c0-72db-463a-ae45-0532bf6557a0/edit/form
+```
+
+**La marche à suivre :**
+
+1. Faire défiler le canvas **vers la droite** — la carte de confirmation est hors écran au
+   chargement, c'est ce qui la fait rater
+2. Cliquer sur le **titre** de la carte → une barre d'outils apparaît → le **crayon** ouvre son
+   édition
+3. Remplacer le texte, puis **Enregistrer**
+4. **Vérifier et mettre à jour** — sans quoi l'embed Wix continue de servir l'ancien message
+
+> **Le paragraphe sous le titre s'ajoute ou se supprime séparément.** À la création, HubSpot
+> fournit un titre *(« Formulaire envoyé »)* **et** un paragraphe *(« Merci, nous vous
+> contacterons bientôt. »)*. Le paragraphe a été supprimé le 1er septembre — via la **corbeille**
+> de sa barre d'outils — parce que le formulaire Wix n'affichait qu'une seule ligne. Si le texte
+> de Franck fait deux phrases, il faudra le réintroduire par le panneau **+** → **Autre** →
+> **Paragraphe (texte enrichi)**.
+
+### Ce qu'il ne faut pas faire
+
+**Ne pas basculer sur une redirection vers une page.** C'est la condition n° 2 de Franck :
+*le visiteur ne doit pas voir qu'il change d'outil*. Un message affiché sur place respecte cette
+condition, une redirection la casse — le visiteur quitte `altavconsulting.com` pour une URL
+HubSpot.
+
+**Ne pas y mettre d'engagement de délai** — « nous vous répondons sous 24 h » — tant que
+personne ne tient ce délai. Le pied de page est le canal dont les réponses tombaient dans une
+boîte que personne ne relevait *(constat du 5 août)*. Promettre un délai avant d'avoir réglé qui
+répond, c'est fabriquer une déception.
+
+### Le texte, quand Franck le rendra
+
+Il vient de lui, pas de nous. La méthode retenue en août tient toujours : lui demander **un
+exemple de mail qu'il envoie habituellement** et s'en servir de modèle, plutôt qu'écrire de zéro
+puis lui faire corriger — plus de travail pour lui, et moins juste.
+
+En attendant, `Merci pour votre envoi !` est en ligne et convient : c'est déjà le ton d'ALTAV.
+
+---
+
 ## Partie D — Recette
 
 *Étape 19 bis. Les trois critères sont ceux que Franck a posés en Q9. Aucun ne se coche à sa
